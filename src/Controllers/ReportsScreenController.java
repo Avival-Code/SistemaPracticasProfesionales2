@@ -100,7 +100,7 @@ public class ReportsScreenController implements Initializable {
      * nameText, lastNameText y matriculaText
      */
     private void SetUserInformation() {
-        nameText.setText( LoginSession.GetInstance().GetEstudiante().GetNombres() );
+        nameText.setText( LoginSession.GetInstance().GetEstudiante().getNombres() );
         lastNameText.setText( LoginSession.GetInstance().GetEstudiante().GetApellidos() );
         matriculaText.setText( LoginSession.GetInstance().GetEstudiante().GetMatricula() );
     }

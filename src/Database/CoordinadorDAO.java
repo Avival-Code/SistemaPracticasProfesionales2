@@ -37,7 +37,7 @@ public class CoordinadorDAO implements CoordinadorDAOInterface{
         connection.StartConnection();
 
         try {
-            usuarios.Create( new UsuarioUV( coordinador.GetID(), coordinador.GetNombres(), coordinador.GetApellidos(),
+            usuarios.Create( new UsuarioUV( coordinador.GetID(), coordinador.getNombres(), coordinador.GetApellidos(),
                     coordinador.GetUsuario(), coordinador.GetContrasena(), coordinador.GetCorreo(),
                     coordinador.GetTelefono() ) );
             UsuarioUV usuarioTemp = usuarios.Read( coordinador.GetUsuario() );
@@ -130,7 +130,7 @@ public class CoordinadorDAO implements CoordinadorDAOInterface{
         connection.StartConnection();
 
         try {
-            usuarios.Update( new UsuarioUV( coordinador.GetID(), coordinador.GetNombres(), coordinador.GetApellidos(),
+            usuarios.Update( new UsuarioUV( coordinador.GetID(), coordinador.getNombres(), coordinador.GetApellidos(),
                     coordinador.GetUsuario(), coordinador.GetContrasena(), coordinador.GetCorreo(),
                     coordinador.GetTelefono() ) );
 

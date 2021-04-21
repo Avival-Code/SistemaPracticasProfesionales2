@@ -59,7 +59,7 @@ public class EstudianteMainMenuController implements Initializable {
 
     @Override
     public void initialize( URL location, ResourceBundle resources ) {
-        nameText.setText( LoginSession.GetInstance().GetEstudiante().GetNombres() );
+        nameText.setText( LoginSession.GetInstance().GetEstudiante().getNombres() );
         lastNameText.setText( LoginSession.GetInstance().GetEstudiante().GetApellidos() );
         matriculaText.setText( LoginSession.GetInstance().GetEstudiante().GetMatricula() );
     }

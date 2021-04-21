@@ -37,7 +37,7 @@ public class DocenteDAO  implements DocenteDAOInterface{
         connection.StartConnection();
 
         try {
-            usuarios.Create( new UsuarioUV( docente.GetID(), docente.GetNombres(), docente.GetApellidos(),
+            usuarios.Create( new UsuarioUV( docente.GetID(), docente.getNombres(), docente.GetApellidos(),
                     docente.GetUsuario(), docente.GetContrasena(), docente.GetCorreo(),
                     docente.GetTelefono() ) );
             UsuarioUV usuarioTemp = usuarios.Read( docente.GetUsuario() );
@@ -138,7 +138,7 @@ public class DocenteDAO  implements DocenteDAOInterface{
             statement.setString( 2, docente.GetNumeroPersonal() );
             statement.executeUpdate();
 
-            usuarios.Update( new UsuarioUV( docente.GetID(), docente.GetNombres(), docente.GetApellidos(),
+            usuarios.Update( new UsuarioUV( docente.GetID(), docente.getNombres(), docente.GetApellidos(),
                     docente.GetUsuario(), docente.GetContrasena(), docente.GetCorreo(), docente.GetTelefono() ) );
 
             updated = true;
