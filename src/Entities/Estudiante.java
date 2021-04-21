@@ -87,7 +87,7 @@ public class Estudiante extends UsuarioUV {
      * Regresa el nrc del Estudiante
      * @return String con el nrc del estudiante
      */
-    public String GetNrc() {
+    public String getNrc() {
         return nrc;
     }
 

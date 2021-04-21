@@ -77,6 +77,53 @@ public class OutputMessages {
     public String StudentReportScreenMissing() { return "No se encontró el archivo FXML de la pantalla Reportes_Estudiante."; }
 
     /**
+     * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
+     * Principal_Coordinador
+     * @return una cadena con el mensaje de error
+     */
+    public String PantallaPrincipalCoordinadorPerdido() { return "No se encontró el archivo FXML de la pantalla " +
+            "Principal_Coordinador."; }
+
+    /**
+     * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
+     * GestionarOrganizacion_Coordinador
+     * @return una cadena con el mensaje de error
+     */
+    public String PantallaGestionarOrganizacionPerdido() { return "No se encontró el archivo FXML de la pantalla " +
+            "GestionarOrganizacion_Coordinador."; }
+
+    /**
+     * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
+     * RegistrarOrganizacion_Coordinador
+     * @return una cadena con el mensaje de error
+     */
+    public String PantallaRegistrarOrganizacionPerdido() { return "No se encontró el archivo FXML de la pantalla " +
+            "RegistrarOrganizacion_Coordinador."; }
+
+    /**
+     * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
+     * GestionarOrganizacion_Coordinador
+     * @return una cadena con el mensaje de error
+     */
+    public String PantallaGestionarProyectoPerdido() { return "No se encontró el archivo FXML de la pantalla " +
+            "GestionarProyecto_Coordinador."; }
+
+    /**
+     * Mensaje mostrado cuando se registra un nuevo Estudiante a la
+     * base de datos de manera exitosa.
+     * @return una cadena con el mensaje de éxito
+     */
+    public String RegistroOrganizacionExitoso() { return "Registro de Organizacion Exitoso"; }
+
+    /**
+     * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
+     * ModificarProyecto_Coordinador
+     * @return una cadena con el mensaje de error
+     */
+    public String PantallaModificarProyectoPerdido() { return "No se encontró el archivo FXML de la pantalla " +
+            "ModificarProyecto_Coordinador."; }
+
+    /**
      * Mensaje mostrado cuando se registra un nuevo Estudiante a la
      * base de datos de manera exitosa.
      * @return una cadena con el mensaje de éxito

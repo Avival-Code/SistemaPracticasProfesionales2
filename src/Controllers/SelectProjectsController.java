@@ -182,7 +182,7 @@ public class SelectProjectsController implements Initializable {
      * nombre, apellidos y matrícula
      */
     private void SetUserInformation() {
-        nameText.setText( LoginSession.GetInstance().GetEstudiante().GetNombres() );
+        nameText.setText( LoginSession.GetInstance().GetEstudiante().getNombres() );
         lastNameText.setText( LoginSession.GetInstance().GetEstudiante().GetApellidos() );
         matriculaText.setText( LoginSession.GetInstance().GetEstudiante().GetMatricula() );
     }
