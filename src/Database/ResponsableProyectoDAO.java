@@ -22,6 +22,8 @@ import java.util.List;
  * en la base de datos.
  */
 public class ResponsableProyectoDAO implements ResponsableProyectoDAOInterface{
+    private ProyectosDeResponsablesDAO proyectos = new ProyectosDeResponsablesDAO();
+
     /**
      * Crea una instancia de ResponsableProyecto en la base de datos
      * @param responsable la instancia de ResponsableProyecto que se desea crear
@@ -42,6 +44,9 @@ public class ResponsableProyectoDAO implements ResponsableProyectoDAOInterface{
             statement.setString( 3, responsable.GetCorreo() );
             statement.setString( 4, responsable.GetTelefono() );
             statement.executeUpdate();
+
+            proyectos.Create( responsable.getIdResponsableProyecto(), responsable.getIdProyectos() );
+
             wasCreated = true;
         } catch( Exception exception ) {
             exception.printStackTrace();
@@ -66,8 +71,10 @@ public class ResponsableProyectoDAO implements ResponsableProyectoDAOInterface{
             ResultSet result = statement.executeQuery( "SELECT * FROM ResponsableProyecto;" );
 
             while( result.next() ) {
-                responsables.add( new ResponsableProyecto( result.getInt( 1 ), result.getString( 2 ),
-                        result.getString( 3 ), result.getString( 4 ), result.getString( 5 ) ) );
+                int idResponsable = result.getInt( 1 );
+                responsables.add( new ResponsableProyecto( idResponsable, result.getString( 2 ),
+                        result.getString( 3 ), result.getString( 4 ), result.getString( 5 ),
+                        proyectos.Read( idResponsable ) ) );
             }
 
             result.close();
@@ -99,8 +106,9 @@ public class ResponsableProyectoDAO implements ResponsableProyectoDAOInterface{
             ResultSet result = statement.getResultSet();
 
             if( result.next() ) {
-                responsable = new ResponsableProyecto( result.getInt( 1 ), result.getString( 2 ),
-                        result.getString( 3 ), result.getString( 4 ), result.getString( 5 ) );
+                responsable = new ResponsableProyecto( idResponsable, result.getString( 2 ),
+                        result.getString( 3 ), result.getString( 4 ), result.getString( 5 ),
+                        proyectos.Read( idResponsable ) );
             }
 
             result.close();
@@ -133,6 +141,9 @@ public class ResponsableProyectoDAO implements ResponsableProyectoDAOInterface{
             statement.setString( 3, responsable.GetCorreo() );
             statement.setString( 4, responsable.GetTelefono() );
             statement.setString( 5, responsable.GetCorreo() );
+
+            proyectos.Update( responsable.getIdResponsableProyecto(), responsable.getIdProyectos() );
+
             statement.executeUpdate();
             updated = true;
         } catch( Exception exception ) {
@@ -150,7 +161,7 @@ public class ResponsableProyectoDAO implements ResponsableProyectoDAOInterface{
      * @return booleano indicando éxito o fracaso
      */
     @Override
-    public boolean Delete( int idResponsable ) {
+    public boolean Delete( int idResponsable, List< Integer > idProyectos ) {
         boolean deleted = false;
         MySqlConnection connection = new MySqlConnection();
         connection.StartConnection();
@@ -160,6 +171,11 @@ public class ResponsableProyectoDAO implements ResponsableProyectoDAOInterface{
             PreparedStatement statement = connection.GetConnection().prepareStatement( query );
             statement.setInt( 1, idResponsable );
             statement.executeUpdate();
+
+            for( int proyecto : idProyectos ) {
+                proyectos.Delete( proyecto );
+            }
+
             deleted = true;
         } catch( Exception exception ) {
             exception.printStackTrace();
