@@ -18,9 +18,7 @@ public class OrganizacionVinculada {
     private TipoSector sector;
     private String telefono;
     private String correoElectronico;
-    private int idResponsable;
-    private int idProyecto;
-
+    private int idOrganizacion;
     /**
      * Constructor sin parámetros de la clase OrganizaciónVinculada.
      * Crea una instancia con valores nulos y cadenas vacias.
@@ -31,8 +29,7 @@ public class OrganizacionVinculada {
         sector = null;
         telefono = "";
         correoElectronico = "";
-        idResponsable = 0;
-        idProyecto = 0;
+        idOrganizacion = 0;
     }
 
     /**
@@ -42,7 +39,7 @@ public class OrganizacionVinculada {
      */
     public OrganizacionVinculada( OrganizacionVinculada original ) {
         this( original.nombre, original.direccion, original.sector, original.telefono, original.correoElectronico,
-                original.idResponsable, original.idProyecto );
+                original.idOrganizacion );
     }
 
     /**
@@ -55,19 +52,16 @@ public class OrganizacionVinculada {
      * @param correoIn el correo electronico de la organización
      */
     public OrganizacionVinculada( String nombreIn, String direccionIn, TipoSector sectorIn, String telefonoIn,
-                                  String correoIn, int idResponsableIn, int idProyectoIn ) {
+                                  String correoIn, int idOrganizacionIn ) {
         nombre = nombreIn;
         direccion = direccionIn;
         sector = sectorIn;
         telefono = telefonoIn;
         correoElectronico = correoIn;
-        idResponsable = idResponsableIn;
-        idProyecto = idProyectoIn;
+        idOrganizacion = idOrganizacionIn;
     }
 
-    public int getIdResponsable() { return idResponsable; }
-
-    public int getIdProyecto() { return idProyecto; }
+    public int getIdOrganizacion() { return idOrganizacion; }
 
     /**
      * Regresa el nombre de la organización vinculada
@@ -150,7 +144,5 @@ public class OrganizacionVinculada {
         correoElectronico = correoIn;
     }
 
-    public void SetIdResponsable( int idResponsableIn ) { idResponsable = idResponsableIn; }
-
-    public void SetIdProyecto( int idProyectoIn ) { idProyecto = idProyectoIn; }
+    public void SetIdResponsable( int idOrganizacionIn ) { idOrganizacion = idOrganizacionIn; }
 }

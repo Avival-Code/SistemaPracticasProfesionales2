@@ -36,11 +36,10 @@ public class OrganizacionVinculadaDAO implements OrganizacionVinculadaDAOInterfa
         connection.StartConnection();
 
         try {
-            String query = "INSERT INTO OrganizacionVinculada( IDResponsableProyecto, IDProyecto, Nombre, Direccion, " +
+            String query = "INSERT INTO OrganizacionVinculada( IDOrganizacion, Nombre, Direccion, " +
                     "Sector, Telefono, CorreoElectronico ) VALUES ( ?, ?, ?, ?, ?, ?, ? );";
             PreparedStatement statement = connection.GetConnection().prepareStatement( query );
-            statement.setInt( 1, organizacion.getIdResponsable() );
-            statement.setInt( 2, organizacion.getIdProyecto() );
+            statement.setInt( 1, organizacion.getIdOrganizacion() );
             statement.setString( 3, organizacion.getNombre() );
             statement.setString( 4, organizacion.getDireccion() );
             statement.setInt( 5, organizacion.getSector().ordinal() );
@@ -72,10 +71,10 @@ public class OrganizacionVinculadaDAO implements OrganizacionVinculadaDAOInterfa
 
             while( result.next() )
             {
-                organizaciones.add( new OrganizacionVinculada( result.getString( 3 ),
-                        result.getString( 4 ), TipoSector.values()[ result.getInt( 5 ) ],
-                        result.getString( 6 ), result.getString( 7 ),
-                        result.getInt( 1 ), result.getInt( 2 ) ) );
+                organizaciones.add( new OrganizacionVinculada( result.getString( 2 ),
+                        result.getString( 3 ), TipoSector.values()[ result.getInt( 4 ) ],
+                        result.getString( 5 ), result.getString( 6 ),
+                        result.getInt( 1 ) ) );
             }
 
             result.close();
@@ -107,10 +106,10 @@ public class OrganizacionVinculadaDAO implements OrganizacionVinculadaDAOInterfa
             ResultSet result = statement.getResultSet();
 
             if( result.next() ) {
-                organizacion = new OrganizacionVinculada( result.getString( 3 ),
-                        result.getString( 4 ), TipoSector.values()[ result.getInt( 5 ) ],
-                        result.getString( 6 ), result.getString( 7 ),
-                        result.getInt( 1 ), result.getInt( 2 ) );
+                organizacion = new OrganizacionVinculada( result.getString( 2 ),
+                        result.getString( 3 ), TipoSector.values()[ result.getInt( 4 ) ],
+                        result.getString( 5 ), result.getString( 6 ),
+                        result.getInt( 1 ) );
             }
         } catch( Exception exception ) {
             exception.printStackTrace();
@@ -133,14 +132,14 @@ public class OrganizacionVinculadaDAO implements OrganizacionVinculadaDAOInterfa
 
         try {
             String query = "UPDATE OrganizacionVinculada SET Nombre = ?, Direccion = ?, " +
-                    "Sector = ?, Telefono = ?, CorreoElectronico = ? WHERE IDProyecto = ?;";
+                    "Sector = ?, Telefono = ?, CorreoElectronico = ? WHERE IDOrganizacion = ?;";
             PreparedStatement statement = connection.GetConnection().prepareStatement( query );
             statement.setString( 1, organizacion.getNombre() );
             statement.setString( 2, organizacion.getDireccion() );
             statement.setInt( 3, organizacion.getSector().ordinal() );
             statement.setString(  4, organizacion.getTelefono() );
             statement.setString( 5, organizacion.getCorreo() );
-            statement.setInt( 6, organizacion.getIdProyecto() );
+            statement.setInt( 6, organizacion.getIdOrganizacion() );
             statement.executeUpdate();
 
             updated = true;
@@ -154,19 +153,19 @@ public class OrganizacionVinculadaDAO implements OrganizacionVinculadaDAOInterfa
 
     /**
      * Elimina una organizacion vinculada de la base de datos
-     * @param idProyecto el ID del proyecto asociado a la organizacion
+     * @param idOrganizacion el ID del proyecto asociado a la organizacion
      * @return booleano indicando éxito o fracaso
      */
     @Override
-    public boolean Delete( int idProyecto ) {
+    public boolean Delete( int idOrganizacion ) {
         boolean deleted = false;
         MySqlConnection connection = new MySqlConnection();
         connection.StartConnection();
 
         try {
-            String query = "DELETE FROM OrganizacionVinculada WHERE IDProyecto = ?;";
+            String query = "DELETE FROM OrganizacionVinculada WHERE IDOrganizacion = ?;";
             PreparedStatement statement = connection.GetConnection().prepareStatement( query );
-            statement.setInt( 1,  idProyecto );
+            statement.setInt( 1,  idOrganizacion );
             statement.executeUpdate();
 
             deleted = true;
