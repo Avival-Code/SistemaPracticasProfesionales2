@@ -23,6 +23,7 @@ import java.util.List;
  * en la base de datos.
  */
 public class OrganizacionVinculadaDAO implements OrganizacionVinculadaDAOInterface{
+    private ResponsablesOrganizacionDAO responsables = new ResponsablesOrganizacionDAO();
 
     /**
      * Crea una nueva organizacion vinculada en la base de datos
@@ -46,6 +47,9 @@ public class OrganizacionVinculadaDAO implements OrganizacionVinculadaDAOInterfa
             statement.setString( 6, organizacion.getTelefono() );
             statement.setString( 7, organizacion.getCorreo() );
             statement.executeUpdate();
+
+            responsables.Create( organizacion.getIdOrganizacion(), organizacion.getResponsables() );
+
             wasCreated = true;
         } catch( Exception exception ) {
             exception.printStackTrace();
@@ -71,10 +75,11 @@ public class OrganizacionVinculadaDAO implements OrganizacionVinculadaDAOInterfa
 
             while( result.next() )
             {
+                int idOrganizacion = result.getInt( 1 );
                 organizaciones.add( new OrganizacionVinculada( result.getString( 2 ),
                         result.getString( 3 ), TipoSector.values()[ result.getInt( 4 ) ],
                         result.getString( 5 ), result.getString( 6 ),
-                        result.getInt( 1 ) ) );
+                        idOrganizacion, responsables.Read( idOrganizacion ) ) );
             }
 
             result.close();
@@ -89,19 +94,19 @@ public class OrganizacionVinculadaDAO implements OrganizacionVinculadaDAOInterfa
 
     /**
      * Regresa una instancia de OrganizacionVinculada
-     * @param idProyecto el ID del proyecto asociado con la organizacion vinculada
+     * @param idOrganizacion el ID del proyecto asociado con la organizacion vinculada
      * @return una instancia de OrganizacionVinculada, null en caso de no encontrarla
      */
     @Override
-    public OrganizacionVinculada Read( int idProyecto ) {
+    public OrganizacionVinculada Read( int idOrganizacion ) {
         OrganizacionVinculada organizacion = null;
         MySqlConnection connection = new MySqlConnection();
         connection.StartConnection();
 
         try {
-            String query = "SELECT * FROM OrganizacionVinculada WHERE IDProyecto = ?;";
+            String query = "SELECT * FROM OrganizacionVinculada WHERE IDOrganizacion = ?;";
             PreparedStatement statement = connection.GetConnection().prepareStatement( query );
-            statement.setInt( 1,  idProyecto );
+            statement.setInt( 1,  idOrganizacion );
             statement.executeQuery();
             ResultSet result = statement.getResultSet();
 
@@ -109,7 +114,7 @@ public class OrganizacionVinculadaDAO implements OrganizacionVinculadaDAOInterfa
                 organizacion = new OrganizacionVinculada( result.getString( 2 ),
                         result.getString( 3 ), TipoSector.values()[ result.getInt( 4 ) ],
                         result.getString( 5 ), result.getString( 6 ),
-                        result.getInt( 1 ) );
+                        idOrganizacion, responsables.Read( idOrganizacion ) );
             }
         } catch( Exception exception ) {
             exception.printStackTrace();
@@ -142,6 +147,8 @@ public class OrganizacionVinculadaDAO implements OrganizacionVinculadaDAOInterfa
             statement.setInt( 6, organizacion.getIdOrganizacion() );
             statement.executeUpdate();
 
+            responsables.Update( organizacion.getIdOrganizacion(), organizacion.getResponsables() );
+
             updated = true;
         } catch( Exception exception ) {
             exception.printStackTrace();
@@ -154,10 +161,11 @@ public class OrganizacionVinculadaDAO implements OrganizacionVinculadaDAOInterfa
     /**
      * Elimina una organizacion vinculada de la base de datos
      * @param idOrganizacion el ID del proyecto asociado a la organizacion
-     * @return booleano indicando éxito o fracaso
+     * @param responsablesOrganizacion los responsables relacionados a esta organizacion vinculada
+     * @return booleano indicando exito o fracaso
      */
     @Override
-    public boolean Delete( int idOrganizacion ) {
+    public boolean Delete( int idOrganizacion, List< Integer > responsablesOrganizacion ) {
         boolean deleted = false;
         MySqlConnection connection = new MySqlConnection();
         connection.StartConnection();
@@ -167,6 +175,10 @@ public class OrganizacionVinculadaDAO implements OrganizacionVinculadaDAOInterfa
             PreparedStatement statement = connection.GetConnection().prepareStatement( query );
             statement.setInt( 1,  idOrganizacion );
             statement.executeUpdate();
+
+            for( int responsable : responsablesOrganizacion ) {
+                responsables.Delete( responsable );
+            }
 
             deleted = true;
         } catch( Exception exception ) {

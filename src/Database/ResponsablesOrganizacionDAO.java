@@ -116,7 +116,7 @@ public class ResponsablesOrganizacionDAO implements ResponsablesOrganizacionDAOI
      * @return booleano indicando éxito o fracaso
      */
     @Override
-    public boolean Update(int idOrganizacion, List<Integer> idResponsablesProyecto) {
+    public boolean Update( int idOrganizacion, List< Integer > idResponsablesProyecto ) {
         boolean wasCreated = false;
         MySqlConnection connection = new MySqlConnection();
         connection.StartConnection();
