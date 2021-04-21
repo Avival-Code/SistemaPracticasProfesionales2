@@ -7,7 +7,10 @@
  */
 package Entities;
 
+import Database.MySqlConnection;
 import Enumerations.TipoSector;
+
+import java.sql.PreparedStatement;
 
 /**
  * Clase que contiene la información de Organización Vinculada

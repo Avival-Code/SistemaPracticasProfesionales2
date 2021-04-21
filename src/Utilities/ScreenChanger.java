@@ -29,6 +29,11 @@ public class ScreenChanger {
     private String studentMainMenu = "../Resources/StudentMainMenuScreen.fxml";
     private String chooseProjectsScreen = "../Resources/SelectProjectsScreen.fxml";
     private String studentReportsScreen = "../Resources/StudentReports.fxml";
+    private String pantallaPrincipalCoordinador = "../Resources/Principal_Coordinador.fxml";
+    private String pantallaGestionarOrganizacion = "../Resources/GestionarOrganizacion_Coordinador.fxml";
+    private String pantallaRegistrarOrganizacion = "../Resources/RegistrarOrganizacion_Coordinador.fxml";
+    private String pantallaGestionarProyecto = "../Resources/GestionarProyecto_Coordinador.fxml";
+    private String pantallaModificarProyecto = "../Resources/ModificarProyecto_Coordinador.fxml";
 
     /**
      * Hace el cambio de pantalla a la pantalla de IniciarSesión.
@@ -95,6 +100,77 @@ public class ScreenChanger {
             SetScene( mouseEvent, studentReportsScreen );
         } catch( IOException exception ) {
             errorText.setText( outputMessages.StudentReportScreenMissing() );
+            exception.printStackTrace();
+        }
+    }
+
+    /**
+     * Hace el cambio de pantalla a la pantalla Principal_Coordinador
+     *
+     * @param mouseEvent el evento de mouse que inicio el cambio
+     * @param errorText  el campo de texto donde se coloca un mensaje en caso de error
+     */
+    public void MostrarPantallaPrincipalCoordinador( MouseEvent mouseEvent, Text errorText ) {
+        try {
+            SetScene( mouseEvent, pantallaPrincipalCoordinador );
+        } catch (IOException exception) {
+            errorText.setText( outputMessages.PantallaPrincipalCoordinadorPerdido() );
+            exception.printStackTrace();
+        }
+    }
+
+    /**
+     * Hace el cambio de pantalla a la pantalla GestionarOrganizacion
+     * @param mouseEvent el evento de mouse que inicio el cambio
+     * @param errorText el campo de texto donde se coloca un mensaje en caso de error
+     */
+    public void MostrarPantallaGestionarOrganizacion( MouseEvent mouseEvent, Text errorText ){
+        try {
+            SetScene( mouseEvent, pantallaGestionarOrganizacion );
+        } catch( IOException exception ) {
+            errorText.setText( outputMessages.PantallaGestionarOrganizacionPerdido() );
+            exception.printStackTrace();
+        }
+    }
+
+    /**
+     * Hace el cambio de pantalla a la pantalla RegistrarOrganizacion_Coordinador
+     * @param mouseEvent el evento de mouse que inicio el cambio
+     * @param errorText el campo de texto donde se coloca un mensaje en caso de error
+     */
+    public void MostrarPantallaRegistrarOrganizacion( MouseEvent mouseEvent, Text errorText ){
+        try {
+            SetScene( mouseEvent, pantallaRegistrarOrganizacion );
+        } catch( IOException exception ) {
+            errorText.setText( outputMessages.PantallaRegistrarOrganizacionPerdido() );
+            exception.printStackTrace();
+        }
+    }
+
+    /**
+     * Hace el cambio de pantalla a la pantalla GestionarProyecto
+     * @param mouseEvent el evento de mouse que inicio el cambio
+     * @param errorText el campo de texto donde se coloca un mensaje en caso de error
+     */
+    public void MostrarPantallaGestionarProyecto( MouseEvent mouseEvent, Text errorText ){
+        try {
+            SetScene( mouseEvent, pantallaGestionarProyecto );
+        } catch( IOException exception ) {
+            errorText.setText( outputMessages.PantallaGestionarProyectoPerdido() );
+            exception.printStackTrace();
+        }
+    }
+
+    /**
+     * Hace el cambio de pantalla a la pantalla GestionarProyecto
+     * @param mouseEvent el evento de mouse que inicio el cambio
+     * @param errorText el campo de texto donde se coloca un mensaje en caso de error
+     */
+    public void MostrarPantallaModificarProyecto( MouseEvent mouseEvent, Text errorText ){
+        try {
+            SetScene( mouseEvent, pantallaModificarProyecto );
+        } catch( IOException exception ) {
+            errorText.setText( outputMessages.PantallaModificarProyectoPerdido() );
             exception.printStackTrace();
         }
     }

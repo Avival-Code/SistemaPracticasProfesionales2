@@ -35,9 +35,9 @@ public class InputValidator {
      * @return true si todos los campos del Estudiante son validos, false si no
      */
     public boolean IsStudentInformationValid( Estudiante student, String passwordConfirm ) {
-        return AreNamesValid( student.GetNombres() ) && AreLastNamesValid( student.GetApellidos() ) &&
+        return AreNamesValid( student.getNombres() ) && AreLastNamesValid( student.GetApellidos() ) &&
                 IsMatriculaValid( student.GetMatricula() ) && IsTelephoneValid( student.GetTelefono() ) &&
-                IsEmailValid( student.GetCorreo() ) && IsNRCValid( student.GetNrc() ) &&
+                IsEmailValid( student.GetCorreo() ) && IsNRCValid( student.getNrc() ) &&
                 IsPasswordValid( student.GetContrasena() ) && DoPasswordsMatch( student.GetContrasena(), passwordConfirm );
     }
 
@@ -259,7 +259,9 @@ public class InputValidator {
      * @param input la cadena que se desea revisar
      * @return true si contiene zC al inicio, false si no
      */
-    private boolean HasZAndCChar( String input ) { return input.contains( "zC" ) && input.lastIndexOf( "zC" ) == 0; }
+    private boolean HasZAndCChar( String input ) {
+        return input.contains( "zC" ) && input.lastIndexOf( "zC" ) == 0;
+    }
 
     /**
      * Recisa si una cadena contiene los caracteres zD al inicio

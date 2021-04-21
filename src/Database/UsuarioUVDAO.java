@@ -38,7 +38,7 @@ public class UsuarioUVDAO implements UsuarioUVDAOInterface{
             String query = "INSERT INTO UsuarioUV( Nombres, Apellidos, Usuario, Contrasena, CorreoElectronico, " +
                            "Telefono ) VALUES ( ?, ?, ?, ?, ?, ? );";
             PreparedStatement statement = connection.GetConnection().prepareStatement( query );
-            statement.setString( 1, usuario.GetNombres() );
+            statement.setString( 1, usuario.getNombres() );
             statement.setString( 2, usuario.GetApellidos() );
             statement.setString( 3, usuario.GetUsuario() );
             statement.setString( 4, usuario.GetContrasena() );
@@ -171,7 +171,7 @@ public class UsuarioUVDAO implements UsuarioUVDAOInterface{
             String query = "UPDATE UsuarioUV SET Nombres = ?, Apellidos = ?, Usuario = ?, Contrasena = ?," +
                            " CorreoElectronico = ?, Telefono = ? WHERE IDUsuario = ?;";
             PreparedStatement statement = connection.GetConnection().prepareStatement( query );
-            statement.setString( 1, usuario.GetNombres() );
+            statement.setString( 1, usuario.getNombres() );
             statement.setString( 2, usuario.GetApellidos() );
             statement.setString( 3, usuario.GetUsuario() );
             statement.setString( 4, usuario.GetContrasena() );
