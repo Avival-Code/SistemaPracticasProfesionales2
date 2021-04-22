@@ -7,6 +7,8 @@
  */
 package Entities;
 
+import java.util.List;
+
 /**
  * Clase que contiene la información del responsable del proyecto
  */
@@ -16,6 +18,7 @@ public class ResponsableProyecto {
     private String apellidos;
     private String correoElectronico;
     private String telefono;
+    private List< Integer > idProyectos;
 
     /**
      * Constructor sin parametros de ResponsableProyecto. Crea una instancia
@@ -27,6 +30,7 @@ public class ResponsableProyecto {
         apellidos = "";
         correoElectronico = "";
         telefono = "";
+        idProyectos = null;
     }
 
     /**
@@ -36,7 +40,7 @@ public class ResponsableProyecto {
      */
     public ResponsableProyecto( ResponsableProyecto original ) {
         this( original.idResponsableProyecto, original.nombres, original.apellidos, original.correoElectronico,
-                original.telefono );
+                original.telefono, original.idProyectos );
     }
 
     /**
@@ -49,13 +53,20 @@ public class ResponsableProyecto {
      * @param telefonoIn el teléfono del ResponsableProyecto.
      */
     public ResponsableProyecto( int idResponsableIn, String nombresIn, String apellidosIn,
-                                String correoIn, String telefonoIn ) {
+                                String correoIn, String telefonoIn, List< Integer > idProyectosIn ) {
         idResponsableProyecto = idResponsableIn;
         nombres = nombresIn;
         apellidos = apellidosIn;
         correoElectronico = correoIn;
         telefono = telefonoIn;
+        idProyectos = idProyectosIn;
     }
+
+    /**
+     * Regresa el id de la instancia del responsable
+     * @return el Id de la instancia actual
+     */
+    public int getIdResponsableProyecto() { return idResponsableProyecto; }
 
     /**
      * Regresa los nombres del ResponsableProyecto
@@ -90,6 +101,12 @@ public class ResponsableProyecto {
     }
 
     /**
+     * Regresa una lista de todos los proyectos relacionados a un responsable
+     * @return una lista de los IDs de los proyectos del responsable
+     */
+    public List< Integer > getIdProyectos() { return idProyectos; }
+
+    /**
      * Cambia los nombres del ResponsableProyecto por el valor introducido
      * @param nombresIn
      */
@@ -119,5 +136,29 @@ public class ResponsableProyecto {
      */
     public void SetTelefono( String telefonoIn ) {
         telefono = telefonoIn;
+    }
+
+    /**
+     * Agrega una ID a la lista de ID proyectos de esta instancia
+     * de responsable de proyecto
+     * @param idProyecto el ID del proyecto que se desea agregar
+     */
+    public void AddProyecto( int idProyecto ) {
+        if( !idProyectos.contains( idProyecto ) ) {
+            idProyectos.add( idProyecto );
+        }
+    }
+
+    /**
+     * Elimina un proyecto de la lista de ID proyectos de esta
+     * instancia de responsable proyecto
+     * @param idProyecto el ID del proyecto que se desea eliminar
+     */
+    public void RemoveProyecto( int idProyecto ) {
+        for( int i = 0; i < idProyectos.size(); i++ ) {
+            if( idProyectos.get( i ) == idProyecto ) {
+                idProyectos.remove( i );
+            }
+        }
     }
 }

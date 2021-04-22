@@ -11,6 +11,7 @@ import Database.MySqlConnection;
 import Enumerations.TipoSector;
 
 import java.sql.PreparedStatement;
+import java.util.List;
 
 /**
  * Clase que contiene la información de Organización Vinculada
@@ -21,8 +22,8 @@ public class OrganizacionVinculada {
     private TipoSector sector;
     private String telefono;
     private String correoElectronico;
-    private int idResponsable;
-    private int idProyecto;
+    private int idOrganizacion;
+    private List< Integer > idResponsables;
 
     /**
      * Constructor sin parámetros de la clase OrganizaciónVinculada.
@@ -34,8 +35,8 @@ public class OrganizacionVinculada {
         sector = null;
         telefono = "";
         correoElectronico = "";
-        idResponsable = 0;
-        idProyecto = 0;
+        idOrganizacion = 0;
+        idResponsables = null;
     }
 
     /**
@@ -45,7 +46,7 @@ public class OrganizacionVinculada {
      */
     public OrganizacionVinculada( OrganizacionVinculada original ) {
         this( original.nombre, original.direccion, original.sector, original.telefono, original.correoElectronico,
-                original.idResponsable, original.idProyecto );
+                original.idOrganizacion, original.idResponsables );
     }
 
     /**
@@ -58,19 +59,17 @@ public class OrganizacionVinculada {
      * @param correoIn el correo electronico de la organización
      */
     public OrganizacionVinculada( String nombreIn, String direccionIn, TipoSector sectorIn, String telefonoIn,
-                                  String correoIn, int idResponsableIn, int idProyectoIn ) {
+                                  String correoIn, int idOrganizacionIn, List< Integer > idResponsablesIn ) {
         nombre = nombreIn;
         direccion = direccionIn;
         sector = sectorIn;
         telefono = telefonoIn;
         correoElectronico = correoIn;
-        idResponsable = idResponsableIn;
-        idProyecto = idProyectoIn;
+        idOrganizacion = idOrganizacionIn;
+        idResponsables = idResponsablesIn;
     }
 
-    public int getIdResponsable() { return idResponsable; }
-
-    public int getIdProyecto() { return idProyecto; }
+    public int getIdOrganizacion() { return idOrganizacion; }
 
     /**
      * Regresa el nombre de la organización vinculada
@@ -113,6 +112,13 @@ public class OrganizacionVinculada {
     }
 
     /**
+     * Regresa la lista IDs de los responsables de proyecto relacionados con
+     * esta instancia de organizacion vinculada.
+     * @return una lista con los IDs de los responsables de proyecto
+     */
+    public List< Integer > getResponsables() { return idResponsables; }
+
+    /**
      * Cambia el nombre de la organización al valor introducido
      * @param nombreIn el nuevo nombre
      */
@@ -153,7 +159,32 @@ public class OrganizacionVinculada {
         correoElectronico = correoIn;
     }
 
-    public void SetIdResponsable( int idResponsableIn ) { idResponsable = idResponsableIn; }
+    /**
+     * Agrega una ID de responsable proyecto a la lista de responsables
+     * relacionados a esta instancia de organizacion vinculada.
+     * @param idResponsable
+     * @return booleano indicando exito o fracaso
+     */
+    public boolean AddResponsable( int idResponsable ) {
+        boolean added = false;
+        if( !idResponsables.contains( idResponsable ) ) {
+            idResponsables.add(idResponsable);
+            added = true;
+        }
+        return added;
+    }
 
-    public void SetIdProyecto( int idProyectoIn ) { idProyecto = idProyectoIn; }
+    /**
+     * Elimina un ID de responsable de proyecto en caso de estar relacionado
+     * a esta instancia de organizacion vinculada.
+     * @param idResponsable el ID del responsable que se desea eliminar.
+     */
+    public void RemoveResponsable( int idResponsable ) {
+        for( int i = 0; i < idResponsables.size(); i++ ) {
+            if( idResponsables.get( i ) == idResponsable ) {
+                idResponsables.remove( i );
+            }
+        }
+    }
+
 }

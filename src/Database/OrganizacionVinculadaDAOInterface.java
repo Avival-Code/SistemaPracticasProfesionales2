@@ -47,8 +47,8 @@ public interface OrganizacionVinculadaDAOInterface {
 
     /**
      * Elimina una organizacion vinculada de la base de datos
-     * @param idProyecto el ID del proyecto asociado a la organizacion
+     * @param idOrganizacion el ID del proyecto asociado a la organizacion
      * @return booleano indicando éxito o fracaso
      */
-    boolean Delete( int idProyecto );
+    boolean Delete( int idOrganizacion, List< Integer > responsablesOrganizacion );
 }
