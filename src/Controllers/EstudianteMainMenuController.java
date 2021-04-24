@@ -72,8 +72,8 @@ public class EstudianteMainMenuController implements Initializable {
         }
     }
 
-    public void ShowAdditionalDocuments() {
-
+    public void ShowAdditionalDocuments( MouseEvent mouseEvent ) {
+        screenChanger.ShowStudentAdditionalDocumentsScreen( mouseEvent, errorText );
     }
 
     public void ShowFormats() {
