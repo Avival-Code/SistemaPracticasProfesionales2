@@ -2,13 +2,18 @@ package Controllers;
 
 import Utilities.ScreenChanger;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import sample.LoginSession;
 
-public class AdditionalDocumentsController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class AdditionalDocumentsController implements Initializable {
     private ScreenChanger screenChanger = new ScreenChanger();
 
     @FXML
@@ -50,21 +55,32 @@ public class AdditionalDocumentsController {
     @FXML
     private Button downloadDocumento;
 
+    @Override
+    public void initialize( URL url, ResourceBundle resourceBundle ) {
+        SetUserInformation();
+    }
+
+    private void SetUserInformation() {
+        nameText.setText( LoginSession.GetInstance().GetEstudiante().getNombres() );
+        lastNameText.setText( LoginSession.GetInstance().GetEstudiante().GetApellidos() );
+        matriculaText.setText( LoginSession.GetInstance().GetEstudiante().GetMatricula() );
+    }
+
     @FXML
-    void DeleteDocument( MouseEvent mouseEvent ) {
+    public void DeleteDocument( MouseEvent mouseEvent ) {
 
     }
 
     @FXML
-    void DownloadDocument( MouseEvent mouseEvent ) {
+    public void DownloadDocument( MouseEvent mouseEvent ) {
 
     }
 
     @FXML
-    void Return( MouseEvent mouseEvent ) { screenChanger.ShowStudentMainMenuScreen( mouseEvent, errorText ); }
+    public void Return( MouseEvent mouseEvent ) { screenChanger.ShowStudentMainMenuScreen( mouseEvent, errorText ); }
 
     @FXML
-    void UploadDocument( MouseEvent mouseEvent ) {
+    public void UploadDocument( MouseEvent mouseEvent ) {
 
     }
 }
