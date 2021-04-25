@@ -150,6 +150,7 @@ public class SelectProjectsController implements Initializable {
             proyectosSeleccionados.Create( LoginSession.GetInstance().GetEstudiante().GetMatricula(), GetSelectedProjects() );
             LoginSession.GetInstance().GetEstudiante().SetEstadoEstudiante( EstadoEstudiante.AsignacionPendiente );
             estudiantes.Update( LoginSession.GetInstance().GetEstudiante() );
+            errorText.setText( "" );
             successText.setText( outputMessages.ProjectSelectionSuccessful() );
         }
     }
