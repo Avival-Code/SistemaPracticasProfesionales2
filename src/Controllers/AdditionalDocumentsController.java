@@ -6,7 +6,6 @@ import Database.ReporteDAO;
 import Entities.Documento;
 import Entities.Expediente;
 import Entities.Reporte;
-import Enumerations.TipoReporte;
 import Utilities.OutputMessages;
 import Utilities.ScreenChanger;
 import javafx.fxml.FXML;
@@ -136,13 +135,23 @@ public class AdditionalDocumentsController implements Initializable {
 
     @FXML
     public void DeleteDocument( MouseEvent mouseEvent ) {
-        Alert deleteAlert = new Alert( Alert.AlertType.CONFIRMATION, outputMessages.DeleteDocumentConfirmation() );
-        deleteAlert.showAndWait().ifPresent( response -> {
-            if( response == ButtonType.OK ) {
-                documentos.Delete( studentDocumentsTable.getSelectionModel().getSelectedItem().getIdDocumento() );
-                ShowDocuments();
-            }
-        } );
+        if( isDocumentSelected() ) {
+            Alert deleteAlert = new Alert( Alert.AlertType.CONFIRMATION, outputMessages.DeleteDocumentConfirmation() );
+            deleteAlert.showAndWait().ifPresent( response -> {
+                if( response == ButtonType.OK ) {
+                    documentos.Delete( studentDocumentsTable.getSelectionModel().getSelectedItem().getIdDocumento() );
+                    ShowDocuments();
+                }
+            } );
+        }
+    }
+
+    private boolean isDocumentSelected() {
+        boolean isSelected = false;
+        if( studentDocumentsTable.getSelectionModel().getSelectedItem() != null ) {
+            isSelected = true;
+        }
+        return isSelected;
     }
 
     @FXML
