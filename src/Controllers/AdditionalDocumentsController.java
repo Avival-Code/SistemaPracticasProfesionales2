@@ -146,14 +146,6 @@ public class AdditionalDocumentsController implements Initializable {
         }
     }
 
-    private boolean isDocumentSelected() {
-        boolean isSelected = false;
-        if( studentDocumentsTable.getSelectionModel().getSelectedItem() != null ) {
-            isSelected = true;
-        }
-        return isSelected;
-    }
-
     @FXML
     public void DownloadDocument( MouseEvent mouseEvent ) {
 
@@ -193,5 +185,13 @@ public class AdditionalDocumentsController implements Initializable {
         documento = new Documento( 0 , documentFile.getName(), documentFile, currentDate.toString(),
                 GetUserExpediente().GetClave() );
         return documento;
+    }
+
+    private boolean isDocumentSelected() {
+        boolean isSelected = false;
+        if( studentDocumentsTable.getSelectionModel().getSelectedItem() != null ) {
+            isSelected = true;
+        }
+        return isSelected;
     }
 }
