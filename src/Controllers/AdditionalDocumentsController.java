@@ -206,24 +206,16 @@ public class AdditionalDocumentsController implements Initializable {
     private void CopyFile( File dataBaseFile, File directoryFile ) {
         try {
             FileInputStream input = new FileInputStream( dataBaseFile );
-            int inputValue;
             File outputFile = new File( FixFilePath( directoryFile.getAbsolutePath() + "\\" + dataBaseFile.getName() ) );
             FileOutputStream output = new FileOutputStream( outputFile );
-
-            if( !outputFile.exists() ) {
-                outputFile.createNewFile();
-            }
+            CreateFile( outputFile );
+            int inputValue;
 
             while( ( inputValue = input.read() ) != -1 ) {
                 output.write( inputValue );
             }
-
-            if( input != null ) {
-                input.close();
-            }
-            if( output != null ) {
-                output.close();
-            }
+            input.close();
+            output.close();
         } catch( IOException exception ) {
             exception.printStackTrace();
         }
@@ -237,5 +229,11 @@ public class AdditionalDocumentsController implements Initializable {
             }
         }
         return targetString;
+    }
+
+    private void CreateFile( File targetFile ) throws IOException {
+        if( !targetFile.exists() ) {
+            targetFile.createNewFile();
+        }
     }
 }
