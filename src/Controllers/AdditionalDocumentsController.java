@@ -15,10 +15,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import sample.LoginSession;
 
-import java.io.File;
+import java.io.*;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -28,10 +29,11 @@ import java.util.ResourceBundle;
 public class AdditionalDocumentsController implements Initializable {
     private ScreenChanger screenChanger = new ScreenChanger();
     private FileChooser fileChooser = new FileChooser();
+    private DirectoryChooser directoryChooser = new DirectoryChooser();
     private DocumentoDAO documentos = new DocumentoDAO();
     private ReporteDAO reportes = new ReporteDAO();
     private ExpedienteDAO expedientes = new ExpedienteDAO();
-    private List<Documento> documentosEstudiante = new ArrayList< Documento >();
+    private List< Documento > documentosEstudiante = new ArrayList<>();
     private OutputMessages outputMessages = new OutputMessages();
     private Documento documento = null;
 
@@ -75,7 +77,7 @@ public class AdditionalDocumentsController implements Initializable {
     public void initialize( URL url, ResourceBundle resourceBundle ) {
         SetUserInformation();
         SetCellValueFactory();
-        ConfigureFileChooser();
+        ConfigureFileChoosers();
         ShowDocuments();
     }
 
@@ -90,9 +92,7 @@ public class AdditionalDocumentsController implements Initializable {
         dateColumn.setCellValueFactory( new PropertyValueFactory<>( "fechaEntrega" ) );
     }
 
-    private void ConfigureFileChooser() {
-        fileChooser.setTitle( "Buscar Documento..." );
-    }
+    private void ConfigureFileChoosers() { fileChooser.setTitle( "Buscar Documento..." ); }
 
     private void ShowDocuments() {
         studentDocumentsTable.getItems().clear();
@@ -148,7 +148,11 @@ public class AdditionalDocumentsController implements Initializable {
 
     @FXML
     public void DownloadDocument( MouseEvent mouseEvent ) {
-
+        if( isDocumentSelected() ) {
+            File directoryFile = GetDirectory( mouseEvent );
+            CopyFile( documentos.Read( studentDocumentsTable.getSelectionModel().getSelectedItem().getIdDocumento() ).GetDescripcion(),
+                      directoryFile );
+        }
     }
 
     @FXML
@@ -177,7 +181,11 @@ public class AdditionalDocumentsController implements Initializable {
     }
 
     private File GetFile( MouseEvent mouseEvent ) {
-        return fileChooser.showOpenDialog( ( (Node)mouseEvent.getSource() ).getScene().getWindow() );
+        return fileChooser.showOpenDialog( ( ( Node )mouseEvent.getSource() ).getScene().getWindow() );
+    }
+
+    private File GetDirectory( MouseEvent mouseEvent ) {
+        return directoryChooser.showDialog( ( ( Node )mouseEvent.getSource() ).getScene().getWindow() );
     }
 
     private Documento GetDocument( File documentFile ) {
@@ -193,5 +201,41 @@ public class AdditionalDocumentsController implements Initializable {
             isSelected = true;
         }
         return isSelected;
+    }
+
+    private void CopyFile( File dataBaseFile, File directoryFile ) {
+        try {
+            FileInputStream input = new FileInputStream( dataBaseFile );
+            int inputValue;
+            File outputFile = new File( FixFilePath( directoryFile.getAbsolutePath() + "\\" + dataBaseFile.getName() ) );
+            FileOutputStream output = new FileOutputStream( outputFile );
+
+            if( !outputFile.exists() ) {
+                outputFile.createNewFile();
+            }
+
+            while( ( inputValue = input.read() ) != -1 ) {
+                output.write( inputValue );
+            }
+
+            if( input != null ) {
+                input.close();
+            }
+            if( output != null ) {
+                output.close();
+            }
+        } catch( IOException exception ) {
+            exception.printStackTrace();
+        }
+    }
+
+    private String FixFilePath( String targetString ) {
+        for( int i = 0; i < targetString.length(); i++ ) {
+            if( targetString.charAt( i ) == 92 ) {
+                targetString = targetString.substring( 0, i ) + "\\" + targetString.substring( i );
+                i++;
+            }
+        }
+        return targetString;
     }
 }
