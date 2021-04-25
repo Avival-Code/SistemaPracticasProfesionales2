@@ -109,7 +109,7 @@ public class ScreenChanger {
         try{
             SetScene( mouseEvent, studentAdditionalDocuments );
         } catch( IOException exception ) {
-            errorText.setText( outputMessages.StudentReportScreenMissing() );
+            errorText.setText( outputMessages.StudentAdditionalDocumentsMissing() );
             exception.printStackTrace();
         }
     }

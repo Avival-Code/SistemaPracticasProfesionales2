@@ -73,7 +73,11 @@ public class EstudianteMainMenuController implements Initializable {
     }
 
     public void ShowAdditionalDocuments( MouseEvent mouseEvent ) {
-        screenChanger.ShowStudentAdditionalDocumentsScreen( mouseEvent, errorText );
+        if( DoesStudentHaveProjectAssigned() ) {
+            screenChanger.ShowStudentAdditionalDocumentsScreen( mouseEvent, errorText );
+        } else {
+            errorText.setText( outputMessages.ProjectNotAssigned() );
+        }
     }
 
     public void ShowFormats() {

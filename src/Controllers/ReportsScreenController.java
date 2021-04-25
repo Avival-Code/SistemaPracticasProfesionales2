@@ -77,9 +77,6 @@ public class ReportsScreenController implements Initializable {
     private TableColumn< Reporte, String > nameColumn;
 
     @FXML
-    private TableColumn< Reporte, String > keyColumn;
-
-    @FXML
     private TableColumn< Reporte, String > dateColumn;
 
     /**
@@ -110,7 +107,6 @@ public class ReportsScreenController implements Initializable {
      */
     private void SetCellValueFactory() {
         nameColumn.setCellValueFactory( new PropertyValueFactory<>( "titulo" ) );
-        keyColumn.setCellValueFactory( new PropertyValueFactory<>( "idDocumento" ) );
         dateColumn.setCellValueFactory( new PropertyValueFactory<>( "fechaEntrega" ) );
     }
 

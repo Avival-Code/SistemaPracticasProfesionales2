@@ -55,9 +55,8 @@
                   </Text>
                   <TableView fx:id="studentReportsTable" layoutX="61.0" layoutY="49.0" prefHeight="463.0" prefWidth="653.0">
                     <columns>
-                      <TableColumn fx:id="nameColumn" prefWidth="287.0" text="Nombre de Archivo" />
-                      <TableColumn fx:id="keyColumn" minWidth="0.0" prefWidth="70.0" text="Clave" />
-                        <TableColumn fx:id="dateColumn" prefWidth="295.0" text="Fecha de Entrega" />
+                      <TableColumn fx:id="nameColumn" prefWidth="434.0" text="Nombre de Archivo" />
+                        <TableColumn fx:id="dateColumn" prefWidth="218.0" text="Fecha de Entrega" />
                     </columns>
                   </TableView>
                   <Button fx:id="entregarReporte" layoutX="607.0" layoutY="535.0" mnemonicParsing="false" onMouseClicked="#TurnInReport" text="Entregar Reporte" />
