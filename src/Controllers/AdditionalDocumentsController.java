@@ -12,9 +12,7 @@ import Utilities.ScreenChanger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -138,7 +136,13 @@ public class AdditionalDocumentsController implements Initializable {
 
     @FXML
     public void DeleteDocument( MouseEvent mouseEvent ) {
-
+        Alert deleteAlert = new Alert( Alert.AlertType.CONFIRMATION, outputMessages.DeleteDocumentConfirmation() );
+        deleteAlert.showAndWait().ifPresent( response -> {
+            if( response == ButtonType.OK ) {
+                documentos.Delete( studentDocumentsTable.getSelectionModel().getSelectedItem().getIdDocumento() );
+                ShowDocuments();
+            }
+        } );
     }
 
     @FXML

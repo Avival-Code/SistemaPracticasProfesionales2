@@ -173,6 +173,13 @@ public class OutputMessages {
     public String DocumentNameAlreadyExists() { return "Ya existe un documento con ese nombre en tu expediente."; }
 
     /**
+     * Mensaje mostrado cuando se intenta eliminar un documento en
+     * la pantalla DocumentosAdicionales_Estudiante
+     * @return una cadena con el mensaje de confirmacion
+     */
+    public String DeleteDocumentConfirmation() { return "¿Estas seguro/a que deseas eliminar el archivo?"; }
+
+    /**
      * mensaje mostrado cuando se introduce información de login que no
      * existe en la base de datos
      * @return una cadena con el mensaje de error
