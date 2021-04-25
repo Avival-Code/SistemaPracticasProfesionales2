@@ -2,8 +2,10 @@ package Controllers;
 
 import Database.DocumentoDAO;
 import Database.ExpedienteDAO;
+import Database.ReporteDAO;
 import Entities.Documento;
 import Entities.Expediente;
+import Entities.Reporte;
 import Utilities.ScreenChanger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,6 +26,7 @@ public class AdditionalDocumentsController implements Initializable {
     private ScreenChanger screenChanger = new ScreenChanger();
     private FileChooser fileChooser = new FileChooser();
     private DocumentoDAO documentos = new DocumentoDAO();
+    private ReporteDAO reportes = new ReporteDAO();
     private ExpedienteDAO expedientes = new ExpedienteDAO();
     private List<Documento> documentosEstudiante = new ArrayList< Documento >();
 
@@ -88,13 +91,30 @@ public class AdditionalDocumentsController implements Initializable {
 
     private void ShowDocumentos() {
         studentDocumentsTable.getItems().clear();
-        documentosEstudiante = documentos.ReadAll();
+        documentosEstudiante = GetOnlyDocuments( documentos.ReadAll() );
         int claveExpediente = GetUserExpediente().GetClave();
         for( Documento documento : documentosEstudiante ) {
             if( documento.GetClaveExpediente() == claveExpediente ) {
                 studentDocumentsTable.getItems().add( documento );
             }
         }
+    }
+
+    private List< Documento > GetOnlyDocuments( List< Documento > initialList ) {
+        List< Reporte > reportList = reportes.ReadAll();
+        for( int i = 0; i < initialList.size(); i++ ) {
+            boolean removedItem = false;
+            for( Reporte reporte : reportList ) {
+                if( initialList.get( i ).getIdDocumento() == reporte.getIdDocumento() ) {
+                    initialList.remove( i );
+                    removedItem = true;
+                }
+            }
+            if( removedItem ) {
+                i--;
+            }
+        }
+        return initialList;
     }
 
     private Expediente GetUserExpediente() {
