@@ -6,9 +6,12 @@ import Database.ReporteDAO;
 import Entities.Documento;
 import Entities.Expediente;
 import Entities.Reporte;
+import Enumerations.TipoReporte;
+import Utilities.OutputMessages;
 import Utilities.ScreenChanger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -17,7 +20,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import sample.LoginSession;
+
+import java.io.File;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -29,6 +35,8 @@ public class AdditionalDocumentsController implements Initializable {
     private ReporteDAO reportes = new ReporteDAO();
     private ExpedienteDAO expedientes = new ExpedienteDAO();
     private List<Documento> documentosEstudiante = new ArrayList< Documento >();
+    private OutputMessages outputMessages = new OutputMessages();
+    private Documento documento = null;
 
     @FXML
     private Text nameText;
@@ -71,7 +79,7 @@ public class AdditionalDocumentsController implements Initializable {
         SetUserInformation();
         SetCellValueFactory();
         ConfigureFileChooser();
-        ShowDocumentos();
+        ShowDocuments();
     }
 
     private void SetUserInformation() {
@@ -89,7 +97,7 @@ public class AdditionalDocumentsController implements Initializable {
         fileChooser.setTitle( "Buscar Documento..." );
     }
 
-    private void ShowDocumentos() {
+    private void ShowDocuments() {
         studentDocumentsTable.getItems().clear();
         documentosEstudiante = GetOnlyDocuments( documentos.ReadAll() );
         int claveExpediente = GetUserExpediente().GetClave();
@@ -143,6 +151,34 @@ public class AdditionalDocumentsController implements Initializable {
 
     @FXML
     public void UploadDocument( MouseEvent mouseEvent ) {
+        File document = GetFile( mouseEvent );
+        if( documento != null && DocumentNameDoesNotExist( GetDocument( document ) ) ) {
+            documentos.Create( GetDocument( document ) );
+            ShowDocuments();
+        }
+    }
 
+    private boolean DocumentNameDoesNotExist( Documento document ) {
+        boolean nameDoesNotExist = true;
+        List< Documento > listaDocumentos = documentos.ReadAll();
+        for( Documento ejemplar : listaDocumentos ) {
+            if( ejemplar.GetClaveExpediente() == documento.GetClaveExpediente() &&
+                    ejemplar.getTitulo().equals( documento.getTitulo() ) ) {
+                nameDoesNotExist = false;
+                errorText.setText( outputMessages.DocumentNameAlreadyExists() );
+            }
+        }
+        return nameDoesNotExist;
+    }
+
+    private File GetFile( MouseEvent mouseEvent ) {
+        return fileChooser.showOpenDialog( ( (Node)mouseEvent.getSource() ).getScene().getWindow() );
+    }
+
+    private Documento GetDocument( File documentFile ) {
+        LocalDate currentDate = LocalDate.now();
+        documento = new Documento( 0 , documentFile.getName(), documentFile, currentDate.toString(),
+                GetUserExpediente().GetClave() );
+        return documento;
     }
 }

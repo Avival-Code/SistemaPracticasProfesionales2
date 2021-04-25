@@ -160,10 +160,17 @@ public class OutputMessages {
 
     /**
      * Mensaje mostrado cuando se intenta entregar un reporte con
-     * que tiene el mismo nombre que otro el el expediente del estudiante
+     * el mismo nombre que otro en el expediente del estudiante
      * @return una cadena con el mensaje de error
      */
     public String ReportNameAlreadyExists() { return "Ya existe un reporte con ese nombre en tu expediente."; }
+
+    /**
+     * Mensaje mostrado cuando se intenta entregar un documento con
+     * el mismo nombre que otro en el expediente del estudiante
+     * @return una cadena con el mensaje de error
+     */
+    public String DocumentNameAlreadyExists() { return "Ya existe un documento con ese nombre en tu expediente."; }
 
     /**
      * mensaje mostrado cuando se introduce información de login que no
