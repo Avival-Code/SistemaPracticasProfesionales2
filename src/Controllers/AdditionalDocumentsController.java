@@ -73,6 +73,11 @@ public class AdditionalDocumentsController implements Initializable {
     @FXML
     private Button downloadDocumento;
 
+    /**
+     * Configura los componentes de la tabla en la pantalla
+     * @param url no se utiliza como tal, lo requiere la interfaz
+     * @param resourceBundle no se utiliza como tal, lo requiere la interfaz
+     */
     @Override
     public void initialize( URL url, ResourceBundle resourceBundle ) {
         SetUserInformation();
@@ -81,19 +86,33 @@ public class AdditionalDocumentsController implements Initializable {
         ShowDocuments();
     }
 
+    /**
+     * Coloca la información del usuario actual en los campos de texto requeridos
+     */
     private void SetUserInformation() {
         nameText.setText( LoginSession.GetInstance().GetEstudiante().getNombres() );
         lastNameText.setText( LoginSession.GetInstance().GetEstudiante().GetApellidos() );
         matriculaText.setText( LoginSession.GetInstance().GetEstudiante().GetMatricula() );
     }
 
+    /**
+     * Configura las columnas de la tabla de la pantalla para que busquen el título
+     * y la fecha de entrega de los objetos que se le agregan
+     */
     private void SetCellValueFactory() {
         nameColumn.setCellValueFactory( new PropertyValueFactory<>( "titulo" ) );
         dateColumn.setCellValueFactory( new PropertyValueFactory<>( "fechaEntrega" ) );
     }
 
+    /**
+     * COnfigura el seleccionador de archivos con un título personalizado.
+     */
     private void ConfigureFileChoosers() { fileChooser.setTitle( "Buscar Documento..." ); }
 
+    /**
+     * Muestra todos los documentos que se ubican dentro del expediente del estudiante
+     * actual
+     */
     private void ShowDocuments() {
         studentDocumentsTable.getItems().clear();
         documentosEstudiante = GetOnlyDocuments( documentos.ReadAll() );
@@ -105,6 +124,12 @@ public class AdditionalDocumentsController implements Initializable {
         }
     }
 
+    /**
+     * Regresa una lista poblada únicamente con documentos del estudiante
+     * actual
+     * @param initialList lista de todos los documentos en la base de datos
+     * @return lista con documentos
+     */
     private List< Documento > GetOnlyDocuments( List< Documento > initialList ) {
         List< Reporte > reportList = reportes.ReadAll();
         for( int i = 0; i < initialList.size(); i++ ) {
@@ -122,6 +147,11 @@ public class AdditionalDocumentsController implements Initializable {
         return initialList;
     }
 
+    /**
+     * Busca el expediente del estudiante actual en la
+     * base de datos
+     * @return el expediente del estudiante actual
+     */
     private Expediente GetUserExpediente() {
         List< Expediente > expedientesUsuarios = expedientes.ReadAll();
         Expediente userExpediente = null;
@@ -133,6 +163,10 @@ public class AdditionalDocumentsController implements Initializable {
         return userExpediente;
     }
 
+    /**
+     * Elimina un documento del expediente del estudiante
+     * @param mouseEvent el clic del ratón que llamó al método
+     */
     @FXML
     public void DeleteDocument( MouseEvent mouseEvent ) {
         if( isDocumentSelected() ) {
@@ -146,6 +180,10 @@ public class AdditionalDocumentsController implements Initializable {
         }
     }
 
+    /**
+     * Descarga un archivo de la base de datos a la máquina local del usuario
+     * @param mouseEvent el clic del ratón que llamó al método
+     */
     @FXML
     public void DownloadDocument( MouseEvent mouseEvent ) {
         if( isDocumentSelected() ) {
@@ -155,6 +193,10 @@ public class AdditionalDocumentsController implements Initializable {
         }
     }
 
+    /**
+     * Se regresa a la pantalla principal de estudiante
+     * @param mouseEvent el clic del ratón que llamó al método
+     */
     @FXML
     public void Return( MouseEvent mouseEvent ) { screenChanger.ShowStudentMainMenuScreen( mouseEvent, errorText ); }
 
@@ -167,6 +209,11 @@ public class AdditionalDocumentsController implements Initializable {
         }
     }
 
+    /**
+     * Revisa que el nombre del documento introducido no exista en la base de datos
+     * @param document el documento que se desea revisar
+     * @return verdadero si NO existe en nombre en la base de datos, falso si sí
+     */
     private boolean DocumentNameDoesNotExist( Documento document ) {
         boolean nameDoesNotExist = true;
         List< Documento > listaDocumentos = documentos.ReadAll();
@@ -180,14 +227,29 @@ public class AdditionalDocumentsController implements Initializable {
         return nameDoesNotExist;
     }
 
+    /**
+     * Recupera un archivo de la máquina local del usuario
+     * @param mouseEvent el clic del ratón que llamó al método
+     * @return el archivo de la máquina local
+     */
     private File GetFile( MouseEvent mouseEvent ) {
         return fileChooser.showOpenDialog( ( ( Node )mouseEvent.getSource() ).getScene().getWindow() );
     }
 
+    /**
+     * Regresa un archivo con el directorio que seleccionó el usuario
+     * @param mouseEvent el clic del ratón que llamó al método
+     * @return un archivo
+     */
     private File GetDirectory( MouseEvent mouseEvent ) {
         return directoryChooser.showDialog( ( ( Node )mouseEvent.getSource() ).getScene().getWindow() );
     }
 
+    /**
+     * Crea una instancia de Documento utilizando el archivo introducido
+     * @param documentFile el archivo que se desea convertir a la intancia de Documento
+     * @return una instancia de Documento
+     */
     private Documento GetDocument( File documentFile ) {
         LocalDate currentDate = LocalDate.now();
         documento = new Documento( 0 , documentFile.getName(), documentFile, currentDate.toString(),
@@ -195,6 +257,10 @@ public class AdditionalDocumentsController implements Initializable {
         return documento;
     }
 
+    /**
+     * Revisa si se seleccionó un elemento en la tabla de StudentDocumentsTable
+     * @return falso si NO se seleccionó un elemento en la tabla, verdadero si sí
+     */
     private boolean isDocumentSelected() {
         boolean isSelected = false;
         if( studentDocumentsTable.getSelectionModel().getSelectedItem() != null ) {
@@ -203,6 +269,12 @@ public class AdditionalDocumentsController implements Initializable {
         return isSelected;
     }
 
+    /**
+     * Copia un archivo recuperado de la base de datos a la máquina local del
+     * usuario.
+     * @param dataBaseFile el archivo recuperado de la base de datos
+     * @param directoryFile el archivo que contiene el path de la máquina local donde se desea almacenar el archivo
+     */
     private void CopyFile( File dataBaseFile, File directoryFile ) {
         try {
             FileInputStream input = new FileInputStream( dataBaseFile );
@@ -221,6 +293,12 @@ public class AdditionalDocumentsController implements Initializable {
         }
     }
 
+    /**
+     * Agrega characteres necesarios para poder almacenar un archivo en un path
+     * en específico. (Windows)
+     * @param targetString la cadena inicial
+     * @return una cadena modificada
+     */
     private String FixFilePath( String targetString ) {
         for( int i = 0; i < targetString.length(); i++ ) {
             if( targetString.charAt( i ) == 92 ) {
@@ -231,6 +309,11 @@ public class AdditionalDocumentsController implements Initializable {
         return targetString;
     }
 
+    /**
+     * Crea un archivo en la máquina local del usuario en caso de no existir previamente
+     * @param targetFile el archivo que se desea crear
+     * @throws IOException
+     */
     private void CreateFile( File targetFile ) throws IOException {
         if( !targetFile.exists() ) {
             targetFile.createNewFile();
