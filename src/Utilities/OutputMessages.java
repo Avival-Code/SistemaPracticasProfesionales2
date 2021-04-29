@@ -87,6 +87,22 @@ public class OutputMessages {
 
     /**
      * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
+     * ProyectoAsignado_Estudiante
+     * @return una cadena con el mensaje de error
+     */
+    public String ProjectDetailsMissing() { return "No se encontró el archivo FXML de la pantalla ProyectoAsignado_Estudiante"; }
+
+    /**
+     * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
+     * GestionarEstudiantes_Coordinador
+     * @return una cadena con el mensaje de error
+     */
+    public String PantallaGestionarEstudiantesPerdida() {
+        return "No se encontró el archivo FXML dela pantalla GestionarEstudiantes_Coordinador";
+    }
+
+    /**
+     * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
      * Principal_Coordinador
      * @return una cadena con el mensaje de error
      */

@@ -29,10 +29,12 @@ public class ScreenChanger {
     private String studentMainMenu = "../Resources/StudentMainMenuScreen.fxml";
     private String chooseProjectsScreen = "../Resources/SelectProjectsScreen.fxml";
     private String studentReportsScreen = "../Resources/StudentReports.fxml";
+    private String projectDetails = "../Resources/ProjectDetails.fxml";
     private String studentAdditionalDocuments = "../Resources/StudentAdditionalDocuments.fxml";
     private String pantallaPrincipalCoordinador = "../Resources/Principal_Coordinador.fxml";
     private String pantallaGestionarOrganizacion = "../Resources/GestionarOrganizacion_Coordinador.fxml";
     private String pantallaRegistrarOrganizacion = "../Resources/RegistrarOrganizacion_Coordinador.fxml";
+    private String pantallaGestionarEstudiantes = "../Resources/GestionarEstudiantes.fxml";
     private String pantallaGestionarProyecto = "../Resources/GestionarProyecto_Coordinador.fxml";
     private String pantallaModificarProyecto = "../Resources/ModificarProyecto_Coordinador.fxml";
 
@@ -110,6 +112,24 @@ public class ScreenChanger {
             SetScene( mouseEvent, studentAdditionalDocuments );
         } catch( IOException exception ) {
             errorText.setText( outputMessages.StudentAdditionalDocumentsMissing() );
+            exception.printStackTrace();
+        }
+    }
+
+    public void ShowProjectDetailsScreen( MouseEvent mouseEvent, Text errorText ) {
+        try {
+            SetScene( mouseEvent, projectDetails );
+        } catch( IOException exception ) {
+            errorText.setText( outputMessages.ProjectDetailsMissing() );
+            exception.printStackTrace();
+        }
+    }
+
+    public void MostrarPantallaGestionarEstudianesCoordinador( MouseEvent mouseEvent, Text errorText  ) {
+        try {
+            SetScene( mouseEvent, pantallaGestionarEstudiantes );
+        } catch( IOException exception ) {
+            errorText.setText( outputMessages.PantallaGestionarEstudiantesPerdida() );
             exception.printStackTrace();
         }
     }
