@@ -84,8 +84,12 @@ public class EstudianteMainMenuController implements Initializable {
 
     }
 
-    public void ShowAssignedProject() {
-
+    public void ShowAssignedProject( MouseEvent mouseEvent) {
+        if( DoesStudentHaveProjectAssigned() ) {
+            screenChanger.ShowProjectDetailsScreen( mouseEvent, errorText );
+        } else {
+            errorText.setText( outputMessages.ProjectNotAssigned() );
+        }
     }
 
     public void ShowChooseProjects( MouseEvent mouseEvent ) {
