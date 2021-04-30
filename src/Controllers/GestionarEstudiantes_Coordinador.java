@@ -27,9 +27,6 @@ public class GestionarEstudiantes_Coordinador implements Initializable {
     private Text numeroTrabajadorText;
 
     @FXML
-    private Text projectText;
-
-    @FXML
     private Button chooseProjectButton;
 
     @FXML
