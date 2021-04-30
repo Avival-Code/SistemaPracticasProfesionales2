@@ -1,5 +1,6 @@
 package Controllers;
 
+import Database.EstudianteDAO;
 import Entities.Estudiante;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,11 +11,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import sample.LoginSession;
-
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class GestionarEstudiantes_Coordinador implements Initializable {
+    private EstudianteDAO estudiantes = new EstudianteDAO();
+
     @FXML
     private Text nameText;
 
@@ -60,6 +63,8 @@ public class GestionarEstudiantes_Coordinador implements Initializable {
     @Override
     public void initialize( URL url, ResourceBundle resourceBundle ) {
         SetUserInformation();
+        SetCellValueFactory();
+        ShowStudents();
     }
 
     private void SetUserInformation() {
@@ -71,6 +76,13 @@ public class GestionarEstudiantes_Coordinador implements Initializable {
     private void SetCellValueFactory() {
         nameColumn.setCellValueFactory( new PropertyValueFactory<>( "nombres" ) );
         matriculaColumn.setCellValueFactory( new PropertyValueFactory<>( "matricula" ) );
+    }
+
+    private void ShowStudents() {
+        estudiantesTable.getItems().clear();
+        for( Estudiante estudiante : estudiantes.ReadAll() ) {
+            estudiantesTable.getItems().add( estudiante );
+        }
     }
 
     @FXML
