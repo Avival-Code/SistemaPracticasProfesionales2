@@ -80,8 +80,12 @@ public class EstudianteMainMenuController implements Initializable {
         }
     }
 
-    public void ShowFormats() {
-
+    public void ShowFormats( MouseEvent mouseEvent ) {
+        if( DoesStudentHaveProjectAssigned() ) {
+            screenChanger.ShowStudentFormatsScreen( mouseEvent, errorText );
+        } else {
+            errorText.setText( outputMessages.StudentFormatsMissing() );
+        }
     }
 
     public void ShowAssignedProject( MouseEvent mouseEvent) {

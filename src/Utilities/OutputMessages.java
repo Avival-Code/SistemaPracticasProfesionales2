@@ -94,6 +94,13 @@ public class OutputMessages {
 
     /**
      * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
+     * Formatos_Estudiante
+     * @return una cadena con el mensaje de error
+     */
+    public String StudentFormatsMissing() { return "No se encontró el archivo FXML de la pantalla Formatos_Estudiante"; }
+
+    /**
+     * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
      * GestionarEstudiantes_Coordinador
      * @return una cadena con el mensaje de error
      */

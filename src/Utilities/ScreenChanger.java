@@ -30,6 +30,7 @@ public class ScreenChanger {
     private String chooseProjectsScreen = "../Resources/SelectProjectsScreen.fxml";
     private String studentReportsScreen = "../Resources/StudentReports.fxml";
     private String projectDetails = "../Resources/ProjectDetails.fxml";
+    private String studentFormats = "../Resources/StudentFormats.fxml";
     private String studentAdditionalDocuments = "../Resources/StudentAdditionalDocuments.fxml";
     private String pantallaPrincipalCoordinador = "../Resources/Principal_Coordinador.fxml";
     private String pantallaGestionarOrganizacion = "../Resources/GestionarOrganizacion_Coordinador.fxml";
@@ -121,6 +122,15 @@ public class ScreenChanger {
             SetScene( mouseEvent, projectDetails );
         } catch( IOException exception ) {
             errorText.setText( outputMessages.ProjectDetailsMissing() );
+            exception.printStackTrace();
+        }
+    }
+
+    public void ShowStudentFormatsScreen( MouseEvent mouseEvent, Text errorText ) {
+        try {
+            SetScene( mouseEvent, studentFormats );
+        } catch( IOException exception ) {
+            errorText.setText( outputMessages.StudentFormatsMissing() );
             exception.printStackTrace();
         }
     }
