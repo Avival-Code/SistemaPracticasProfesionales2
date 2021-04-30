@@ -35,6 +35,12 @@ public interface ProyectosDeResponsablesDAOInterface {
      */
     List< Integer > ReadProyectos( int idResponsable );
 
+    /**
+     * Regresa el ID del resposnable de proyecto relacionado
+     * al ID proyecto introducido
+     * @param idProyecto id del proyecto
+     * @return el ID del responsable del proyecto
+     */
     int ReadResponsable( int idProyecto );
 
     /**

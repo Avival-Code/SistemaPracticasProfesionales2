@@ -60,7 +60,7 @@ public class ProyectosDeResponsablesDAO implements ProyectosDeResponsablesDAOInt
      * @return lista de IDs de poyectos
      */
     @Override
-    public List<Integer> ReadProyectos( int idResponsable ) {
+    public List< Integer > ReadProyectos( int idResponsable ) {
         List< Integer > idProyectos = new ArrayList<>();
         MySqlConnection connection = new MySqlConnection();
         connection.StartConnection();
