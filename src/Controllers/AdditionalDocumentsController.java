@@ -18,7 +18,6 @@ import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import sample.LoginSession;
-
 import java.io.*;
 import java.net.URL;
 import java.time.LocalDate;
