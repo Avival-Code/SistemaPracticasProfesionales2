@@ -2,11 +2,10 @@ package Controllers;
 
 import Database.EstudianteDAO;
 import Entities.Estudiante;
+import Utilities.OutputMessages;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -17,6 +16,7 @@ import java.util.ResourceBundle;
 
 public class GestionarEstudiantes_Coordinador implements Initializable {
     private EstudianteDAO estudiantes = new EstudianteDAO();
+    private OutputMessages outputMessages = new OutputMessages();
 
     @FXML
     private Text nameText;
@@ -87,7 +87,15 @@ public class GestionarEstudiantes_Coordinador implements Initializable {
 
     @FXML
     void EliminarEstudiante( MouseEvent event ) {
-
+        if( IsStudentSelected() ) {
+            Alert deleteAlert = new Alert( Alert.AlertType.CONFIRMATION, outputMessages.DeleteDocumentConfirmation() );
+            deleteAlert.showAndWait().ifPresent( response -> {
+                if( response == ButtonType.OK ) {
+                    estudiantes.Delete( estudiantesTable.getSelectionModel().getSelectedItem().getMatricula() );
+                    ShowStudents();
+                }
+            } );
+        }
     }
 
     @FXML
@@ -98,5 +106,13 @@ public class GestionarEstudiantes_Coordinador implements Initializable {
     @FXML
     void ShowGestionarReportes( MouseEvent event ) {
 
+    }
+
+    private boolean IsStudentSelected() {
+        boolean isSelected = false;
+        if( estudiantesTable.getSelectionModel().getSelectedItem() != null ) {
+            isSelected = true;
+        }
+        return isSelected;
     }
 }

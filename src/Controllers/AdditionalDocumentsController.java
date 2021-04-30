@@ -169,7 +169,7 @@ public class AdditionalDocumentsController implements Initializable {
      */
     @FXML
     public void DeleteDocument( MouseEvent mouseEvent ) {
-        if( isDocumentSelected() ) {
+        if( IsDocumentSelected() ) {
             Alert deleteAlert = new Alert( Alert.AlertType.CONFIRMATION, outputMessages.DeleteDocumentConfirmation() );
             deleteAlert.showAndWait().ifPresent( response -> {
                 if( response == ButtonType.OK ) {
@@ -186,7 +186,7 @@ public class AdditionalDocumentsController implements Initializable {
      */
     @FXML
     public void DownloadDocument( MouseEvent mouseEvent ) {
-        if( isDocumentSelected() ) {
+        if( IsDocumentSelected() ) {
             File directoryFile = GetDirectory( mouseEvent );
             CopyFile( documentos.Read( studentDocumentsTable.getSelectionModel().getSelectedItem().getIdDocumento() ).GetDescripcion(),
                       directoryFile );
@@ -261,7 +261,7 @@ public class AdditionalDocumentsController implements Initializable {
      * Revisa si se seleccionó un elemento en la tabla de StudentDocumentsTable
      * @return falso si NO se seleccionó un elemento en la tabla, verdadero si sí
      */
-    private boolean isDocumentSelected() {
+    private boolean IsDocumentSelected() {
         boolean isSelected = false;
         if( studentDocumentsTable.getSelectionModel().getSelectedItem() != null ) {
             isSelected = true;

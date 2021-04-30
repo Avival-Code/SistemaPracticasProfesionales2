@@ -196,6 +196,14 @@ public class OutputMessages {
     public String DeleteDocumentConfirmation() { return "¿Estas seguro/a que deseas eliminar el archivo?"; }
 
     /**
+     * Mensaje mostrado cuando se intenta eliminar un estudiante en
+     * la pantalla GestionarEstudiantes_Coordinador
+     * @return una cadena con el mensaje de confirmacion
+     */
+    public String DeleteStudentConfirmation() { return "¿Estas seguro/a que deseas eliminar el estudiante? " +
+                                                       "Esta acción es permanente y no se podrá deshacer."; }
+
+    /**
      * mensaje mostrado cuando se introduce información de login que no
      * existe en la base de datos
      * @return una cadena con el mensaje de error
