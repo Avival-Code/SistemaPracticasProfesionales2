@@ -42,7 +42,7 @@ public class GrupoDAO implements GrupoDAOInterface{
             ResultSet result = statement.getResultSet();
 
             while( result.next() ) {
-                registros.add( new RegistroGrupo( result.getString( 1 ), result.getString( 2 ) ) );
+                registros.add( new RegistroGrupo( result.getString( 2 ), result.getString( 3 ) ) );
             }
 
             result.close();
