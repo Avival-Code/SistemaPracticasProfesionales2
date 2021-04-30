@@ -94,7 +94,7 @@ public class RegistryScreenController {
      */
     private boolean DoesStudentExist() {
         boolean doesStudentExist = false;
-        if( estudiantes.Read( GetStudent().GetMatricula() ) != null ) {
+        if( estudiantes.Read( GetStudent().getMatricula() ) != null ) {
             errorText.setText( outputMessages.StudentAlreadyExists() );
             successText.setText( "" );
             doesStudentExist = true;

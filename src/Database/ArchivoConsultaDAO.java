@@ -39,7 +39,7 @@ public class ArchivoConsultaDAO implements ArchivoConsultaDAOInterface {
             String query = "INSERT INTO ArchivoConsulta( Titulo, Descripcion, NumeroPersonal ) " +
                     "VALUES ( ?, ?, ? );";
             PreparedStatement statement = connection.GetConnection().prepareStatement( query );
-            statement.setString( 1, archivo.GetTitulo() );
+            statement.setString( 1, archivo.getTitulo() );
             statement.setBlob( 2, fileStream );
             statement.setString( 3, archivo.GetNumeroPersonal() );
             statement.executeUpdate();
@@ -134,7 +134,7 @@ public class ArchivoConsultaDAO implements ArchivoConsultaDAOInterface {
             String query = "UPDATE ArchivoConsulta SET Titulo = ?, Descripcion = ?, NumeroPersonal = ? " +
                            "WHERE IDResponsableProyecto = ?;";
             PreparedStatement statement = connection.GetConnection().prepareStatement( query );
-            statement.setString( 1, archivo.GetTitulo() );
+            statement.setString( 1, archivo.getTitulo() );
             statement.setBlob( 2, fileStream );
             statement.setString( 3, archivo.GetNumeroPersonal() );
             statement.setInt( 4, archivo.GetId() );

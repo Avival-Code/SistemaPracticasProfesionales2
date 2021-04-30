@@ -24,14 +24,18 @@ import javafx.stage.Stage;
  */
 public class ScreenChanger {
     private OutputMessages outputMessages = new OutputMessages();
-    private String loginScreen = "../Resources/LoginScreen.fxml";
-    private String registryScreen = "../Resources/RegistryScreen.fxml";
-    private String studentMainMenu = "../Resources/StudentMainMenuScreen.fxml";
-    private String chooseProjectsScreen = "../Resources/SelectProjectsScreen.fxml";
-    private String studentReportsScreen = "../Resources/StudentReports.fxml";
+    private String loginScreen = "../Resources/IniciarSesion.fxml";
+    private String registryScreen = "../Resources/Registro_Estudiante.fxml";
+    private String studentMainMenu = "../Resources/MenuPrincipal_Estudiante.fxml";
+    private String chooseProjectsScreen = "../Resources/EscogerProyectos_Estudiante.fxml";
+    private String studentReportsScreen = "../Resources/Reportes_Estudiante.fxml";
+    private String projectDetails = "../Resources/ProyectoAsignado_Estudiante.fxml";
+    private String studentFormats = "../Resources/Formatos_Estudiante.fxml";
+    private String studentAdditionalDocuments = "../Resources/DocumentosAdicionales_Estudiante.fxml";
     private String pantallaPrincipalCoordinador = "../Resources/Principal_Coordinador.fxml";
     private String pantallaGestionarOrganizacion = "../Resources/GestionarOrganizacion_Coordinador.fxml";
     private String pantallaRegistrarOrganizacion = "../Resources/RegistrarOrganizacion_Coordinador.fxml";
+    private String pantallaGestionarEstudiantes = "../Resources/GestionarEstudiantes_Coordinador.fxml";
     private String pantallaGestionarProyecto = "../Resources/GestionarProyecto_Coordinador.fxml";
     private String pantallaModificarProyecto = "../Resources/ModificarProyecto_Coordinador.fxml";
 
@@ -100,6 +104,57 @@ public class ScreenChanger {
             SetScene( mouseEvent, studentReportsScreen );
         } catch( IOException exception ) {
             errorText.setText( outputMessages.StudentReportScreenMissing() );
+            exception.printStackTrace();
+        }
+    }
+
+    /**
+     * Hace el cambio de pantalla a la pantalla DocumentosAdicionales_Estudiante
+     * @param mouseEvent el evento de mouse que inicio el cambio
+     * @param errorText el campo de texto donde se coloca un mensaje en caso de error
+     */
+    public void ShowStudentAdditionalDocumentsScreen( MouseEvent mouseEvent, Text errorText ) {
+        try{
+            SetScene( mouseEvent, studentAdditionalDocuments );
+        } catch( IOException exception ) {
+            errorText.setText( outputMessages.StudentAdditionalDocumentsMissing() );
+            exception.printStackTrace();
+        }
+    }
+
+    /**
+     * Hace el cambio de pantalla a la pantalla ProyectoAsignado_Estudiante
+     * @param mouseEvent el evento de mouse que inicio el cambio
+     * @param errorText el campo de texto donde se coloca un mensaje en caso de error
+     */
+    public void ShowProjectDetailsScreen( MouseEvent mouseEvent, Text errorText ) {
+        try {
+            SetScene( mouseEvent, projectDetails );
+        } catch( IOException exception ) {
+            errorText.setText( outputMessages.ProjectDetailsMissing() );
+            exception.printStackTrace();
+        }
+    }
+
+    /**
+     * Hace el cambio de pantalla a la pantalla Formatos_Estudiante
+     * @param mouseEvent el evento de mouse que inicio el cambio
+     * @param errorText el campo de texto donde se coloca un mensaje en caso de error
+     */
+    public void ShowStudentFormatsScreen( MouseEvent mouseEvent, Text errorText ) {
+        try {
+            SetScene( mouseEvent, studentFormats );
+        } catch( IOException exception ) {
+            errorText.setText( outputMessages.StudentFormatsMissing() );
+            exception.printStackTrace();
+        }
+    }
+
+    public void MostrarPantallaGestionarEstudianesCoordinador( MouseEvent mouseEvent, Text errorText  ) {
+        try {
+            SetScene( mouseEvent, pantallaGestionarEstudiantes );
+        } catch( IOException exception ) {
+            errorText.setText( outputMessages.PantallaGestionarEstudiantesPerdida() );
             exception.printStackTrace();
         }
     }

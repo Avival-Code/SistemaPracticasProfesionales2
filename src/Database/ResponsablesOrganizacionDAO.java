@@ -57,7 +57,7 @@ public class ResponsablesOrganizacionDAO implements ResponsablesOrganizacionDAOI
      * @return
      */
     @Override
-    public List< Integer > Read( int idOrganizacion ) {
+    public List< Integer > ReadResponsables( int idOrganizacion ) {
         List< Integer > idResponsables = new ArrayList<>();
         MySqlConnection connection = new MySqlConnection();
         connection.StartConnection();
@@ -81,6 +81,33 @@ public class ResponsablesOrganizacionDAO implements ResponsablesOrganizacionDAOI
 
         connection.StopConnection();
         return idResponsables;
+    }
+
+    @Override
+    public int ReadOrganizacion( int idResponsable ) {
+        int idOrganizacion = -1;
+        MySqlConnection connection = new MySqlConnection();
+        connection.StartConnection();
+
+        try {
+            String query = "SELECT * FROM ResponsablesOrganizacion WHERE IDResponsableProyecto = ?;";
+            PreparedStatement statement = connection.GetConnection().prepareStatement( query );
+            statement.setInt( 1, idResponsable );
+            statement.executeQuery();
+            ResultSet result = statement.getResultSet();
+
+            while( result.next() ) {
+                idOrganizacion = result.getInt( 1 );
+            }
+
+            result.close();
+            statement.close();
+        } catch( Exception exception ) {
+            exception.printStackTrace();
+        }
+
+        connection.StopConnection();
+        return idOrganizacion;
     }
 
     /**
@@ -120,7 +147,7 @@ public class ResponsablesOrganizacionDAO implements ResponsablesOrganizacionDAOI
         boolean wasCreated = false;
         MySqlConnection connection = new MySqlConnection();
         connection.StartConnection();
-        List< Integer > responsablesActuales = Read( idOrganizacion );
+        List< Integer > responsablesActuales = ReadResponsables( idOrganizacion );
 
         for( int i = 0; i < idResponsablesProyecto.size(); i++ ) {
             if( !responsablesActuales.contains( idResponsablesProyecto.get( i ) ) ) {

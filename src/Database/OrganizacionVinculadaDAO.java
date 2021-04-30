@@ -79,7 +79,7 @@ public class OrganizacionVinculadaDAO implements OrganizacionVinculadaDAOInterfa
                 organizaciones.add( new OrganizacionVinculada( result.getString( 2 ),
                         result.getString( 3 ), TipoSector.values()[ result.getInt( 4 ) ],
                         result.getString( 5 ), result.getString( 6 ),
-                        idOrganizacion, responsables.Read( idOrganizacion ) ) );
+                        idOrganizacion, responsables.ReadResponsables( idOrganizacion ) ) );
             }
 
             result.close();
@@ -114,7 +114,7 @@ public class OrganizacionVinculadaDAO implements OrganizacionVinculadaDAOInterfa
                 organizacion = new OrganizacionVinculada( result.getString( 2 ),
                         result.getString( 3 ), TipoSector.values()[ result.getInt( 4 ) ],
                         result.getString( 5 ), result.getString( 6 ),
-                        idOrganizacion, responsables.Read( idOrganizacion ) );
+                        idOrganizacion, responsables.ReadResponsables( idOrganizacion ) );
             }
         } catch( Exception exception ) {
             exception.printStackTrace();

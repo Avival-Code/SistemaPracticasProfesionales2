@@ -79,7 +79,7 @@ public class Estudiante extends UsuarioUV {
      * Regresa la matrícula del Estudiante
      * @return String con la matrícula del estudiante
      */
-    public String GetMatricula() {
+    public String getMatricula() {
         return matricula;
     }
 

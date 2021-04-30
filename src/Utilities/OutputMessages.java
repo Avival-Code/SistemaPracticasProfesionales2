@@ -78,6 +78,38 @@ public class OutputMessages {
 
     /**
      * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
+     * DocumentosAdicionales_Estudiante
+     * @return una cadena con el mensaje de error
+     */
+    public String StudentAdditionalDocumentsMissing() {
+        return "No se encontró el archivo FXML de la pantalla DocumentosAdicionales_Estudiante";
+    }
+
+    /**
+     * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
+     * ProyectoAsignado_Estudiante
+     * @return una cadena con el mensaje de error
+     */
+    public String ProjectDetailsMissing() { return "No se encontró el archivo FXML de la pantalla ProyectoAsignado_Estudiante"; }
+
+    /**
+     * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
+     * Formatos_Estudiante
+     * @return una cadena con el mensaje de error
+     */
+    public String StudentFormatsMissing() { return "No se encontró el archivo FXML de la pantalla Formatos_Estudiante"; }
+
+    /**
+     * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
+     * GestionarEstudiantes_Coordinador
+     * @return una cadena con el mensaje de error
+     */
+    public String PantallaGestionarEstudiantesPerdida() {
+        return "No se encontró el archivo FXML dela pantalla GestionarEstudiantes_Coordinador";
+    }
+
+    /**
+     * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
      * Principal_Coordinador
      * @return una cadena con el mensaje de error
      */
@@ -151,10 +183,32 @@ public class OutputMessages {
 
     /**
      * Mensaje mostrado cuando se intenta entregar un reporte con
-     * que tiene el mismo nombre que otro el el expediente del estudiante
+     * el mismo nombre que otro en el expediente del estudiante
      * @return una cadena con el mensaje de error
      */
     public String ReportNameAlreadyExists() { return "Ya existe un reporte con ese nombre en tu expediente."; }
+
+    /**
+     * Mensaje mostrado cuando se intenta entregar un documento con
+     * el mismo nombre que otro en el expediente del estudiante
+     * @return una cadena con el mensaje de error
+     */
+    public String DocumentNameAlreadyExists() { return "Ya existe un documento con ese nombre en tu expediente."; }
+
+    /**
+     * Mensaje mostrado cuando se intenta eliminar un documento en
+     * la pantalla DocumentosAdicionales_Estudiante
+     * @return una cadena con el mensaje de confirmacion
+     */
+    public String DeleteDocumentConfirmation() { return "¿Estas seguro/a que deseas eliminar el archivo?"; }
+
+    /**
+     * Mensaje mostrado cuando se intenta eliminar un estudiante en
+     * la pantalla GestionarEstudiantes_Coordinador
+     * @return una cadena con el mensaje de confirmacion
+     */
+    public String DeleteStudentConfirmation() { return "¿Estas seguro/a que deseas eliminar el estudiante? " +
+                                                       "Esta acción es permanente y no se podrá deshacer."; }
 
     /**
      * mensaje mostrado cuando se introduce información de login que no

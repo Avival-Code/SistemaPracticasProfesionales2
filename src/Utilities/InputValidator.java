@@ -36,7 +36,7 @@ public class InputValidator {
      */
     public boolean IsStudentInformationValid( Estudiante student, String passwordConfirm ) {
         return AreNamesValid( student.getNombres() ) && AreLastNamesValid( student.GetApellidos() ) &&
-                IsMatriculaValid( student.GetMatricula() ) && IsTelephoneValid( student.GetTelefono() ) &&
+                IsMatriculaValid( student.getMatricula() ) && IsTelephoneValid( student.GetTelefono() ) &&
                 IsEmailValid( student.GetCorreo() ) && IsNRCValid( student.getNrc() ) &&
                 IsPasswordValid( student.GetContrasena() ) && DoPasswordsMatch( student.GetContrasena(), passwordConfirm );
     }
