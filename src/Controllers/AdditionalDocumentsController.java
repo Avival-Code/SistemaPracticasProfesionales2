@@ -1,3 +1,11 @@
+/*
+ * Autor: Christian Felipe de Jesus Avila Valdes
+ * Versión: 1.0
+ * Fecha Creación: 29 - abr - 2021
+ * Descripción:
+ * Clase encargada de manejar los eventos de la pantalla
+ * DocumentosAdicionales_Estudiante.
+ */
 package Controllers;
 
 import Database.DocumentoDAO;
@@ -25,6 +33,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Clase encargada de manejar los eventos de la pantalla
+ * DocumentosAdicionales_Estudiante.
+ */
 public class AdditionalDocumentsController implements Initializable {
     private ScreenChanger screenChanger = new ScreenChanger();
     private FileChooser fileChooser = new FileChooser();
@@ -199,6 +211,11 @@ public class AdditionalDocumentsController implements Initializable {
     @FXML
     public void Return( MouseEvent mouseEvent ) { screenChanger.ShowStudentMainMenuScreen( mouseEvent, errorText ); }
 
+    /**
+     * Almace un documento seleccionado de la máquina local del usuario a
+     * la base de datos
+     * @param mouseEvent el clic del ratón que llamó al método
+     */
     @FXML
     public void UploadDocument( MouseEvent mouseEvent ) {
         File document = GetFile( mouseEvent );

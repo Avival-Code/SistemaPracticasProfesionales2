@@ -1,3 +1,11 @@
+/*
+ * Autor: Christian Felipe de Jesus Avila Valdes
+ * Versión: 1.0
+ * Fecha Creación: 30 - abr - 2021
+ * Descripción:
+ * Clase encargada de manejar los eventos de la pantalla
+ * Formatos_Estudiante.
+ */
 package Controllers;
 
 import Database.ArchivoConsultaDAO;
@@ -24,6 +32,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Clase encargada de manejar los eventos de la pantalla
+ * Formatos_Estudiante.
+ */
 public class StudentFormatsController implements Initializable{
     private ScreenChanger screenChanger = new ScreenChanger();
     private ArchivoConsultaDAO archivos = new ArchivoConsultaDAO();
@@ -58,6 +70,11 @@ public class StudentFormatsController implements Initializable{
     @FXML
     private Button entregarReporte;
 
+    /**
+     * Configura los componentes de la pantalla Formatos_Estudiante
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         SetUserInformation();
@@ -96,6 +113,11 @@ public class StudentFormatsController implements Initializable{
         }
     }
 
+    /**
+     * Regresa el número personal del docente encargado del grupo del
+     * estudiante
+     * @return el número personal de docente
+     */
     private String GetNumeroPersonal() {
         String numeroPersonal = "";
         String nrcEstudiante = LoginSession.GetInstance().GetEstudiante().getNrc();
@@ -107,6 +129,10 @@ public class StudentFormatsController implements Initializable{
         return numeroPersonal;
     }
 
+    /**
+     * Descarga un archivo de formato a la máquina local del usuario
+     * @param mouseEvent el evento de mouse que inicio la descarga
+     */
     @FXML
     void DownloadFormat( MouseEvent mouseEvent ) {
         if( IsFileSelected() ) {
@@ -116,11 +142,20 @@ public class StudentFormatsController implements Initializable{
         }
     }
 
+    /**
+     * Cambia la pantalla actual a la pantalla MenuPrincipal_Estudiante
+     * @param mouseEvent el evento de mouse que inicio el cambio
+     */
     @FXML
     void Return( MouseEvent mouseEvent ) {
         screenChanger.ShowStudentMainMenuScreen( mouseEvent, errorText );
     }
 
+    /**
+     * Revisa si se ha seleccionado un elemento de la tabla
+     * formatosTable
+     * @return true si hay un elemento seleccionado, false si no
+     */
     private boolean IsFileSelected() {
         boolean isSelected = false;
         if( formatosTable.getSelectionModel().getSelectedItem() != null ) {
@@ -129,6 +164,11 @@ public class StudentFormatsController implements Initializable{
         return isSelected;
     }
 
+    /**
+     * Regresa un archivo con el directorio seleccionado por el usuario
+     * @param mouseEvent el evento de mouse que inicio el cambio
+     * @return un archivo con el directorio seleccionado por el usuario
+     */
     private File GetDirectory( MouseEvent mouseEvent ) {
         return directoryChooser.showDialog( ( (Node)mouseEvent.getSource() ).getScene().getWindow() );
     }

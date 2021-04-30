@@ -1,3 +1,11 @@
+/*
+ * Autor: Christian Felipe de Jesus Avila Valdes
+ * Versión: 1.0
+ * Fecha Creación: 30 - abr - 2021
+ * Descripción:
+ * Clase encargada de manejar los eventos de la pantalla
+ * GestionarEstudiantes_Coordinador.
+ */
 package Controllers;
 
 import Database.EstudianteDAO;
@@ -13,6 +21,10 @@ import sample.LoginSession;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Clase encargada de manejar los eventos de la pantalla
+ * GestionarEstudiantes_Coordinador.
+ */
 public class GestionarEstudiantes_Coordinador implements Initializable {
     private EstudianteDAO estudiantes = new EstudianteDAO();
     private OutputMessages outputMessages = new OutputMessages();
@@ -56,6 +68,11 @@ public class GestionarEstudiantes_Coordinador implements Initializable {
     @FXML
     private Button buscarBoton;
 
+    /**
+     * Configura los componentes de la pantalla GestionarEstudiantes_Coordinador
+     * @param url no se utiliza, lo requiere la interfaz
+     * @param resourceBundle no se utiliza, lo requiere la interfaz
+     */
     @Override
     public void initialize( URL url, ResourceBundle resourceBundle ) {
         SetUserInformation();
@@ -63,17 +80,28 @@ public class GestionarEstudiantes_Coordinador implements Initializable {
         ShowStudents();
     }
 
+    /**
+     * Coloca la información del usuario actual en los campos de texto
+     * nameText, lastNameText y matriculaText
+     */
     private void SetUserInformation() {
         nameText.setText( LoginSession.GetInstance().GetCoordinador().getNombres() );
         lastNameText.setText( LoginSession.GetInstance().GetCoordinador().GetApellidos() );
         numeroTrabajadorText.setText( LoginSession.GetInstance().GetCoordinador().GetNumeroPersonal() );
     }
 
+    /**
+     * Configura las columnas de la tabla mostrada en esta pantalla
+     */
     private void SetCellValueFactory() {
         nameColumn.setCellValueFactory( new PropertyValueFactory<>( "nombres" ) );
         matriculaColumn.setCellValueFactory( new PropertyValueFactory<>( "matricula" ) );
     }
 
+    /**
+     * Muestra todos los estudiantes almacenados en el sistema en la tabla
+     * de la pantalla
+     */
     private void ShowStudents() {
         estudiantesTable.getItems().clear();
         for( Estudiante estudiante : estudiantes.ReadAll() ) {
@@ -81,8 +109,11 @@ public class GestionarEstudiantes_Coordinador implements Initializable {
         }
     }
 
+    /**
+     * Elimina un estudiante seleccionado de la tabla estudiantesTable
+     */
     @FXML
-    void EliminarEstudiante( MouseEvent event ) {
+    void EliminarEstudiante() {
         if( IsStudentSelected() ) {
             Alert deleteAlert = new Alert( Alert.AlertType.CONFIRMATION, outputMessages.DeleteDocumentConfirmation() );
             deleteAlert.showAndWait().ifPresent( response -> {
@@ -104,6 +135,11 @@ public class GestionarEstudiantes_Coordinador implements Initializable {
 
     }
 
+    /**
+     * Revisa si un estudiante ha sido seleccionado de la tabla
+     * estudiantesTable
+     * @return true si un elemento ha sido seleccionado de la tabla, false si no
+     */
     private boolean IsStudentSelected() {
         boolean isSelected = false;
         if( estudiantesTable.getSelectionModel().getSelectedItem() != null ) {

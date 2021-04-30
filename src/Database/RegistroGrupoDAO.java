@@ -8,6 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RegistroGrupoDAO implements RegistroGrupoDAOInterface {
+
+    /**
+     * Almacena una instancia de RegistroGrupo a la base de datos
+     * @param registro el registroGrupo que se desea crear
+     * @return true si la operación fue exitosa, false si no
+     */
     @Override
     public boolean Create( RegistroGrupo registro ) {
         boolean wasCreated = false;
@@ -15,7 +21,7 @@ public class RegistroGrupoDAO implements RegistroGrupoDAOInterface {
         connection.StartConnection();
 
         try {
-            String query = "INSERT INTO Grupo( NRC, Identificador ) " +
+            String query = "INSERT INTO RegistroGrupo( NRC, Identificador ) " +
                     "VALUES ( ?, ? );";
             PreparedStatement statement = connection.GetConnection().prepareStatement( query );
             statement.setString( 1, registro.getNRC() );
@@ -29,6 +35,11 @@ public class RegistroGrupoDAO implements RegistroGrupoDAOInterface {
         return wasCreated;
     }
 
+    /**
+     * Regresa una lista con todos los RegistrosGrupos almacenados
+     * en la base de datos
+     * @return una lista de RegistroGrupo
+     */
     @Override
     public List< RegistroGrupo > ReadAll() {
         List< RegistroGrupo > registros = new ArrayList<>();
@@ -36,7 +47,7 @@ public class RegistroGrupoDAO implements RegistroGrupoDAOInterface {
         connection.StartConnection();
 
         try {
-            String query = "SELECT * FROM Grupo;";
+            String query = "SELECT * FROM RegistroGrupo;";
             PreparedStatement statement = connection.GetConnection().prepareStatement( query );
             statement.executeQuery();
             ResultSet result = statement.getResultSet();
@@ -55,6 +66,11 @@ public class RegistroGrupoDAO implements RegistroGrupoDAOInterface {
         return registros;
     }
 
+    /**
+     * Actualiza un RegistroGrupo almacenado en la base de datos
+     * @param registro el registrGrupo que se desea actualizar
+     * @return true si la operación fue exitosa, false si no
+     */
     @Override
     public boolean Update( RegistroGrupo registro ) {
         boolean updated = Delete( registro.getIdentificador() );
@@ -62,6 +78,11 @@ public class RegistroGrupoDAO implements RegistroGrupoDAOInterface {
         return updated;
     }
 
+    /**
+     * Elimina un RegistroGrupo de la base de datos
+     * @param Identificador el identificador del registroGrupo que se desea eliminar
+     * @return true si la operación fue exitosa, false si no
+     */
     @Override
     public boolean Delete( String Identificador ) {
         boolean deleted = false;
@@ -69,7 +90,7 @@ public class RegistroGrupoDAO implements RegistroGrupoDAOInterface {
         connection.StartConnection();
 
         try {
-            String query = "DELETE FROM Grupo WHERE Identificador = ?;";
+            String query = "DELETE FROM RegistroGrupo WHERE Identificador = ?;";
             PreparedStatement statement = connection.GetConnection().prepareStatement( query );
             statement.setString( 1, Identificador );
             statement.executeUpdate();

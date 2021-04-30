@@ -108,6 +108,11 @@ public class ScreenChanger {
         }
     }
 
+    /**
+     * Hace el cambio de pantalla a la pantalla DocumentosAdicionales_Estudiante
+     * @param mouseEvent el evento de mouse que inicio el cambio
+     * @param errorText el campo de texto donde se coloca un mensaje en caso de error
+     */
     public void ShowStudentAdditionalDocumentsScreen( MouseEvent mouseEvent, Text errorText ) {
         try{
             SetScene( mouseEvent, studentAdditionalDocuments );
@@ -117,6 +122,11 @@ public class ScreenChanger {
         }
     }
 
+    /**
+     * Hace el cambio de pantalla a la pantalla ProyectoAsignado_Estudiante
+     * @param mouseEvent el evento de mouse que inicio el cambio
+     * @param errorText el campo de texto donde se coloca un mensaje en caso de error
+     */
     public void ShowProjectDetailsScreen( MouseEvent mouseEvent, Text errorText ) {
         try {
             SetScene( mouseEvent, projectDetails );
@@ -126,6 +136,11 @@ public class ScreenChanger {
         }
     }
 
+    /**
+     * Hace el cambio de pantalla a la pantalla Formatos_Estudiante
+     * @param mouseEvent el evento de mouse que inicio el cambio
+     * @param errorText el campo de texto donde se coloca un mensaje en caso de error
+     */
     public void ShowStudentFormatsScreen( MouseEvent mouseEvent, Text errorText ) {
         try {
             SetScene( mouseEvent, studentFormats );
