@@ -96,7 +96,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Text>
-                  <Text fill="#e84545" layoutX="37.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="705.0">
+                  <Text fx:id="projectDetailText" fill="#e84545" layoutX="37.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="705.0">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

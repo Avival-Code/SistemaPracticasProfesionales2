@@ -41,6 +41,9 @@ public class ProjectDetailsController implements Initializable {
     private Text projectText;
 
     @FXML
+    private Text projectDetailText;
+
+    @FXML
     private Button returnButton;
 
     @FXML
@@ -102,7 +105,8 @@ public class ProjectDetailsController implements Initializable {
     private void SetProjectTexts() {
         proyecto = proyectos.Read( GetUserExpediente().GetIDProyecto() );
         projectNameText.setText( proyecto.getNombre() );
-        projectText.setText( proyecto.GetDescripcion() );
+        projectText.setText( proyecto.getNombre() );
+        projectDetailText.setText( proyecto.GetDescripcion() );
         cupoText.setText( Integer.toString( proyecto.getNumEstudiantesRequeridos() ) );
     }
 
