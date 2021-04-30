@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GestionarEstudiantesControlador">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.GestionarEstudiantes_Coordinador">
    <children>
       <SplitPane dividerPositions="0.21743486973947895" prefHeight="600.0" prefWidth="1000.0">
         <items>
@@ -28,19 +28,13 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Text>
-                  <Text fill="#e84545" layoutX="13.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Martrícula:">
+                  <Text fill="#e84545" layoutX="13.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No. Trabajador:">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Text>
                   <Text fx:id="lastNameText" fill="#e84545" layoutX="31.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="162.193359375" />
-                  <Text fx:id="matriculaText" fill="#e84545" layoutX="31.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="162.193359375" />
-                  <Text fill="#e84545" layoutX="14.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Proyecto Asignado:">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="projectText" fill="#e84545" layoutX="31.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="162.193359375" />
+                  <Text fx:id="numeroTrabajadorText" fill="#e84545" layoutX="31.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="162.193359375" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b2e4a" height="376.0" layoutY="223.0" stroke="BLACK" strokeType="INSIDE" width="214.0" />
                   <Button fx:id="chooseProjectButton" layoutY="518.0" mnemonicParsing="false" onMouseClicked="#ShowGestionarReportes" prefHeight="40.0" prefWidth="214.0" text="Gestionar Reportes" />
                   <Button fx:id="returnButton" layoutY="558.0" mnemonicParsing="false" onMouseClicked="#Return" prefHeight="40.0" prefWidth="214.0" text="Regresar" />

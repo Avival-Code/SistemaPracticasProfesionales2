@@ -92,7 +92,7 @@ public class AdditionalDocumentsController implements Initializable {
     private void SetUserInformation() {
         nameText.setText( LoginSession.GetInstance().GetEstudiante().getNombres() );
         lastNameText.setText( LoginSession.GetInstance().GetEstudiante().GetApellidos() );
-        matriculaText.setText( LoginSession.GetInstance().GetEstudiante().GetMatricula() );
+        matriculaText.setText( LoginSession.GetInstance().GetEstudiante().getMatricula() );
     }
 
     /**
@@ -156,7 +156,7 @@ public class AdditionalDocumentsController implements Initializable {
         List< Expediente > expedientesUsuarios = expedientes.ReadAll();
         Expediente userExpediente = null;
         for( Expediente expediente : expedientesUsuarios ) {
-            if( expediente.GetMatricula().equals( LoginSession.GetInstance().GetEstudiante().GetMatricula() ) ) {
+            if( expediente.GetMatricula().equals( LoginSession.GetInstance().GetEstudiante().getMatricula() ) ) {
                 userExpediente = expediente;
             }
         }
