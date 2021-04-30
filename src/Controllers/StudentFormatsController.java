@@ -1,5 +1,6 @@
 package Controllers;
 
+import Entities.ArchivoConsulta;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -28,10 +29,10 @@ public class StudentFormatsController {
     private Text errorText;
 
     @FXML
-    private TableView<?> formatosTable;
+    private TableView< ArchivoConsulta > formatosTable;
 
     @FXML
-    private TableColumn<?, ?> nameColumn;
+    private TableColumn< ArchivoConsulta, String > nameColumn;
 
     @FXML
     private Button entregarReporte;
