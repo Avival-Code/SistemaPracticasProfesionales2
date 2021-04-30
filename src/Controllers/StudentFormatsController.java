@@ -1,7 +1,10 @@
 package Controllers;
 
 import Database.ArchivoConsultaDAO;
+import Database.DocenteDAO;
+import Database.RegistroGrupoDAO;
 import Entities.ArchivoConsulta;
+import Entities.Docente;
 import Utilities.ScreenChanger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,6 +27,8 @@ import java.util.ResourceBundle;
 public class StudentFormatsController implements Initializable{
     private ScreenChanger screenChanger = new ScreenChanger();
     private ArchivoConsultaDAO archivos = new ArchivoConsultaDAO();
+    private RegistroGrupoDAO registros = new RegistroGrupoDAO();
+    private DocenteDAO docentes = new DocenteDAO();
     private DirectoryChooser directoryChooser = new DirectoryChooser();
 
     @FXML
@@ -92,8 +97,14 @@ public class StudentFormatsController implements Initializable{
     }
 
     private String GetNumeroPersonal() {
-        String numero = "";
-        return numero;
+        String numeroPersonal = "";
+        String nrcEstudiante = LoginSession.GetInstance().GetEstudiante().getNrc();
+        for( Docente docente : docentes.ReadAll() ) {
+            if( docente != null && docente.GetNrc().equals( nrcEstudiante ) ) {
+                numeroPersonal = docente.GetNumeroPersonal();
+            }
+        }
+        return numeroPersonal;
     }
 
     @FXML
