@@ -85,6 +85,8 @@ public class ProjectDetailsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         SetUserInformation();
         SetProjectTexts();
+        SetResponsableTexts();
+        SetOrganizacionTexts();
     }
 
     private void SetUserInformation() {
@@ -106,11 +108,16 @@ public class ProjectDetailsController implements Initializable {
     }
 
     private void SetResponsableTexts() {
-        //responsable = responsables.Read( responsablesProyectos.Read() );
+        responsable = responsables.Read( responsablesProyectos.ReadResponsable( proyecto.getIdProyecto() ) );
+        responsableText.setText( responsable.GetNombres() + " " + responsable.GetApellidos() );
+        correoText.setText( responsable.GetCorreo() );
+        telefonoText.setText( responsable.GetTelefono() );
     }
 
-    private void GetResponsable() {
-        int idResponsable;
+    private void SetOrganizacionTexts() {
+        organizacion = organizaciones.Read( responsablesOrganizacion.ReadOrganizacion( responsable.getIdResponsableProyecto() ) );
+        organizacionText.setText( organizacion.getNombre() );
+        direccionText.setText( organizacion.getDireccion() );
     }
 
     private Expediente GetUserExpediente() {
