@@ -24,18 +24,18 @@ import javafx.stage.Stage;
  */
 public class ScreenChanger {
     private OutputMessages outputMessages = new OutputMessages();
-    private String loginScreen = "../Resources/LoginScreen.fxml";
-    private String registryScreen = "../Resources/RegistryScreen.fxml";
-    private String studentMainMenu = "../Resources/StudentMainMenuScreen.fxml";
-    private String chooseProjectsScreen = "../Resources/SelectProjectsScreen.fxml";
-    private String studentReportsScreen = "../Resources/StudentReports.fxml";
-    private String projectDetails = "../Resources/ProjectDetails.fxml";
-    private String studentFormats = "../Resources/StudentFormats.fxml";
-    private String studentAdditionalDocuments = "../Resources/StudentAdditionalDocuments.fxml";
+    private String loginScreen = "../Resources/IniciarSesion.fxml";
+    private String registryScreen = "../Resources/Registro_Estudiante.fxml";
+    private String studentMainMenu = "../Resources/MenuPrincipal_Estudiante.fxml";
+    private String chooseProjectsScreen = "../Resources/EscogerProyectos_Estudiante.fxml";
+    private String studentReportsScreen = "../Resources/Reportes_Estudiante.fxml";
+    private String projectDetails = "../Resources/ProyectoAsignado_Estudiante.fxml";
+    private String studentFormats = "../Resources/Formatos_Estudiante.fxml";
+    private String studentAdditionalDocuments = "../Resources/DocumentosAdicionales_Estudiante.fxml";
     private String pantallaPrincipalCoordinador = "../Resources/Principal_Coordinador.fxml";
     private String pantallaGestionarOrganizacion = "../Resources/GestionarOrganizacion_Coordinador.fxml";
     private String pantallaRegistrarOrganizacion = "../Resources/RegistrarOrganizacion_Coordinador.fxml";
-    private String pantallaGestionarEstudiantes = "../Resources/GestionarEstudiantes.fxml";
+    private String pantallaGestionarEstudiantes = "../Resources/GestionarEstudiantes_Coordinador.fxml";
     private String pantallaGestionarProyecto = "../Resources/GestionarProyecto_Coordinador.fxml";
     private String pantallaModificarProyecto = "../Resources/ModificarProyecto_Coordinador.fxml";
 
