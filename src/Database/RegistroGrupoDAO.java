@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GrupoDAO implements GrupoDAOInterface{
+public class RegistroGrupoDAO implements RegistroGrupoDAOInterface {
     @Override
     public boolean Create( RegistroGrupo registro ) {
         boolean wasCreated = false;
