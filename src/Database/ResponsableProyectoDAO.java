@@ -74,7 +74,7 @@ public class ResponsableProyectoDAO implements ResponsableProyectoDAOInterface{
                 int idResponsable = result.getInt( 1 );
                 responsables.add( new ResponsableProyecto( idResponsable, result.getString( 2 ),
                         result.getString( 3 ), result.getString( 4 ), result.getString( 5 ),
-                        proyectos.Read( idResponsable ) ) );
+                        proyectos.ReadProyectos( idResponsable ) ) );
             }
 
             result.close();
@@ -108,7 +108,7 @@ public class ResponsableProyectoDAO implements ResponsableProyectoDAOInterface{
             if( result.next() ) {
                 responsable = new ResponsableProyecto( idResponsable, result.getString( 2 ),
                         result.getString( 3 ), result.getString( 4 ), result.getString( 5 ),
-                        proyectos.Read( idResponsable ) );
+                        proyectos.ReadProyectos( idResponsable ) );
             }
 
             result.close();

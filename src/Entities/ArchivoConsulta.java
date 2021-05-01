@@ -59,7 +59,7 @@ public class ArchivoConsulta {
      * Regresa el título del archivo
      * @return el título del archivo
      */
-    public String GetTitulo() { return titulo; }
+    public String getTitulo() { return titulo; }
 
     /**
      * Regresa la descripción del archivo

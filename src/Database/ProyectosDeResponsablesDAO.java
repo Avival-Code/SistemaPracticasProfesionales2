@@ -60,7 +60,7 @@ public class ProyectosDeResponsablesDAO implements ProyectosDeResponsablesDAOInt
      * @return lista de IDs de poyectos
      */
     @Override
-    public List<Integer> Read( int idResponsable ) {
+    public List< Integer > ReadProyectos( int idResponsable ) {
         List< Integer > idProyectos = new ArrayList<>();
         MySqlConnection connection = new MySqlConnection();
         connection.StartConnection();
@@ -84,6 +84,33 @@ public class ProyectosDeResponsablesDAO implements ProyectosDeResponsablesDAOInt
 
         connection.StopConnection();
         return idProyectos;
+    }
+
+    @Override
+    public int ReadResponsable( int idProyecto ) {
+        int idResponsable = -1;
+        MySqlConnection connection = new MySqlConnection();
+        connection.StartConnection();
+
+        try {
+            String query = "SELECT * FROM ProyectosDeResponsables WHERE IDProyecto = ?;";
+            PreparedStatement statement = connection.GetConnection().prepareStatement( query );
+            statement.setInt( 1, idProyecto );
+            statement.executeQuery();
+            ResultSet result = statement.getResultSet();
+
+            while( result.next() ) {
+                idResponsable = result.getInt( 1 );
+            }
+
+            result.close();
+            statement.close();
+        } catch( Exception exception ) {
+            exception.printStackTrace();
+        }
+
+        connection.StopConnection();
+        return idResponsable;
     }
 
     /**
@@ -123,7 +150,7 @@ public class ProyectosDeResponsablesDAO implements ProyectosDeResponsablesDAOInt
         boolean wasCreated = false;
         MySqlConnection connection = new MySqlConnection();
         connection.StartConnection();
-        List< Integer > proyectosActuales = Read( idResponsable );
+        List< Integer > proyectosActuales = ReadProyectos( idResponsable );
 
         for( int i = 0; i < idProyectos.size(); i++ ) {
             if( !proyectosActuales.contains( idProyectos.get( i ) ) ) {

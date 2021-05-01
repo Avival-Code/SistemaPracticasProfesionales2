@@ -147,9 +147,10 @@ public class SelectProjectsController implements Initializable {
      */
     public void SendSelection() {
         if( Selected3Projects() ) {
-            proyectosSeleccionados.Create( LoginSession.GetInstance().GetEstudiante().GetMatricula(), GetSelectedProjects() );
+            proyectosSeleccionados.Create( LoginSession.GetInstance().GetEstudiante().getMatricula(), GetSelectedProjects() );
             LoginSession.GetInstance().GetEstudiante().SetEstadoEstudiante( EstadoEstudiante.AsignacionPendiente );
             estudiantes.Update( LoginSession.GetInstance().GetEstudiante() );
+            errorText.setText( "" );
             successText.setText( outputMessages.ProjectSelectionSuccessful() );
         }
     }
@@ -184,7 +185,7 @@ public class SelectProjectsController implements Initializable {
     private void SetUserInformation() {
         nameText.setText( LoginSession.GetInstance().GetEstudiante().getNombres() );
         lastNameText.setText( LoginSession.GetInstance().GetEstudiante().GetApellidos() );
-        matriculaText.setText( LoginSession.GetInstance().GetEstudiante().GetMatricula() );
+        matriculaText.setText( LoginSession.GetInstance().GetEstudiante().getMatricula() );
     }
 
     /**

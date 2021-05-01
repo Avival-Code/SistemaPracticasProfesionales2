@@ -77,9 +77,6 @@ public class ReportsScreenController implements Initializable {
     private TableColumn< Reporte, String > nameColumn;
 
     @FXML
-    private TableColumn< Reporte, String > keyColumn;
-
-    @FXML
     private TableColumn< Reporte, String > dateColumn;
 
     /**
@@ -102,7 +99,7 @@ public class ReportsScreenController implements Initializable {
     private void SetUserInformation() {
         nameText.setText( LoginSession.GetInstance().GetEstudiante().getNombres() );
         lastNameText.setText( LoginSession.GetInstance().GetEstudiante().GetApellidos() );
-        matriculaText.setText( LoginSession.GetInstance().GetEstudiante().GetMatricula() );
+        matriculaText.setText( LoginSession.GetInstance().GetEstudiante().getMatricula() );
     }
 
     /**
@@ -110,7 +107,6 @@ public class ReportsScreenController implements Initializable {
      */
     private void SetCellValueFactory() {
         nameColumn.setCellValueFactory( new PropertyValueFactory<>( "titulo" ) );
-        keyColumn.setCellValueFactory( new PropertyValueFactory<>( "idDocumento" ) );
         dateColumn.setCellValueFactory( new PropertyValueFactory<>( "fechaEntrega" ) );
     }
 
@@ -196,7 +192,7 @@ public class ReportsScreenController implements Initializable {
         List< Expediente > expedienteList = expedientes.ReadAll();
         Expediente userExpediente = null;
         for( Expediente expediente : expedienteList ) {
-            if( expediente.GetMatricula().equals( LoginSession.GetInstance().GetEstudiante().GetMatricula() ) &&
+            if( expediente.GetMatricula().equals( LoginSession.GetInstance().GetEstudiante().getMatricula() ) &&
                 proyectos.Read( expediente.GetIDProyecto() ).GetEstado() == EstadoProyecto.Asignado ) {
                 userExpediente = expediente;
             }

@@ -32,7 +32,9 @@ public interface ResponsablesOrganizacionDAOInterface {
      * @param idOrganizacion
      * @return
      */
-    List< Integer > Read( int idOrganizacion );
+    List< Integer > ReadResponsables( int idOrganizacion );
+
+    int ReadOrganizacion( int idResponsable );
 
     /**
      * Elimina un ID de responsable proyecto relacionado con la organizacion vinculada
