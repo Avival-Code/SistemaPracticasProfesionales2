@@ -225,4 +225,11 @@ public class OutputMessages {
      * @return una cadena con el mensaje de error
      */
     public String PasswordsDontMatch() { return "Las contraseñas no coinciden."; }
+
+    /**
+     * Mensaje mostrado cuando la dirección introducida por el usuario
+     * es inválida
+     * @return una cadena con el mensaje de error
+     */
+    public String DireccionInvalida() { return "La dirección es inválida.."; }
 }

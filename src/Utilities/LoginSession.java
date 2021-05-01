@@ -6,7 +6,7 @@
  * Singleton encargado de almacenar la información de la
  * sesión actual del sistema de prácticas profesionales.
  */
-package sample;
+package Utilities;
 
 import Entities.Coordinador;
 import Entities.Docente;

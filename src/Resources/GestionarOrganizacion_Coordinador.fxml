@@ -53,7 +53,7 @@
                     <children>
                         <Button fx:id="btnConsultarOrganizacion" mnemonicParsing="false" prefHeight="25.0" prefWidth="238.0" text="Consultar Organización" textFill="#e84545" />
                         <Button fx:id="btnRegistrarOrganizacion" mnemonicParsing="false" onMouseClicked="#ClicRegistrar" prefHeight="25.0" prefWidth="228.0" text="Registrar Organización" textFill="#e84545" />
-                        <Button fx:id="btnEliminarOrganizacion" mnemonicParsing="false" prefHeight="25.0" prefWidth="258.0" text="Eliminar Organización" textFill="#e84545" />
+                        <Button fx:id="btnEliminarOrganizacion" mnemonicParsing="false" onMouseClicked="#ClicEliminarRegistro" prefHeight="25.0" prefWidth="258.0" text="Eliminar Organización" textFill="#e84545" />
                         <Button fx:id="btnModificarOrganizacion" mnemonicParsing="false" prefHeight="25.0" prefWidth="235.0" text="Modificar Organización" textFill="#e84545" />
                     </children>
                 </VBox>

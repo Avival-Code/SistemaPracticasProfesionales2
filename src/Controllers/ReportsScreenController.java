@@ -27,7 +27,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-import sample.LoginSession;
+import Utilities.LoginSession;
 import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;

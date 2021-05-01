@@ -26,6 +26,8 @@ public class InputValidator {
     private final int maxPasswordSize = 20;
     private final int phoneSize = 10;
     private final int nrcSize = 5;
+    private final int minDireccion = 10;
+    private final int maxDireccion = 200;
 
     /**
      * Verifica que la información de una instancia de Estudiante sea valida y que las
@@ -119,6 +121,15 @@ public class InputValidator {
     public boolean IsEmailValid( String email ) {
         return IsStringValidSize( email, minEmailSize, maxEmailSize ) && HasSingleAtChar( email ) &&
                 !HasInvalidCharacter( email ) && !HasSpaces( email );
+    }
+
+    /**
+     * Verifica que la direccion introducida por el usuario sea valida
+     * @param direccion la cadena con los nombres
+     * @return true si la sireccion es valida, false si no
+     */
+    public boolean DireccionValida( String direccion ) {
+        return IsStringValidSize( direccion, minDireccion, maxDireccion );
     }
 
     /**
