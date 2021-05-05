@@ -141,11 +141,18 @@ public class OutputMessages {
             "GestionarProyecto_Coordinador."; }
 
     /**
-     * Mensaje mostrado cuando se registra un nuevo Estudiante a la
+     * Mensaje mostrado cuando se registra una nueva Organización a la
      * base de datos de manera exitosa.
      * @return una cadena con el mensaje de éxito
      */
     public String RegistroOrganizacionExitoso() { return "Registro de Organizacion Exitoso"; }
+
+    /**
+     * Mensaje mostrado cuando se registra un nuevo Responsable a la
+     * base de datos de manera exitosa.
+     * @return una cadena con el mensaje de éxito
+     */
+    public String RegistroResponsableExitoso() { return "Registro de Responsable Exitoso"; }
 
     /**
      * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
@@ -173,6 +180,18 @@ public class OutputMessages {
      * @return una cadena con el mensaje de error
      */
     public String StudentAlreadyExists() { return "Ya existe un registro con esa información"; }
+
+    /**
+     * Mensaje mostrado cuando ya existe una OrganizacionVinculada en base de datos
+     * @return una cadena con el mensaje de error
+     */
+    public String OrganizacionExistente() { return "Ya existe una organización con esa información"; }
+
+    /**
+     * Mensaje mostrado cuando ya existe un ResponsableProyecto en base de datos
+     * @return una cadena con el mensaje de error
+     */
+    public String ResponsableExistente() { return "Ya existe un responsable con esa información"; }
 
     /**
      * Mensaje mostrado cuando se quiere acceder a funcionalidad que requiere tener

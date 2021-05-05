@@ -1,6 +1,7 @@
 package Controllers;
 
 import Database.OrganizacionVinculadaDAO;
+import Database.ResponsableProyectoDAO;
 import Entities.OrganizacionVinculada;
 import Utilities.OutputMessages;
 import Utilities.ScreenChanger;
@@ -61,6 +62,9 @@ public class GestionarOrganizacion_Coordinador implements Initializable {
     @FXML
     private Text errorText;
 
+    @FXML
+    private Text successText;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         DatosDeUsuario();
@@ -110,13 +114,15 @@ public class GestionarOrganizacion_Coordinador implements Initializable {
         EliminarRegistro( fila );
     }
 
-    public void ObtenerInformacion( String fila ){
-
+    public String ObtenerInformacion( String fila ){
+        ResponsableProyectoDAO responsableProyecto;
+        //int resultado = responsableProyecto;
+        return fila;
     }
 
     public void EliminarRegistro( String fila ){
         System.out.println("¿Seguro que quieres eliminar la organización?");
-        if( organizacionVinculada.Delete ( obtenerOrganizacionVinculada,null ) ) {
+        if( organizacionVinculada.Delete ( 0,null ) ) {
             errorText.setText( "" );
             successText.setText( outputMessages.RegistroOrganizacionExitoso() );
         }

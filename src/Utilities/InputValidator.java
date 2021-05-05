@@ -9,6 +9,8 @@
 package Utilities;
 
 import Entities.Estudiante;
+import Entities.OrganizacionVinculada;
+import Entities.ResponsableProyecto;
 
 /**
  * Clase encargada de validar la información introducida
@@ -41,6 +43,26 @@ public class InputValidator {
                 IsMatriculaValid( student.getMatricula() ) && IsTelephoneValid( student.GetTelefono() ) &&
                 IsEmailValid( student.GetCorreo() ) && IsNRCValid( student.getNrc() ) &&
                 IsPasswordValid( student.GetContrasena() ) && DoPasswordsMatch( student.GetContrasena(), passwordConfirm );
+    }
+
+    /**
+     * Verifica que la información de una instancia de Organización Vinculada sea valida
+     * @param organizacionVinculada la instancia de OrganizacionVinculada que se desea verificar
+     * @return true si todos los campos de la OrganizacionVinculada son validos, false si no
+     */
+    public boolean IsOrganizationInformationValid(OrganizacionVinculada organizacionVinculada ) {
+        return AreNamesValid( organizacionVinculada.getNombre() ) && DireccionValida( organizacionVinculada.getDireccion() ) &&
+                IsEmailValid( organizacionVinculada.getCorreo() ) && IsTelephoneValid( organizacionVinculada.getTelefono() );
+    }
+
+    /**
+     * Verifica que la información de una instancia de ResponsableProyecto sea valida
+     * @param responsableProyecto la instancia de ResponsableProyecto que se desea verificar
+     * @return true si todos los campos de la OrganizacionVinculada son validos, false si no
+     */
+    public boolean IsResponsableInformationValid(ResponsableProyecto responsableProyecto ) {
+        return AreNamesValid( responsableProyecto.GetNombres() ) && AreLastNamesValid( responsableProyecto.GetApellidos() ) &&
+                IsEmailValid( responsableProyecto.GetCorreo() ) && IsTelephoneValid( responsableProyecto.GetTelefono() );
     }
 
     /**

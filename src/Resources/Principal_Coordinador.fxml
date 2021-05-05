@@ -22,7 +22,7 @@
                             </children></AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="195.0" prefWidth="154.0" style="-fx-background-color: #2b2e4a;">
                             <children>
-                                <VBox alignment="BOTTOM_CENTER" fillWidth="false" layoutY="119.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="177.0" prefWidth="292.0" style="-fx-background-color: #2b2e4a;">
+                                <VBox alignment="BOTTOM_CENTER" fillWidth="false" layoutY="118.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="177.0" prefWidth="292.0" style="-fx-background-color: #2b2e4a;">
                                     <children>
                                         <Button fx:id="btnAsignarProyecto" mnemonicParsing="false" prefHeight="25.0" prefWidth="313.0" text="Asignar Proyecto" textFill="#e84545" />
                                         <Button fx:id="btnGenerarOficioAsignacion" mnemonicParsing="false" prefHeight="25.0" prefWidth="343.0" text="Generar Ofició De Asignación" textFill="#e84545" />
@@ -30,7 +30,7 @@
                                         <Button fx:id="btnModificarEstudiante" mnemonicParsing="false" prefHeight="25.0" prefWidth="346.0" text="Modificar Estudiante" textFill="#e84545" />
                                         <Button fx:id="btnEliminarEstudiante" mnemonicParsing="false" prefHeight="25.0" prefWidth="310.0" text="Eliminar Estudiante" textFill="#e84545" />
                                         <Button fx:id="btnValidarInscripcion" mnemonicParsing="false" prefHeight="25.0" prefWidth="333.0" text="Validar Inscripción" textFill="#e84545" />
-                                        <Button fx:id="btnCerrarSesion" mnemonicParsing="false" prefHeight="25.0" prefWidth="301.0" text="Cerrar Sesión" textFill="#e84545" />
+                                        <Button fx:id="btnCerrarSesion" mnemonicParsing="false" onMouseClicked="#CerrarSesion" prefHeight="25.0" prefWidth="301.0" text="Cerrar Sesión" textFill="#e84545" />
                                     </children>
                                 </VBox>
                                 <Text fx:id="errorText" fill="#e84545" layoutX="14.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" />
@@ -77,7 +77,7 @@
                     <children>
                         <Button fx:id="btnGenerarReporte" mnemonicParsing="false" prefHeight="25.0" prefWidth="310.0" text="Generar Reporte" textFill="#e84545" />
                         <Button fx:id="btnVisualizarReportes" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="352.0" text="Visualizar Reportes" textFill="#e84545" />
-                        <Button fx:id="btnConsultarOrganizacion" layoutX="10.0" layoutY="35.0" onMouseClicked="#MostrarPantallaGestionarOrganizacion" mnemonicParsing="false" prefHeight="25.0" prefWidth="327.0" text="Consultar Organización" textFill="#e84545" />
+                        <Button fx:id="btnConsultarOrganizacion" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#MostrarPantallaGestionarOrganizacion" prefHeight="25.0" prefWidth="327.0" text="Consultar Organización" textFill="#e84545" />
                     </children>
                 </VBox>
             </children>
