@@ -123,6 +123,36 @@ public class EstudianteDAO implements EstudianteDAOInterface{
         return estudiante;
     }
 
+    @Override
+    public List< Estudiante > ReadByGroup( String NRC ) {
+        List< Estudiante > estudiantes = new ArrayList<>();
+        MySqlConnection connection = new MySqlConnection();
+        connection.StartConnection();
+
+        try {
+            String query = "SELECT * FROM Estudiante WHERE NRC = ?;";
+            PreparedStatement statement = connection.GetConnection().prepareStatement( query );
+            statement.setString( 1,  NRC );
+            statement.executeQuery();
+            ResultSet result = statement.getResultSet();
+
+            while( result.next() )
+            {
+                UsuarioUV usuarioTemp = usuarios.Read( result.getInt( 2 ) );
+                estudiantes.add( new Estudiante( usuarioTemp, result.getString( 1 ), result.getString( 3 ),
+                        EstadoEstudiante.values()[ result.getInt( 4 ) ] ) );
+            }
+
+            result.close();
+            statement.close();
+        } catch( Exception exception ) {
+            exception.printStackTrace();
+        }
+
+        connection.StopConnection();
+        return estudiantes;
+    }
+
     /**
      * Actualiza la información de un estudiante en la base de datos.
      * @param estudiante la versión actualizada del Estudiante

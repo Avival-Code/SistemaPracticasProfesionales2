@@ -40,6 +40,14 @@ public interface EstudianteDAOInterface {
     Estudiante Read( String matricula );
 
     /**
+     * Regresa un estudiante de la base de datos. Utiliza el grupo
+     * del estudiante para ubicarlo en la base de datos.
+     * @param NRC la matrícula del Estudiante deseado
+     * @return estudiante con la información de base de datos.
+     */
+    List< Estudiante > ReadByGroup( String NRC );
+
+    /**
      * Actualiza un Estudiante en la base de datos con los datos del
      * Estudiante introducido.
      * @param estudiante la versión actualizada del Estudiante
