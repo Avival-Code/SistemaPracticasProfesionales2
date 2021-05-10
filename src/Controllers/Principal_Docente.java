@@ -1,7 +1,7 @@
 /*
  * Autor: Dan Javier Olvera Villeda
  * Versión: 1.0
- * Fecha Creación: 30 - mar - 2021
+ * Fecha Creación: 31 - mar - 2021
  * Descripción:
  * Clase encargada de manejar los eventos de la pantalla
  * Principal_Docente.
@@ -84,6 +84,9 @@ public class Principal_Docente implements Initializable {
         MostrarArchivosSubidos();
     }
 
+    /**
+     * Muestra los archivos subidos por el docente al sistema
+     */
     public void MostrarArchivosSubidos() {
         tbvArchivosSubidos.getItems().clear();
         for (ArchivoConsulta archivoConsulta : archivoConsultas) {

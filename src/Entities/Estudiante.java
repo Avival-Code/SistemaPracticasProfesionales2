@@ -107,6 +107,22 @@ public class Estudiante extends UsuarioUV {
     }
 
     /**
+     * Regresa un componente checkbox que representa la validez de una inscripción
+     * @return componente Checkbox de JavaFX
+     */
+    public CheckBox getValidado() {
+        return validado;
+    }
+
+    /**
+     * Regresa un componente checkbox que representa una inscripción depurada
+     * @return componente Checkbox de JavaFX
+     */
+    public CheckBox getDepurado() {
+        return depurado;
+    }
+
+    /**
      * Cambia el valor del nrc del Estudiante al valor introducido
      * @param nrcIn el nuevo nrc del estudiante
      */
@@ -121,4 +137,5 @@ public class Estudiante extends UsuarioUV {
     public void SetEstadoEstudiante( EstadoEstudiante estadoIn ) {
         estado = estadoIn;
     }
+
 }
