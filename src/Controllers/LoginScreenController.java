@@ -13,7 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.scene.input.MouseEvent;
-import sample.LoginSession;
+import Utilities.LoginSession;
 import Database.CoordinadorDAO;
 import Database.DocenteDAO;
 import Database.EstudianteDAO;

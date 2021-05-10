@@ -14,6 +14,7 @@ import Entities.ArchivoConsulta;
 import Entities.Estudiante;
 import Entities.Proyecto;
 import Entities.UsuarioUV;
+import Utilities.LoginSession;
 import Utilities.OutputMessages;
 import Utilities.ScreenChanger;
 import Utilities.SelectionContainer;
@@ -28,7 +29,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-import Utilities.LoginSession;
 
 import java.io.File;
 import java.net.URL;

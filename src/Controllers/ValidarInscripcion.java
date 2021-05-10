@@ -1,7 +1,9 @@
 package Controllers;
 
+import Entities.Estudiante;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -23,24 +25,20 @@ public class ValidarInscripcion implements Initializable {
     private Label lbPeriodo;
     @FXML
     private Label lbFecha;
-    //@FXML
-    //private TableView< TableCell, String > tbvEstudiantes;
     @FXML
-    private TableColumn tcNombre;
+    private TableView< Estudiante > tbvEstudiantes;
     @FXML
-    private TableColumn tcMatricula;
+    private TableColumn< Estudiante, String > tcNombre;
     @FXML
-    private TableColumn tcValidar;
+    private TableColumn< Estudiante, String> tcMatricula;
     @FXML
-    private TableColumn tc
+    private TableColumn< Estudiante, CheckBox> tcValidar;
+    @FXML
+    private TableColumn< Estudiante, CheckBox> tcDepurar;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
-
-}
-
-class CellChoser {
 
 }

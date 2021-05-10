@@ -35,6 +35,15 @@ public class OutputMessages {
     public String StudentMainMenuMissing() { return "No se encontró el archivo FXML del menú principal de estudiante"; }
 
     /**
+     * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
+     * IniciarSesion
+     * @return una cadena con el mensaje de error
+     */
+    public String MainScreenDocenteMissing() {
+        return "No se encontro el archivo FXML de la pantalla principal de los docentes";
+    }
+
+    /**
      * Mensaje mostrado en caso de no encontrar el archivo fxml de la pantalla
      * EscogerProyectos_Estudiante
      * @return una cadena con el mensaje de error

@@ -9,6 +9,7 @@
 package Entities;
 
 import Enumerations.EstadoEstudiante;
+import javafx.scene.control.CheckBox;
 
 /**
  * Clase que contiene la información de Estudiante. Hereda
@@ -18,6 +19,8 @@ public class Estudiante extends UsuarioUV {
     private String matricula;
     private String nrc;
     private EstadoEstudiante estado;
+    private CheckBox validado;
+    private CheckBox depurado;
 
     /**
      * Constructor sin parametros de Estudiante. Crea una instancia
@@ -28,6 +31,8 @@ public class Estudiante extends UsuarioUV {
         matricula = "";
         nrc = "";
         estado = null;
+        validado = null;
+        depurado = null;
     }
 
     /**
@@ -48,9 +53,9 @@ public class Estudiante extends UsuarioUV {
      * @param nrcIn el nrc al que pertenece el estudiante
      * @param estadoIn el estado actual del estudiante
      */
-    public Estudiante( UsuarioUV usuario, String matriculaIn, String nrcIn, EstadoEstudiante estadoIn ) {
+    public Estudiante( UsuarioUV usuario, String matriculaIn, String nrcIn, EstadoEstudiante estadoIn) {
         this( usuario.idUsuario, usuario.nombres, usuario.apellidos, usuario.usuario, usuario.contrasena, usuario.correoElectronico,
-              usuario.telefono, matriculaIn, nrcIn, estadoIn );
+              usuario.telefono, matriculaIn, nrcIn, estadoIn);
     }
 
     /**
@@ -68,11 +73,13 @@ public class Estudiante extends UsuarioUV {
      * @param estadoIn estado actual del Estudiante.
      */
     public Estudiante( int idIn, String nombresIn, String apellidosIn, String usuarioIn, String contrasenaIn, String correoElectronicoIn,
-                       String telefonoIn, String matriculaIn, String nrcIn, EstadoEstudiante estadoIn ) {
+                       String telefonoIn, String matriculaIn, String nrcIn, EstadoEstudiante estadoIn) {
         super( idIn, nombresIn, apellidosIn, usuarioIn, contrasenaIn, correoElectronicoIn, telefonoIn );
         matricula = matriculaIn;
         nrc = nrcIn;
         estado = estadoIn;
+        validado = new CheckBox();
+        depurado = new CheckBox();
     }
 
     /**

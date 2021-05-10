@@ -1,16 +1,15 @@
 package Controllers;
 
+import Utilities.LoginSession;
 import Utilities.ScreenChanger;
 import Utilities.SelectionContainer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import Utilities.LoginSession;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -52,7 +51,7 @@ public class DescargarDocumento_Docente implements Initializable {
     }
 
     public void ClicRegresar( MouseEvent mouseEvent ) {
-        screenChanger.ShowScreenPrincipalDocente( mouseEvent, errorText);
+        screenChanger.ShowScreenPrincipalDocente( mouseEvent, errorText );
         SelectionContainer.GetInstance().setEstudianteElegido( null );
     }
 }
