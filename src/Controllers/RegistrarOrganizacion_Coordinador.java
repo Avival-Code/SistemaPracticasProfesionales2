@@ -148,7 +148,7 @@ public class RegistrarOrganizacion_Coordinador implements Initializable {
      */
    private OrganizacionVinculada ObtenerOrganizacionVinculada() {
         return new OrganizacionVinculada ( tfNombre.getText(), tfDireccion.getText(), TipoSector.Publico,
-                tfTelefono.getText(),tfCorreoElectronico.getText(),0,ObtenerListaResponsables()); //Aquí se debe agregar la lista de id de responsables
+                tfTelefono.getText(),tfCorreoElectronico.getText(),0,ObtenerListaResponsables());
 
     }
 

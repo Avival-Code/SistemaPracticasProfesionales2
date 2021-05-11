@@ -8,16 +8,20 @@ import Utilities.ScreenChanger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import Utilities.LoginSession;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class GestionarOrganizacion_Coordinador implements Initializable {
     private ScreenChanger screenChanger = new ScreenChanger();
     private OrganizacionVinculadaDAO organizacionVinculada = new OrganizacionVinculadaDAO();
+    private List< OrganizacionVinculada > listaOrganizaciones = new ArrayList<>();
     private OutputMessages outputMessages = new OutputMessages();
 
     @FXML
@@ -68,6 +72,8 @@ public class GestionarOrganizacion_Coordinador implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         DatosDeUsuario();
+        MostrarOrganizaciones();
+        ValorColumnaOrganizacion();
     }
 
     /**
@@ -78,6 +84,19 @@ public class GestionarOrganizacion_Coordinador implements Initializable {
         lbNombres.setText( LoginSession.GetInstance().GetCoordinador().getNombres() );
         lbApellidos.setText( LoginSession.GetInstance().GetCoordinador().GetApellidos() );
         lbNoTrabajador.setText( LoginSession.GetInstance().GetCoordinador().GetNumeroPersonal() );
+    }
+
+    public void MostrarOrganizaciones(){
+        tbOrganizaciones.getItems().clear();
+        listaOrganizaciones = organizacionVinculada.ReadAll();
+        for( OrganizacionVinculada organizacion : listaOrganizaciones){
+            organizacion.getNombre();
+            tbOrganizaciones.getItems().add( organizacion );
+        }
+    }
+
+    private void ValorColumnaOrganizacion() {
+        clnOrganizaciones.setCellValueFactory( new PropertyValueFactory<>( "nombre" ) );
     }
 
     /**
@@ -109,26 +128,22 @@ public class GestionarOrganizacion_Coordinador implements Initializable {
      * @param mouseEvent el evento de mouse que activo la acción.
      */
     public void ClicEliminarRegistro( MouseEvent mouseEvent){
-        String fila = tbOrganizaciones.getSelectionModel().getSelectedItem().getNombre();
-        ObtenerInformacion(fila);
-        EliminarRegistro( fila );
+        if( ExisteSeleccion() ) {
+            Alert deleteAlert = new Alert( Alert.AlertType.CONFIRMATION, outputMessages.ConfirmacionEliminarOrganizacion() );
+            deleteAlert.showAndWait().ifPresent( response -> {
+                if( response == ButtonType.OK ) {
+                    organizacionVinculada.Delete( tbOrganizaciones.getSelectionModel().getSelectedItem().getIdOrganizacion(), tbOrganizaciones.getSelectionModel().getSelectedItem().getResponsables() );
+                    MostrarOrganizaciones();
+                }
+            } );
+        }
     }
 
-    public String ObtenerInformacion( String fila ){
-        ResponsableProyectoDAO responsableProyecto;
-        //int resultado = responsableProyecto;
-        return fila;
-    }
-
-    public void EliminarRegistro( String fila ){
-        System.out.println("¿Seguro que quieres eliminar la organización?");
-        if( organizacionVinculada.Delete ( 0,null ) ) {
-            errorText.setText( "" );
-            successText.setText( outputMessages.RegistroOrganizacionExitoso() );
+    public boolean ExisteSeleccion(){
+        boolean Seleccion = false;
+        if( tbOrganizaciones.getSelectionModel().getSelectedItem() != null ) {
+           Seleccion = true;
         }
-        else {
-            errorText.setText( outputMessages.DatabaseConnectionFailed() );
-            successText.setText( "" );
-        }
+        return Seleccion;
     }
 }

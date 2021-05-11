@@ -27,8 +27,6 @@
                                         <Button fx:id="btnAsignarProyecto" mnemonicParsing="false" prefHeight="25.0" prefWidth="313.0" text="Asignar Proyecto" textFill="#e84545" />
                                         <Button fx:id="btnGenerarOficioAsignacion" mnemonicParsing="false" prefHeight="25.0" prefWidth="343.0" text="Generar Ofició De Asignación" textFill="#e84545" />
                                         <Button fx:id="btnConsultarExpediente" mnemonicParsing="false" prefHeight="25.0" prefWidth="305.0" text="Consultar Expediente" textFill="#e84545" />
-                                        <Button fx:id="btnModificarEstudiante" mnemonicParsing="false" prefHeight="25.0" prefWidth="346.0" text="Modificar Estudiante" textFill="#e84545" />
-                                        <Button fx:id="btnEliminarEstudiante" mnemonicParsing="false" prefHeight="25.0" prefWidth="310.0" text="Eliminar Estudiante" textFill="#e84545" />
                                         <Button fx:id="btnValidarInscripcion" mnemonicParsing="false" prefHeight="25.0" prefWidth="333.0" text="Validar Inscripción" textFill="#e84545" />
                                         <Button fx:id="btnCerrarSesion" mnemonicParsing="false" onMouseClicked="#CerrarSesion" prefHeight="25.0" prefWidth="301.0" text="Cerrar Sesión" textFill="#e84545" />
                                     </children>
@@ -40,7 +38,7 @@
             </children></AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
             <children>
-                <Label id="bold" layoutX="296.0" layoutY="14.0" style="-fx-font-weight: bold;" text="Menu Coordinador" textFill="#e84545">
+                <Label id="bold" layoutX="296.0" layoutY="14.0" style="-fx-font-weight: bold;" text="Menú Coordinador" textFill="#e84545">
                     <font>
                         <Font name="System Bold" size="16.0" />
                     </font></Label>

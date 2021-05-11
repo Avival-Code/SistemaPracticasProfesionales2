@@ -228,6 +228,13 @@ public class OutputMessages {
      */
     public String DeleteStudentConfirmation() { return "¿Estas seguro/a que deseas eliminar el estudiante? " +
                                                        "Esta acción es permanente y no se podrá deshacer."; }
+    /**
+     * Mensaje mostrado cuando se intenta eliminar un estudiante en
+     * la pantalla GestionarEstudiantes_Coordinador
+     * @return una cadena con el mensaje de confirmacion
+     */
+    public String ConfirmacionEliminarOrganizacion() { return "¿Estas seguro/a que deseas eliminar la organización? " +
+            "Esta acción es permanente y no se podrá deshacer."; }
 
     /**
      * mensaje mostrado cuando se introduce información de login que no
