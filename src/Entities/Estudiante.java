@@ -110,7 +110,7 @@ public class Estudiante extends UsuarioUV {
      * Regresa un componente checkbox que representa la validez de una inscripción
      * @return componente Checkbox de JavaFX
      */
-    public CheckBox GetValidado() {
+    public CheckBox getValidado() {
         return validado;
     }
 
@@ -118,8 +118,16 @@ public class Estudiante extends UsuarioUV {
      * Regresa un componente checkbox que representa una inscripción depurada
      * @return componente Checkbox de JavaFX
      */
-    public CheckBox GetDepurado() {
+    public CheckBox getDepurado() {
         return depurado;
+    }
+
+    /**
+     * Regresa el nombre completo del estudiante
+     * @return nombre completo del estudiante
+     */
+    public String getNombre(){
+        return super.getNombreCompleto();
     }
 
     /**
@@ -138,4 +146,18 @@ public class Estudiante extends UsuarioUV {
         estado = estadoIn;
     }
 
+    /**
+     * Cambia el estado del checkbox que representa una inscripción validada
+     * @param validado boolean que cambia el estado del checkbox
+     */
+    public void setValidado(boolean validado) {
+        this.validado.setSelected(validado);
+    }
+    /**
+     * Cambia el estado del checkbox que representa una inscripción depurada
+     * @param depurado boolean que cambia el estado del checkbox
+     */
+    public void setDepurado(boolean depurado) {
+        this.depurado.setSelected(depurado);
+    }
 }
