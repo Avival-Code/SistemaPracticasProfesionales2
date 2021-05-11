@@ -165,4 +165,8 @@ public class Principal_Coordinador implements Initializable {
     public void MostrarPantallaGestionarOrganizacion( MouseEvent mouseEvent ) {
         screenChanger.MostrarPantallaGestionarOrganizacion( mouseEvent, errorText );
     }
+
+    public void MostrarPantallaValidarInscripcion( MouseEvent mouseEvent ) {
+        screenChanger.ShowScreenValidarInscripcion( mouseEvent, errorText );
+    }
 }
