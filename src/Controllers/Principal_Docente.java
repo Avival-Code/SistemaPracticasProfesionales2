@@ -116,7 +116,7 @@ public class Principal_Docente implements Initializable {
         //tcProyectoAsignado.setCellValueFactory( new PropertyValueFactory<>("") );
 
         //Tabla de archivos subidos por el docente
-        tcNombreArchivo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
+        tcNombreArchivo.setCellValueFactory(new PropertyValueFactory<>("titulo") );
         //tcDescripcion.setCellValueFactory( new PropertyValueFactory<>("descripcion") );
     }
 
