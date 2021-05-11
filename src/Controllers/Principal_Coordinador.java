@@ -165,4 +165,13 @@ public class Principal_Coordinador implements Initializable {
     public void MostrarPantallaGestionarOrganizacion( MouseEvent mouseEvent ) {
         screenChanger.MostrarPantallaGestionarOrganizacion( mouseEvent, errorText );
     }
+
+    /**
+     * Cierra la sesión actual y se regresa a la pantalla "IniciarSesión"
+     * @param mouseEvent el evento de mouse que inicio el cambio
+     */
+    public void CerrarSesion( MouseEvent mouseEvent ) {
+        LoginSession.GetInstance().Logout();
+        screenChanger.ShowLoginScreen( mouseEvent, errorText );
+    }
 }
