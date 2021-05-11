@@ -35,6 +35,15 @@ public class OutputMessages {
     public String StudentMainMenuMissing() { return "No se encontró el archivo FXML del menú principal de estudiante"; }
 
     /**
+     * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
+     * IniciarSesion
+     * @return una cadena con el mensaje de error
+     */
+    public String MainScreenDocenteMissing() {
+        return "No se encontro el archivo FXML de la pantalla principal de los docentes";
+    }
+
+    /**
      * Mensaje mostrado en caso de no encontrar el archivo fxml de la pantalla
      * EscogerProyectos_Estudiante
      * @return una cadena con el mensaje de error
@@ -305,6 +314,29 @@ public class OutputMessages {
      * @return una cadena con el mensaje de error
      */
     public String PasswordsDontMatch() { return "Las contraseñas no coinciden."; }
+
+    /**
+     * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
+     * DescargarArchivo_Docente
+     * @return una cadena con el mensaje de error
+     */
+    public String DescargarArchivoScreenMissing() {
+        return "No se encontro el archivo FXML de la pantalla descargar archivo";
+    }
+
+    /**
+     * Mensaje mostrado cuando se ha subido al sistema con exito un archivo
+     * @return una cadena con el mensaje de error
+     */
+    public String UploadSuccesful() {
+        return "El archivo a sido subido al sistema de manera exitosa";
+    }
+
+    /**
+     * Mensaje mostrado cuando no se ha seleccionado ningun estudiante en una tabla
+     * @return una cadena con el mensaje de error
+     */
+    public String EstudianteNoSeleccionado() { return "No se ha seleccionado ningun estudiante "; }
 
     /**
      * Mensaje mostrado cuando la dirección introducida por el usuario

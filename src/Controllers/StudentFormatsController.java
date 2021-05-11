@@ -24,7 +24,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
-import sample.LoginSession;
+import Utilities.LoginSession;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
