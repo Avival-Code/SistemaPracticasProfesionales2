@@ -311,4 +311,8 @@ public class OutputMessages {
      * @return una cadena con el mensaje de error
      */
     public String EstudianteNoSeleccionado() { return "No se ha seleccionado ningun estudiante "; }
+
+    public String ValidarInscripcionScreenMissing() {
+        return "No se encontro el archivo FXML de la pantalla validar inscripcion";
+    }
 }
