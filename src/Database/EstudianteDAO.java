@@ -154,6 +154,40 @@ public class EstudianteDAO implements EstudianteDAOInterface{
     }
 
     /**
+     * Reresa una lista de estudiantes con un mismo estado especificado
+     * @param estado estado del estudiante
+     * @return una lista con los estudiantes de un mismo estado;
+     */
+    public List< Estudiante > ReadByState( int estado ){
+        List< Estudiante > estudiantes = new ArrayList<>();
+        MySqlConnection connection = new MySqlConnection();
+        connection.StartConnection();
+
+        try {
+            String query = "SELECT * FROM Estudiante WHERE Estado = ?;";
+            PreparedStatement statement = connection.GetConnection().prepareStatement( query );
+            statement.setInt( 1,  estado );
+            statement.executeQuery();
+            ResultSet result = statement.getResultSet();
+
+            while( result.next() )
+            {
+                UsuarioUV usuarioTemp = usuarios.Read( result.getInt( 2 ) );
+                estudiantes.add( new Estudiante( usuarioTemp, result.getString( 1 ), result.getString( 3 ),
+                        EstadoEstudiante.values()[ result.getInt( 4 ) ] ) );
+            }
+
+            result.close();
+            statement.close();
+        } catch( Exception exception ) {
+            exception.printStackTrace();
+        }
+
+        connection.StopConnection();
+        return estudiantes;
+    }
+
+    /**
      * Actualiza la información de un estudiante en la base de datos.
      * @param estudiante la versión actualizada del Estudiante
      * @return booleano indicando éxito o fracaso

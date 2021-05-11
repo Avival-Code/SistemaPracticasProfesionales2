@@ -54,7 +54,7 @@
                                                     <children>
                                                         <Text fx:id="errorText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="174.13671875" />
                                                     </children></VBox>
-                                                <Button contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#Logout" prefHeight="25.0" prefWidth="185.0" text="Regresar" />
+                                                <Button contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#ClicRegresar" prefHeight="25.0" prefWidth="185.0" text="Regresar" />
                                             </children>
                                         </VBox>
                                     </children>

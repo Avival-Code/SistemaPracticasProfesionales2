@@ -110,7 +110,7 @@ public class Estudiante extends UsuarioUV {
      * Regresa un componente checkbox que representa la validez de una inscripción
      * @return componente Checkbox de JavaFX
      */
-    public CheckBox getValidado() {
+    public CheckBox GetValidado() {
         return validado;
     }
 
@@ -118,7 +118,7 @@ public class Estudiante extends UsuarioUV {
      * Regresa un componente checkbox que representa una inscripción depurada
      * @return componente Checkbox de JavaFX
      */
-    public CheckBox getDepurado() {
+    public CheckBox GetDepurado() {
         return depurado;
     }
 
