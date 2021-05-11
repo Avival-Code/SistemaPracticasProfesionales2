@@ -23,6 +23,7 @@
                             <children>
                                 <VBox alignment="BOTTOM_CENTER" layoutY="244.0" prefHeight="52.0" prefWidth="298.0" style="-fx-background-color: #2b2e4a;">
                                     <children>
+                              <Button mnemonicParsing="false" text="Button" />
                                         <Button fx:id="btnGestionarProyectos" mnemonicParsing="false" onMouseClicked="#ClicGestionarProyecto" prefHeight="25.0" prefWidth="313.0" text="Gestionar Proyecto" textFill="#e84545" />
                                         <Button fx:id="btnRegresar" mnemonicParsing="false" onMouseClicked="#ClicRegresar" prefHeight="25.0" prefWidth="386.0" text="Regresar" textFill="#e84545" />
                                     </children>
