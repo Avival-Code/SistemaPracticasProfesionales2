@@ -45,8 +45,6 @@ public class ConsultarExpediente_Docente implements Initializable {
     @FXML
     private Text errorText;
     @FXML
-    private Text confirmationText;
-    @FXML
     private Label lbNombreEstudiante;
     @FXML
     private Label lbNombreProyecto;
@@ -68,11 +66,15 @@ public class ConsultarExpediente_Docente implements Initializable {
      * y su expediente
      */
     private void MostrarInfoEstudiante() {
-        lbNombreEstudiante.setText( estudianteSeleccionado.getNombreCompleto() );
-        lbNombreProyecto.setText( proyectoDAO.Read( expedienteEstudiante.GetIDProyecto() ).getNombre() );
-        ConfigurarColumnasTabla();
-        RecuperarArchivosExpediente();
-        MostrarArchivosSubidos();
+        try{
+            lbNombreEstudiante.setText( estudianteSeleccionado.getNombreCompleto() );
+            lbNombreProyecto.setText( proyectoDAO.Read( expedienteEstudiante.GetIDProyecto() ).getNombre() );
+            ConfigurarColumnasTabla();
+            RecuperarArchivosExpediente();
+            MostrarArchivosSubidos();
+        }catch(NullPointerException exception){
+            errorText.setText(outputMessages.NoExpedient());
+        }
     }
 
     /**

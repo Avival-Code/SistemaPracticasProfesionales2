@@ -33,6 +33,12 @@ public interface ArchivoConsultaDAOInterface {
     List< ArchivoConsulta > ReadAll();
 
     /**
+     * Regresa una lista de ArchivoConsulta subidos por un docente especificado
+     * @return una lista de ArchivoConsulta
+     */
+    List< ArchivoConsulta > ReadFilesByDocente(String numeroPersonal);
+
+    /**
      * Regresa una instancia de ArchivoConsulta de la base de datos
      * @param idArchivo el ID del archivo deseado
      * @return una instancia ArchivoConsulta

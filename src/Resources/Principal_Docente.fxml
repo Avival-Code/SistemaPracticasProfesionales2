@@ -61,7 +61,7 @@
                                        <children>
                                           <Text fx:id="errorText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="174.13671875" />
                                        </children></VBox>
-                                    <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="185.0" text="Reportar problema" onMouseClicked="#ClicReportarProblema"/>
+                                    <Button mnemonicParsing="false" onMouseClicked="#ClicReportarProblema" prefHeight="25.0" prefWidth="185.0" text="Reportar problema" />
                                     <Button contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#Logout" prefHeight="25.0" prefWidth="185.0" text="Cerrar sesión" />
                                  </children>
                               </VBox>
@@ -116,14 +116,15 @@
                               </Label>
                               <TableView fx:id="tbvArchivosSubidos" prefHeight="248.0" prefWidth="791.0">
                                  <columns>
-                                    <TableColumn fx:id="tcNombreArchivo" prefWidth="295.0" text="Nombre" />
-                                    <TableColumn fx:id="tcDescripcion" prefWidth="495.0" text="Descripcion" />
+                                    <TableColumn fx:id="tcNombreArchivo" prefWidth="439.0" text="Nombre" />
+                                    <TableColumn fx:id="tcTipo" prefWidth="189.0" text="Tipo" />
+                                    <TableColumn fx:id="tcTamanio" prefWidth="162.0" text="Tamaño" />
                                  </columns>
                               </TableView>
                               <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="546.0" spacing="10.0">
                                  <children>
                                     <Button mnemonicParsing="false" onMouseClicked="#irPantallaSubirArchivos" text="Subir archivo" />
-                                    <Button mnemonicParsing="false" text="Eliminar archivo" />
+                                    <Button mnemonicParsing="false" onMouseClicked="#ClicEliminarArchivo" text="Eliminar archivo" />
                                     <Text fx:id="successText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="463.0" />
                                  </children>
                                  <VBox.margin>

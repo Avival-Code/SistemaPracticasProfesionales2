@@ -76,15 +76,31 @@ public class Documento {
     }
 
     /**
+     * Regresa la extension del documento
+     * @return el tipo de documento
+     */
+    public String getTipo(){
+        int separador = descripcion.getName().lastIndexOf('.');
+        String tipo = (separador == -1) ? "" : descripcion.getName().substring(separador + 1);
+        return tipo;
+    }
+
+    /**
+     * Regresa el tamaño en megabytes (MB) del documento
+     * @return el tamaño en MB del documento
+     */
+    public double getTamanio(){
+        double tamanio = (descripcion.length() / (1024 * 1024));
+        return tamanio;
+    }
+
+    /**
      * Regresa el nombre del archivo, asi como su tamaño en megabytes
      * @return nombre del archivo y tamaño en MB
      */
     public String getDescripcionArchivo(){
-        System.out.println(descripcion.getName());
-        int separador = descripcion.getName().lastIndexOf('.');
-        String tipo = (separador == -1) ? "" : descripcion.getName().substring(separador + 1);
-        return "Tipo: " + tipo + " " +
-               "Tamaño: " + descripcion.length() / (1024 * 1024) + " MB";
+        return "Tipo: " + getTipo() + " " +
+               "Tamaño: " + getTamanio() + " MB";
     }
 
     /**

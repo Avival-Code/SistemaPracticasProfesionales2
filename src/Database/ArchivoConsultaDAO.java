@@ -119,6 +119,40 @@ public class ArchivoConsultaDAO implements ArchivoConsultaDAOInterface {
     }
 
     /**
+     * Regresa una lista de ArchivoConsulta subidos por un docente especificado
+     * @return una lista de ArchivoConsulta
+     */
+    @Override
+    public List< ArchivoConsulta > ReadFilesByDocente(String numeroPersonal) {
+        List< ArchivoConsulta > archivos = new ArrayList<>();
+        MySqlConnection connection = new MySqlConnection();
+        connection.StartConnection();
+
+        try {
+            String query = "SELECT * FROM ArchivoConsulta WHERE NumeroPersonal = ?;";
+            PreparedStatement statement = connection.GetConnection().prepareStatement( query );
+            statement.setString( 1, numeroPersonal );
+            statement.executeQuery();
+            ResultSet result = statement.getResultSet();
+
+            while( result.next() ) {
+                String titulo = result.getString( 2 );
+                archivos.add( new ArchivoConsulta( result.getInt( 1 ),
+                        titulo, creator.CreateFile( titulo, result.getBlob( 3 ) ),
+                        result.getString( 4 ) ) );
+            }
+
+            result.close();
+            statement.close();
+        } catch( Exception exception ) {
+            exception.printStackTrace();
+        }
+
+        connection.StopConnection();
+        return archivos;
+    }
+
+    /**
      * Actualiza la información de un archivo en la base de datos.
      * @param archivo el ArchivoConsulta con su información actualizada
      * @return booleano indicando éxito o fracaso

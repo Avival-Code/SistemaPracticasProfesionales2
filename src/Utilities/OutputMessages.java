@@ -379,4 +379,29 @@ public class OutputMessages {
     public String ReportarProblemaScreenMissing() {
         return "No se encontro el archivo FXML de la pantalla reportar problema";
     }
+
+    /**
+     * Mensaje mostrado en caso de no en encontrar un expediente para un estudiante especifico
+     * @return una cadena con uel mensaje de error
+     */
+    public String NoExpedient() {
+        return "El estudiante no tiene expediente";
+    }
+
+    /**
+     * Mensaje mostrad en caso de encontrar que la extensión de un archivo es invalido, es decir
+     * que no sea ni pdf, ni doc, ni docx
+     * @return una cadena con el mensaje de error
+     */
+    public String InvalidFileExtension() {
+        return "El archivo que se trata de subir no es de un tipo valido";
+    }
+
+    /**
+     * Mensaje mostrado al eliminar un archivo de consulta de manera exitosa
+     * @return una cadena con el mensaje de exito
+     */
+    public String DeleteFileSucceded() {
+        return "El archivo ha sido eliminado";
+    }
 }

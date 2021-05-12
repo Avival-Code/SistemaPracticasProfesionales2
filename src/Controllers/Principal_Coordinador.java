@@ -174,4 +174,12 @@ public class Principal_Coordinador implements Initializable {
         LoginSession.GetInstance().Logout();
         screenChanger.ShowLoginScreen( mouseEvent, errorText );
     }
+
+    /**
+     * Cambia a la pantalla ValidarInscripcion
+     * @param mouseEvent el evento del mouse que inicio el cambio
+     */
+    public void ClicValidarInscripcion(MouseEvent mouseEvent) {
+        screenChanger.ShowScreenValidarInscripcion( mouseEvent, errorText );
+    }
 }

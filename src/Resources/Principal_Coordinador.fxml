@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #2b2e4a;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Principal_Coordinador">
+<SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #2b2e4a;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Principal_Coordinador">
     <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="122.0">
             <children>
@@ -27,7 +36,7 @@
                                         <Button fx:id="btnAsignarProyecto" mnemonicParsing="false" prefHeight="25.0" prefWidth="313.0" text="Asignar Proyecto" textFill="#e84545" />
                                         <Button fx:id="btnGenerarOficioAsignacion" mnemonicParsing="false" prefHeight="25.0" prefWidth="343.0" text="Generar Ofició De Asignación" textFill="#e84545" />
                                         <Button fx:id="btnConsultarExpediente" mnemonicParsing="false" prefHeight="25.0" prefWidth="305.0" text="Consultar Expediente" textFill="#e84545" />
-                                        <Button fx:id="btnValidarInscripcion" mnemonicParsing="false" prefHeight="25.0" prefWidth="333.0" text="Validar Inscripción" textFill="#e84545" />
+                                        <Button fx:id="btnValidarInscripcion" mnemonicParsing="false" onMouseClicked="#ClicValidarInscripcion" prefHeight="25.0" prefWidth="333.0" text="Validar Inscripción" textFill="#e84545" />
                                         <Button fx:id="btnCerrarSesion" mnemonicParsing="false" onMouseClicked="#CerrarSesion" prefHeight="25.0" prefWidth="301.0" text="Cerrar Sesión" textFill="#e84545" />
                                     </children>
                                 </VBox>

@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DescargarDocumento_Docente">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DescargarDocumento_Docente">
    <children>
       <SplitPane dividerPositions="0.17935871743486975" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -67,7 +74,7 @@
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="398.0" prefWidth="443.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label text="ARCHIVOS SUBIDOS">
+                        <Label text="DOCUMENTOS SUBIDOS">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -78,15 +85,25 @@
                               <Label fx:id="lbNombreEstudiante" text="..." />
                            </children>
                         </HBox>
-                        <VBox alignment="TOP_RIGHT" prefHeight="319.0" prefWidth="423.0" spacing="10.0">
+                        <VBox alignment="TOP_RIGHT" prefHeight="513.0" prefWidth="796.0" spacing="10.0">
                            <children>
-                              <TableView fx:id="tbvArchivosSubidos" prefHeight="171.0" prefWidth="423.0">
+                              <TableView fx:id="tbvDocumentosSubidos" prefHeight="435.0" prefWidth="796.0">
                                 <columns>
-                                  <TableColumn fx:id="tcNombreArchivo" prefWidth="296.0" text="Nombre" />
-                                  <TableColumn fx:id="tcDescripcion" minWidth="6.0" prefWidth="499.0" text="Descripcion" />
+                                  <TableColumn fx:id="tcNombreDocumento" prefWidth="435.0" text="Nombre" />
+                                  <TableColumn fx:id="tcTipo" minWidth="6.0" prefWidth="231.0" text="Tipo" />
+                                    <TableColumn fx:id="tcPeso" minWidth="6.0" prefWidth="129.0" text="Peso" />
                                 </columns>
                               </TableView>
-                              <Button mnemonicParsing="false" text="Descargar archivo" />
+                              <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Text fx:id="successText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="373.13671875">
+                                       <HBox.margin>
+                                          <Insets right="10.0" top="5.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                    <Button mnemonicParsing="false" onMouseClicked="#ClicDescargarDocumento" text="Descargar documento" />
+                                 </children>
+                              </HBox>
                            </children>
                            <VBox.margin>
                               <Insets />

@@ -126,7 +126,8 @@ public class Estudiante extends UsuarioUV {
      * Regresa el nombre completo del estudiante
      * @return nombre completo del estudiante
      */
-    public String getNombre(){
+    @Override
+    public String getNombreCompleto(){
         return super.getNombreCompleto();
     }
 
