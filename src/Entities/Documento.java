@@ -76,6 +76,15 @@ public class Documento {
     }
 
     /**
+     * Regresa el nombre del archivo, asi como su tamaño en megabytes
+     * @return nombre del archivo y tamaño en MB
+     */
+    public String getDescripcionArchivo(){
+        return "Nombre: " + descripcion.getName() +
+               "Tamaño: " + descripcion.length() / (1024 * 1024) + " MB";
+    }
+
+    /**
      * Regresa la fecha de entrega del documento
      * @return la fecha de entrega
      */
