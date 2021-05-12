@@ -3,8 +3,10 @@ package Controllers;
 import Database.OrganizacionVinculadaDAO;
 import Database.ResponsableProyectoDAO;
 import Entities.OrganizacionVinculada;
+import Entities.ResponsableProyecto;
 import Utilities.OutputMessages;
 import Utilities.ScreenChanger;
+import Utilities.SelectionContainer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -23,6 +25,7 @@ public class GestionarOrganizacion_Coordinador implements Initializable {
     private OrganizacionVinculadaDAO organizacionVinculada = new OrganizacionVinculadaDAO();
     private List< OrganizacionVinculada > listaOrganizaciones = new ArrayList<>();
     private OutputMessages outputMessages = new OutputMessages();
+    private ResponsableProyectoDAO responsableProyecto = new ResponsableProyectoDAO();
 
     @FXML
     private Label lbNombres;
@@ -139,11 +142,28 @@ public class GestionarOrganizacion_Coordinador implements Initializable {
         }
     }
 
+    /**
+     * Permite cambiar la pantalla a la pantalla GestionarEstudiante
+     */
+    public void ClicModificarOrganizacion( MouseEvent mouseEvent ) {
+        SelectionContainer.GetInstance().setOrganizacionElegida( RecuperarOrganizacion() );
+        screenChanger.MostrarPantallaModificarOrganizacion( mouseEvent, errorText );
+    }
+
     public boolean ExisteSeleccion(){
         boolean Seleccion = false;
         if( tbOrganizaciones.getSelectionModel().getSelectedItem() != null ) {
            Seleccion = true;
         }
         return Seleccion;
+    }
+
+    public OrganizacionVinculada RecuperarOrganizacion(){
+            return tbOrganizaciones.getSelectionModel().getSelectedItem();
+    }
+
+    public ResponsableProyecto RecuperarResponsable() {
+        int id = tbOrganizaciones.getSelectionModel().getSelectedItem().getIdOrganizacion();
+        return responsableProyecto.Read(id);
     }
 }

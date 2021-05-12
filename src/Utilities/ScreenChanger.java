@@ -40,6 +40,7 @@ public class ScreenChanger {
     private String pantallaModificarProyecto = "../Resources/ModificarProyecto_Coordinador.fxml";
     private String mainScreenDocente = "../Resources/Principal_Docente.fxml";
     private String descargarArchivoScreen = "../Resources/DescargarArchivo_Docente.fxml";
+    private String pantallaModificarOrganizacion = "../Resources/ModificarOrganizacion_Coordinador.fxml";
 
     /**
      * Hace el cambio de pantalla a la pantalla de IniciarSesión.
@@ -152,6 +153,11 @@ public class ScreenChanger {
         }
     }
 
+    /**
+     * Hace el cambio de pantalla a la pantalla GestionarEstudiantes_Coordinador
+     * @param mouseEvent el evento de mouse que inicio el cambio
+     * @param errorText el campo de texto donde se coloca un mensaje en caso de error
+     */
     public void MostrarPantallaGestionarEstudianesCoordinador( MouseEvent mouseEvent, Text errorText  ) {
         try {
             SetScene( mouseEvent, pantallaGestionarEstudiantes );
@@ -177,7 +183,7 @@ public class ScreenChanger {
     }
 
     /**
-     * Hace el cambio de pantalla a la pantalla GestionarOrganizacion
+     * Hace el cambio de pantalla a la pantalla GestionarOrganizacion_Coordinador
      * @param mouseEvent el evento de mouse que inicio el cambio
      * @param errorText el campo de texto donde se coloca un mensaje en caso de error
      */
@@ -205,7 +211,21 @@ public class ScreenChanger {
     }
 
     /**
-     * Hace el cambio de pantalla a la pantalla GestionarProyecto
+     * Hace el cambio de pantalla a la pantalla RegistrarOrganizacion_Coordinador
+     * @param mouseEvent el evento de mouse que inicio el cambio
+     * @param errorText el campo de texto donde se coloca un mensaje en caso de error
+     */
+    public void  MostrarPantallaModificarOrganizacion( MouseEvent mouseEvent, Text errorText ){
+        try {
+            SetScene( mouseEvent, pantallaModificarOrganizacion );
+        } catch( IOException exception ) {
+            errorText.setText( outputMessages.PantallaRegistrarOrganizacionPerdido() );
+            exception.printStackTrace();
+        }
+    }
+
+    /**
+     * Hace el cambio de pantalla a la pantalla GestionarProyecto_Coordinador
      * @param mouseEvent el evento de mouse que inicio el cambio
      * @param errorText el campo de texto donde se coloca un mensaje en caso de error
      */
@@ -233,7 +253,7 @@ public class ScreenChanger {
     }
 
     /**
-     * Hace el cambio de pantalla a la pantalla GestionarProyecto
+     * Hace el cambio de pantalla a la pantalla ModificarProyecto_Coordinador
      * @param mouseEvent el evento de mouse que inicio el cambio
      * @param errorText el campo de texto donde se coloca un mensaje en caso de error
      */
