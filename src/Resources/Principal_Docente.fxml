@@ -61,7 +61,7 @@
                                        <children>
                                           <Text fx:id="errorText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="174.13671875" />
                                        </children></VBox>
-                                    <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="185.0" text="Reportar problema" />
+                                    <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="185.0" text="Reportar problema" onMouseClicked="#ClicReportarProblema"/>
                                     <Button contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#Logout" prefHeight="25.0" prefWidth="185.0" text="Cerrar sesión" />
                                  </children>
                               </VBox>

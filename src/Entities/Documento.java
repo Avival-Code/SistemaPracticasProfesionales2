@@ -83,7 +83,7 @@ public class Documento {
         System.out.println(descripcion.getName());
         int separador = descripcion.getName().lastIndexOf('.');
         String tipo = (separador == -1) ? "" : descripcion.getName().substring(separador + 1);
-        return "Tipo: " + tipo + " " + 
+        return "Tipo: " + tipo + " " +
                "Tamaño: " + descripcion.length() / (1024 * 1024) + " MB";
     }
 

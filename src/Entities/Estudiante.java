@@ -168,4 +168,10 @@ public class Estudiante extends UsuarioUV {
     public void setDepurado(boolean depurado) {
         this.depurado.setSelected(depurado);
     }
+
+    @Override
+    public String toString() {
+        return matricula + " " +
+                nombres + " " + apellidos;
+    }
 }

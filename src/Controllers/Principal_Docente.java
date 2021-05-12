@@ -123,7 +123,7 @@ public class Principal_Docente implements Initializable {
      */
     public void RecuperarGrupo() {
         String nrc = LoginSession.GetInstance().GetDocente().GetNrc();
-        grupo = estudianteDAO.ReadByGroup(nrc);
+        grupo = estudianteDAO.ReadStudentsByGroup(nrc);
     }
 
     /**
@@ -239,5 +239,9 @@ public class Principal_Docente implements Initializable {
         } else {
             errorText.setText(outputMessages.EstudianteNoSeleccionado());
         }
+    }
+
+    public void ClicReportarProblema( MouseEvent mouseEvent ){
+        screenChanger.ShowScreenReportarProblema_Docente( mouseEvent, errorText );
     }
 }

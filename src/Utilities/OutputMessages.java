@@ -345,16 +345,38 @@ public class OutputMessages {
      */
     public String DireccionInvalida() { return "La dirección es inválida.."; }
 
+    /**
+     * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
+     * ValidarInscripcion
+     * @return una cadena con el mensaje de error
+     */
     public String ValidarInscripcionScreenMissing() {
         return "No se encontro el archivo FXML de la pantalla validar inscripcion";
     }
 
-    public String ConsultarExpedienteScreenMissing() {
-        return "No se encontro el archivo FXML de la pantalla consultar expediente";
-    }
     /**
-     * Mensaje mostrado cuando la dirección introducida por el usuario
-     * es inválida
+     * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
+     * ConsultarExpediente_Docente
      * @return una cadena con el mensaje de error
      */
+    public String ConsultarExpedienteDocenteScreenMissing() {
+        return "No se encontro el archivo FXML de la pantalla consultar expediente";
+    }
+
+    /**
+     * Mensaje mostrado cuando un informe de problema es guardado con éxito en el sistema
+     * @return una cadena con el mensaje de éxito
+     */
+    public String SavingProblemFormSuccessful() {
+        return "Se ha guardado el informe en el sistema";
+    }
+
+    /**
+     * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
+     * ReportarProblema_Docente
+     * @return una cadena con el mensaje de error
+     */
+    public String ReportarProblemaScreenMissing() {
+        return "No se encontro el archivo FXML de la pantalla reportar problema";
+    }
 }

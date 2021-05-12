@@ -75,10 +75,16 @@ public class ConsultarExpediente_Docente implements Initializable {
         MostrarArchivosSubidos();
     }
 
+    /**
+     * Recupera los archivos subidos por el estudiante seleccionado a su expediente
+     */
     private void RecuperarArchivosExpediente() {
         documentosSubidos = documentoDAO.ReadByExpediente( expedienteEstudiante.GetClave() );
     }
 
+    /**
+     * Muestra en una tabla los archivos subidos por el estudiante seleccionado
+     */
     private void MostrarArchivosSubidos() {
         tbvDocumentosSubidos.getItems().clear();
         for (Documento documento : documentosSubidos) {
@@ -86,6 +92,10 @@ public class ConsultarExpediente_Docente implements Initializable {
         }
     }
 
+    /**
+     * Se configuran las columnas de las tablas, indicando que atributos de la entidad
+     * van a ser mostrados por cada columna.
+     */
     private void ConfigurarColumnasTabla() {
         tcNombre.setCellValueFactory( new PropertyValueFactory<>( "titulo" ) );
         tcDescripcion.setCellValueFactory( new PropertyValueFactory<>( "descripcionArchivo" ) );
@@ -101,6 +111,10 @@ public class ConsultarExpediente_Docente implements Initializable {
         lbCedulaProfesional.setText(LoginSession.GetInstance().GetDocente().GetNumeroPersonal());
     }
 
+    /**
+     * Vuelve a la pantalla principal del docente
+     * @param mouseEvent evento del mouse que inicia el metodo
+     */
     public void ClicRegresar(MouseEvent mouseEvent) {
         screenChanger.ShowScreenPrincipalDocente(mouseEvent, errorText);
     }
