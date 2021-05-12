@@ -80,7 +80,10 @@ public class Documento {
      * @return nombre del archivo y tamaño en MB
      */
     public String getDescripcionArchivo(){
-        return "Nombre: " + descripcion.getName() +
+        System.out.println(descripcion.getName());
+        int separador = descripcion.getName().lastIndexOf('.');
+        String tipo = (separador == -1) ? "" : descripcion.getName().substring(separador + 1);
+        return "Tipo: " + tipo + " " + 
                "Tamaño: " + descripcion.length() / (1024 * 1024) + " MB";
     }
 

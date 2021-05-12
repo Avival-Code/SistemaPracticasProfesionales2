@@ -1,10 +1,12 @@
 package Controllers;
 
+import Database.DocumentoDAO;
 import Database.ExpedienteDAO;
 import Database.ProyectoDAO;
 import Entities.ArchivoConsulta;
 import Entities.Documento;
 import Entities.Estudiante;
+import Entities.Expediente;
 import Utilities.LoginSession;
 import Utilities.OutputMessages;
 import Utilities.ScreenChanger;
@@ -15,17 +17,24 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ConsultarExpediente_Docente implements Initializable {
+
     ScreenChanger screenChanger = new ScreenChanger();
     OutputMessages outputMessages = new OutputMessages();
     Estudiante estudianteSeleccionado = SelectionContainer.GetInstance().getEstudianteElegido();
     ExpedienteDAO expedienteDAO = new ExpedienteDAO();
+    DocumentoDAO documentoDAO = new DocumentoDAO();
     ProyectoDAO proyectoDAO = new ProyectoDAO();
+    List< Documento > documentosSubidos = new ArrayList< Documento >();
+    Expediente expedienteEstudiante = expedienteDAO.ReadByStudent( estudianteSeleccionado.getMatricula() );
 
     @FXML
     private Label lbNombre;
@@ -60,22 +69,25 @@ public class ConsultarExpediente_Docente implements Initializable {
      */
     private void MostrarInfoEstudiante() {
         lbNombreEstudiante.setText( estudianteSeleccionado.getNombreCompleto() );
-        lbNombreProyecto.setText( proyectoDAO.Read( expedienteDAO.ReadByStudent(
-                estudianteSeleccionado.getMatricula() ).GetIDProyecto() ).getNombre() );
+        lbNombreProyecto.setText( proyectoDAO.Read( expedienteEstudiante.GetIDProyecto() ).getNombre() );
         ConfigurarColumnasTabla();
-        RecuperarArchivos
+        RecuperarArchivosExpediente();
         MostrarArchivosSubidos();
+    }
+
+    private void RecuperarArchivosExpediente() {
+        documentosSubidos = documentoDAO.ReadByExpediente( expedienteEstudiante.GetClave() );
     }
 
     private void MostrarArchivosSubidos() {
         tbvDocumentosSubidos.getItems().clear();
-        for (Documento documento : archivoConsultas) {
-            tbvArchivosSubidos.getItems().add(archivoConsulta);
+        for (Documento documento : documentosSubidos) {
+            tbvDocumentosSubidos.getItems().add(documento);
         }
     }
 
     private void ConfigurarColumnasTabla() {
-        tcNombre.setCellValueFactory( new PropertyValueFactory<>( "nombre" ) );
+        tcNombre.setCellValueFactory( new PropertyValueFactory<>( "titulo" ) );
         tcDescripcion.setCellValueFactory( new PropertyValueFactory<>( "descripcionArchivo" ) );
     }
 
@@ -87,5 +99,9 @@ public class ConsultarExpediente_Docente implements Initializable {
         lbNombre.setText(LoginSession.GetInstance().GetDocente().getNombres());
         lbApellidos.setText(LoginSession.GetInstance().GetDocente().GetApellidos());
         lbCedulaProfesional.setText(LoginSession.GetInstance().GetDocente().GetNumeroPersonal());
+    }
+
+    public void ClicRegresar(MouseEvent mouseEvent) {
+        screenChanger.ShowScreenPrincipalDocente(mouseEvent, errorText);
     }
 }
