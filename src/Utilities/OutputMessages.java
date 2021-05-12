@@ -150,11 +150,18 @@ public class OutputMessages {
             "GestionarProyecto_Coordinador."; }
 
     /**
-     * Mensaje mostrado cuando se registra un nuevo Estudiante a la
+     * Mensaje mostrado cuando se registra una nueva Organización a la
      * base de datos de manera exitosa.
      * @return una cadena con el mensaje de éxito
      */
     public String RegistroOrganizacionExitoso() { return "Registro de Organizacion Exitoso"; }
+
+    /**
+     * Mensaje mostrado cuando se registra un nuevo Responsable a la
+     * base de datos de manera exitosa.
+     * @return una cadena con el mensaje de éxito
+     */
+    public String RegistroResponsableExitoso() { return "Registro de Responsable Exitoso"; }
 
     /**
      * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
@@ -182,6 +189,18 @@ public class OutputMessages {
      * @return una cadena con el mensaje de error
      */
     public String StudentAlreadyExists() { return "Ya existe un registro con esa información"; }
+
+    /**
+     * Mensaje mostrado cuando ya existe una OrganizacionVinculada en base de datos
+     * @return una cadena con el mensaje de error
+     */
+    public String OrganizacionExistente() { return "Ya existe una organización con esa información"; }
+
+    /**
+     * Mensaje mostrado cuando ya existe un ResponsableProyecto en base de datos
+     * @return una cadena con el mensaje de error
+     */
+    public String ResponsableExistente() { return "Ya existe un responsable con esa información"; }
 
     /**
      * Mensaje mostrado cuando se quiere acceder a funcionalidad que requiere tener
@@ -218,6 +237,13 @@ public class OutputMessages {
      */
     public String DeleteStudentConfirmation() { return "¿Estas seguro/a que deseas eliminar el estudiante? " +
                                                        "Esta acción es permanente y no se podrá deshacer."; }
+    /**
+     * Mensaje mostrado cuando se intenta eliminar un estudiante en
+     * la pantalla GestionarEstudiantes_Coordinador
+     * @return una cadena con el mensaje de confirmacion
+     */
+    public String ConfirmacionEliminarOrganizacion() { return "¿Estas seguro/a que deseas eliminar la organización? " +
+            "Esta acción es permanente y no se podrá deshacer."; }
 
     /**
      * mensaje mostrado cuando se introduce información de login que no
@@ -312,6 +338,7 @@ public class OutputMessages {
      */
     public String EstudianteNoSeleccionado() { return "No se ha seleccionado ningun estudiante "; }
 
+<<<<<<< HEAD
     public String ValidarInscripcionScreenMissing() {
         return "No se encontro el archivo FXML de la pantalla validar inscripcion";
     }
@@ -319,4 +346,12 @@ public class OutputMessages {
     public String ConsultarExpedienteScreenMissing() {
         return "No se encontro el archivo FXML de la pantalla consultar expediente";
     }
+=======
+    /**
+     * Mensaje mostrado cuando la dirección introducida por el usuario
+     * es inválida
+     * @return una cadena con el mensaje de error
+     */
+    public String DireccionInvalida() { return "La dirección es inválida.."; }
+>>>>>>> Dan-Branch
 }
