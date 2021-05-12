@@ -150,6 +150,36 @@ public class DocumentoDAO implements DocumentoDAOInterface {
         return documento;
     }
 
+    @Override
+    public Documento ReadByExpediente(int claveExpediente) {
+        Documento documento = null;
+        MySqlConnection connection = new MySqlConnection();
+        connection.StartConnection();
+
+        try {
+            String query = "SELECT * FROM Documento WHERE ClaveExpediente = ?;";
+            PreparedStatement statement = connection.GetConnection().prepareStatement( query );
+            statement.setInt( 1, claveExpediente );
+            statement.executeQuery();
+            ResultSet result = statement.getResultSet();
+
+            if( result.next() ) {
+                String retrievedTitulo = result.getString( 4 );
+                documento = new Documento( result.getInt( 1 ), retrievedTitulo,
+                        creator.CreateFile( retrievedTitulo, result.getBlob( 2 ) ),
+                        result.getString( 3 ), result.getInt( 5 ) );
+            }
+
+            result.close();
+            statement.close();
+        } catch( Exception exception ) {
+            exception.printStackTrace();
+        }
+
+        connection.StopConnection();
+        return documento;
+    }
+
     /**
      * Actualiza la información de un documento en la base de datos
      * @param documento el documento con su información actualizada
