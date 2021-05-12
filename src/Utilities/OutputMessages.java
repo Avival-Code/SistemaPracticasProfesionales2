@@ -338,7 +338,13 @@ public class OutputMessages {
      */
     public String EstudianteNoSeleccionado() { return "No se ha seleccionado ningun estudiante "; }
 
-<<<<<<< HEAD
+    /**
+     * Mensaje mostrado cuando la dirección introducida por el usuario
+     * es inválida
+     * @return una cadena con el mensaje de error
+     */
+    public String DireccionInvalida() { return "La dirección es inválida.."; }
+
     public String ValidarInscripcionScreenMissing() {
         return "No se encontro el archivo FXML de la pantalla validar inscripcion";
     }
@@ -346,12 +352,10 @@ public class OutputMessages {
     public String ConsultarExpedienteScreenMissing() {
         return "No se encontro el archivo FXML de la pantalla consultar expediente";
     }
-=======
     /**
      * Mensaje mostrado cuando la dirección introducida por el usuario
      * es inválida
      * @return una cadena con el mensaje de error
      */
     public String DireccionInvalida() { return "La dirección es inválida.."; }
->>>>>>> Dan-Branch
 }
