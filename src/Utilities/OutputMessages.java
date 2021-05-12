@@ -357,5 +357,4 @@ public class OutputMessages {
      * es inválida
      * @return una cadena con el mensaje de error
      */
-    public String DireccionInvalida() { return "La dirección es inválida.."; }
 }
