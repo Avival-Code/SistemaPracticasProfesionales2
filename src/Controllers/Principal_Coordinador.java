@@ -10,7 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import sample.LoginSession;
+import Utilities.LoginSession;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,12 +40,6 @@ public class Principal_Coordinador implements Initializable {
 
     @FXML
     private Button btnConsultarExpediente;
-
-    @FXML
-    private Button btnModificarEstudiante;
-
-    @FXML
-    private Button btnEliminarEstudiante;
 
     @FXML
     private Button btnValidarInscripcion;
@@ -160,9 +154,25 @@ public class Principal_Coordinador implements Initializable {
     }
 
     /**
-     * Permite cambiar la pantalla a la pantalla deseada por el usuario que seleccione un boton
+     * Permite cambiar la pantalla a la pantalla GestionarOrganización
      */
     public void MostrarPantallaGestionarOrganizacion( MouseEvent mouseEvent ) {
         screenChanger.MostrarPantallaGestionarOrganizacion( mouseEvent, errorText );
+    }
+
+    /**
+     * Permite cambiar la pantalla a la pantalla GestionarEstudiante
+     */
+    public void MostrarPantallaGestionarEstudiante( MouseEvent mouseEvent ) {
+        screenChanger.MostrarPantallaGestionarEstudianesCoordinador( mouseEvent, errorText );
+    }
+
+    /**
+     * Cierra la sesión actual y se regresa a la pantalla "IniciarSesión"
+     * @param mouseEvent el evento de mouse que inicio el cambio
+     */
+    public void CerrarSesion( MouseEvent mouseEvent ) {
+        LoginSession.GetInstance().Logout();
+        screenChanger.ShowLoginScreen( mouseEvent, errorText );
     }
 }

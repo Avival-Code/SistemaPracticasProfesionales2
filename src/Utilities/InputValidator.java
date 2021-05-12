@@ -9,6 +9,8 @@
 package Utilities;
 
 import Entities.Estudiante;
+import Entities.OrganizacionVinculada;
+import Entities.ResponsableProyecto;
 
 /**
  * Clase encargada de validar la información introducida
@@ -26,6 +28,8 @@ public class InputValidator {
     private final int maxPasswordSize = 20;
     private final int phoneSize = 10;
     private final int nrcSize = 5;
+    private final int minDireccion = 10;
+    private final int maxDireccion = 200;
 
     /**
      * Verifica que la información de una instancia de Estudiante sea valida y que las
@@ -39,6 +43,26 @@ public class InputValidator {
                 IsMatriculaValid( student.getMatricula() ) && IsTelephoneValid( student.GetTelefono() ) &&
                 IsEmailValid( student.GetCorreo() ) && IsNRCValid( student.getNrc() ) &&
                 IsPasswordValid( student.GetContrasena() ) && DoPasswordsMatch( student.GetContrasena(), passwordConfirm );
+    }
+
+    /**
+     * Verifica que la información de una instancia de Organización Vinculada sea valida
+     * @param organizacionVinculada la instancia de OrganizacionVinculada que se desea verificar
+     * @return true si todos los campos de la OrganizacionVinculada son validos, false si no
+     */
+    public boolean IsOrganizationInformationValid(OrganizacionVinculada organizacionVinculada ) {
+        return AreNamesValid( organizacionVinculada.getNombre() ) && DireccionValida( organizacionVinculada.getDireccion() ) &&
+                IsEmailValid( organizacionVinculada.getCorreo() ) && IsTelephoneValid( organizacionVinculada.getTelefono() );
+    }
+
+    /**
+     * Verifica que la información de una instancia de ResponsableProyecto sea valida
+     * @param responsableProyecto la instancia de ResponsableProyecto que se desea verificar
+     * @return true si todos los campos de la OrganizacionVinculada son validos, false si no
+     */
+    public boolean IsResponsableInformationValid(ResponsableProyecto responsableProyecto ) {
+        return AreNamesValid( responsableProyecto.GetNombres() ) && AreLastNamesValid( responsableProyecto.GetApellidos() ) &&
+                IsEmailValid( responsableProyecto.GetCorreo() ) && IsTelephoneValid( responsableProyecto.GetTelefono() );
     }
 
     /**
@@ -119,6 +143,15 @@ public class InputValidator {
     public boolean IsEmailValid( String email ) {
         return IsStringValidSize( email, minEmailSize, maxEmailSize ) && HasSingleAtChar( email ) &&
                 !HasInvalidCharacter( email ) && !HasSpaces( email );
+    }
+
+    /**
+     * Verifica que la direccion introducida por el usuario sea valida
+     * @param direccion la cadena con los nombres
+     * @return true si la sireccion es valida, false si no
+     */
+    public boolean DireccionValida( String direccion ) {
+        return IsStringValidSize( direccion, minDireccion, maxDireccion );
     }
 
     /**

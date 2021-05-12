@@ -35,6 +35,15 @@ public class OutputMessages {
     public String StudentMainMenuMissing() { return "No se encontró el archivo FXML del menú principal de estudiante"; }
 
     /**
+     * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
+     * IniciarSesion
+     * @return una cadena con el mensaje de error
+     */
+    public String MainScreenDocenteMissing() {
+        return "No se encontro el archivo FXML de la pantalla principal de los docentes";
+    }
+
+    /**
      * Mensaje mostrado en caso de no encontrar el archivo fxml de la pantalla
      * EscogerProyectos_Estudiante
      * @return una cadena con el mensaje de error
@@ -141,11 +150,18 @@ public class OutputMessages {
             "GestionarProyecto_Coordinador."; }
 
     /**
-     * Mensaje mostrado cuando se registra un nuevo Estudiante a la
+     * Mensaje mostrado cuando se registra una nueva Organización a la
      * base de datos de manera exitosa.
      * @return una cadena con el mensaje de éxito
      */
     public String RegistroOrganizacionExitoso() { return "Registro de Organizacion Exitoso"; }
+
+    /**
+     * Mensaje mostrado cuando se registra un nuevo Responsable a la
+     * base de datos de manera exitosa.
+     * @return una cadena con el mensaje de éxito
+     */
+    public String RegistroResponsableExitoso() { return "Registro de Responsable Exitoso"; }
 
     /**
      * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
@@ -173,6 +189,18 @@ public class OutputMessages {
      * @return una cadena con el mensaje de error
      */
     public String StudentAlreadyExists() { return "Ya existe un registro con esa información"; }
+
+    /**
+     * Mensaje mostrado cuando ya existe una OrganizacionVinculada en base de datos
+     * @return una cadena con el mensaje de error
+     */
+    public String OrganizacionExistente() { return "Ya existe una organización con esa información"; }
+
+    /**
+     * Mensaje mostrado cuando ya existe un ResponsableProyecto en base de datos
+     * @return una cadena con el mensaje de error
+     */
+    public String ResponsableExistente() { return "Ya existe un responsable con esa información"; }
 
     /**
      * Mensaje mostrado cuando se quiere acceder a funcionalidad que requiere tener
@@ -209,6 +237,13 @@ public class OutputMessages {
      */
     public String DeleteStudentConfirmation() { return "¿Estas seguro/a que deseas eliminar el estudiante? " +
                                                        "Esta acción es permanente y no se podrá deshacer."; }
+    /**
+     * Mensaje mostrado cuando se intenta eliminar un estudiante en
+     * la pantalla GestionarEstudiantes_Coordinador
+     * @return una cadena con el mensaje de confirmacion
+     */
+    public String ConfirmacionEliminarOrganizacion() { return "¿Estas seguro/a que deseas eliminar la organización? " +
+            "Esta acción es permanente y no se podrá deshacer."; }
 
     /**
      * mensaje mostrado cuando se introduce información de login que no
@@ -279,4 +314,34 @@ public class OutputMessages {
      * @return una cadena con el mensaje de error
      */
     public String PasswordsDontMatch() { return "Las contraseñas no coinciden."; }
+
+    /**
+     * Mensaje mostrado en caso de no encontrar el archivo FXML de la pantalla
+     * DescargarArchivo_Docente
+     * @return una cadena con el mensaje de error
+     */
+    public String DescargarArchivoScreenMissing() {
+        return "No se encontro el archivo FXML de la pantalla descargar archivo";
+    }
+
+    /**
+     * Mensaje mostrado cuando se ha subido al sistema con exito un archivo
+     * @return una cadena con el mensaje de error
+     */
+    public String UploadSuccesful() {
+        return "El archivo a sido subido al sistema de manera exitosa";
+    }
+
+    /**
+     * Mensaje mostrado cuando no se ha seleccionado ningun estudiante en una tabla
+     * @return una cadena con el mensaje de error
+     */
+    public String EstudianteNoSeleccionado() { return "No se ha seleccionado ningun estudiante "; }
+
+    /**
+     * Mensaje mostrado cuando la dirección introducida por el usuario
+     * es inválida
+     * @return una cadena con el mensaje de error
+     */
+    public String DireccionInvalida() { return "La dirección es inválida.."; }
 }

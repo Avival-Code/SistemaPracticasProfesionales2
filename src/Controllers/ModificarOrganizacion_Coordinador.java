@@ -5,28 +5,24 @@ import Database.ResponsableProyectoDAO;
 import Entities.ResponsableProyecto;
 import Enumerations.TipoSector;
 import Entities.OrganizacionVinculada;
-import Utilities.InputValidator;
-import Utilities.OutputMessages;
-import Utilities.ScreenChanger;
+import Utilities.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import Utilities.LoginSession;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class RegistrarOrganizacion_Coordinador implements Initializable {
+public class ModificarOrganizacion_Coordinador implements Initializable{
     private OrganizacionVinculadaDAO organizacionVinculada = new OrganizacionVinculadaDAO();
     private OutputMessages outputMessages = new OutputMessages();
     private ScreenChanger screenChanger = new ScreenChanger();
     private InputValidator inputValidator = new InputValidator();
-    private List< ResponsableProyecto > listaResponsables = new ArrayList<>();
+    private List<ResponsableProyecto> listaResponsables = new ArrayList<>();
     private ResponsableProyectoDAO responsableProyecto = new ResponsableProyectoDAO();
 
     @FXML
@@ -69,7 +65,7 @@ public class RegistrarOrganizacion_Coordinador implements Initializable {
     private Button btnCancelar;
 
     @FXML
-    private Button btnRegistrar;
+    private Button btnModificar;
 
     @FXML
     private Text errorText;
@@ -77,17 +73,11 @@ public class RegistrarOrganizacion_Coordinador implements Initializable {
     @FXML
     private Text successText;
 
-    @FXML
-    private TableView <ResponsableProyectoDAO> tbResponsable;
-
-    @FXML
-    private TableColumn <ResponsableProyectoDAO, String> clnResponsable;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-  //      AsignarValorColumnasResponsableProyecto();
-  //      MostrarResponsablesDisponibles();
         DatosDeUsuario();
+        DatosOrganizacion();
+        DatosResponsable();
     }
 
     /**
@@ -103,23 +93,16 @@ public class RegistrarOrganizacion_Coordinador implements Initializable {
      * @param mouseEvent el evento de mouse que activo la acción.
      */
     public void ClicCancelar ( MouseEvent mouseEvent ){
-
-        tfNombre.setText("");
-        tfDireccion.setText("");
-        tfCorreoElectronico.setText("");
-        tfTelefono.setText("");
-        tfNombresRepresentante.setText("");
-        tfApellidosRepresentante.setText("");
-        tfCorreoRepresentante.setText("");
-        tfTelefonoRepresentante.setText("");
+        DatosOrganizacion();
+        DatosResponsable();
     }
 
-    public void ManejoRegistroOrganizacion(){
+    public void ManejoModificarOrganizacion(){
         ManejoRegistroRepresentante();
         VerificarDatos();
         if( inputValidator.IsOrganizationInformationValid( ObtenerOrganizacionVinculada() ) ) {
             if ( !OrganizacionExistente() ) {
-                RegistrarOrganizacion();
+                ModificarOrganizacion();
             }
         }
     }
@@ -137,17 +120,15 @@ public class RegistrarOrganizacion_Coordinador implements Initializable {
      * introducida por el usuario en todos los campos de texto.
      * @return una instancia de OrganizacionVinculada
      */
-   private OrganizacionVinculada ObtenerOrganizacionVinculada() {
-        return new OrganizacionVinculada ( tfNombre.getText(), tfDireccion.getText(), TipoSector.Publico,
-                tfTelefono.getText(),tfCorreoElectronico.getText(),0,ObtenerListaResponsables());
-
+    private OrganizacionVinculada ObtenerOrganizacionVinculada() {
+        return SelectionContainer.GetInstance().getOrganizacionElegida();
     }
 
     /**
      * Intenta crear una Organización en la base de datos y coloca
      * el mensaje correspondiente en caso de éxito o fracaso.
      */
-    private void RegistrarOrganizacion() {
+    private void ModificarOrganizacion() {
         if( organizacionVinculada.Create ( ObtenerOrganizacionVinculada() ) ) {
             errorText.setText( "" );
             successText.setText( outputMessages.RegistroOrganizacionExitoso() );
@@ -233,6 +214,29 @@ public class RegistrarOrganizacion_Coordinador implements Initializable {
         lbApellidos.setText( LoginSession.GetInstance().GetCoordinador().GetApellidos() );
         lbNoTrabajador.setText( LoginSession.GetInstance().GetCoordinador().GetNumeroPersonal() );
     }
+
+    /**
+     * Coloca la información de la OrganizacionVinculada seleccionada en los campos de texto de
+     * nombres, apellidos y No.Trabajador
+     */
+    public void DatosOrganizacion(){
+        tfNombre.setText( SelectionContainer.GetInstance().getOrganizacionElegida().getNombre() );
+        tfDireccion.setText( SelectionContainer.GetInstance().getOrganizacionElegida().getDireccion() );
+        tfCorreoElectronico.setText( SelectionContainer.GetInstance().getOrganizacionElegida().getCorreo() );
+        tfTelefono.setText( SelectionContainer.GetInstance().getOrganizacionElegida().getTelefono() );
+    }
+
+    /**
+     * Coloca la información del usuario actual en los campos de texto de
+     * nombres, apellidos y No.Trabajador
+     */
+    public void DatosResponsable(){
+        tfNombresRepresentante.setText( SelectionContainer.GetInstance().getResponsableElegido().GetNombres() );
+        tfApellidosRepresentante.setText( SelectionContainer.GetInstance().getResponsableElegido().GetApellidos() );
+        tfCorreoRepresentante.setText( SelectionContainer.GetInstance().getResponsableElegido().GetCorreo() );
+        tfTelefonoRepresentante.setText( SelectionContainer.GetInstance().getResponsableElegido().GetTelefono() );
+    }
+
 
     /**
      * Crea una instancia de Organizacion Vinculada utilizando la información
@@ -329,5 +333,4 @@ public class RegistrarOrganizacion_Coordinador implements Initializable {
             successText.setText( "" );
         }
     }
-
 }
