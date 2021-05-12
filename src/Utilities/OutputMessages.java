@@ -315,4 +315,8 @@ public class OutputMessages {
     public String ValidarInscripcionScreenMissing() {
         return "No se encontro el archivo FXML de la pantalla validar inscripcion";
     }
+
+    public String ConsultarExpedienteScreenMissing() {
+        return "No se encontro el archivo FXML de la pantalla consultar expediente";
+    }
 }

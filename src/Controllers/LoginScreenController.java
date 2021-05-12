@@ -149,6 +149,7 @@ public class LoginScreenController {
             screenChanger.MostrarPantallaPrincipalCoordinador( mouseEvent, errorText );
         } else if( docente != null ) {
             LoginSession.GetInstance().Login( docente );
+            screenChanger.ShowScreenPrincipalDocente( mouseEvent, errorText);
         } else if( estudiante != null ) {
             LoginSession.GetInstance().Login( estudiante );
             screenChanger.ShowStudentMainMenuScreen( mouseEvent, errorText );

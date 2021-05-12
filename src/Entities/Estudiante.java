@@ -131,6 +131,14 @@ public class Estudiante extends UsuarioUV {
     }
 
     /**
+     * Cambia el valor de la matricula del Estudiante al valor introducido
+     * @param matricula la nueva matricula del estudiante
+     */
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    /**
      * Cambia el valor del nrc del Estudiante al valor introducido
      * @param nrcIn el nuevo nrc del estudiante
      */

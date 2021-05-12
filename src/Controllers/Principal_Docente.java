@@ -1,7 +1,7 @@
 /*
  * Autor: Dan Javier Olvera Villeda
  * Versión: 1.0
- * Fecha Creación: 31 - mar - 2021
+ * Fecha Creación: 30 - mar - 2021
  * Descripción:
  * Clase encargada de manejar los eventos de la pantalla
  * Principal_Docente.
@@ -14,7 +14,6 @@ import Entities.ArchivoConsulta;
 import Entities.Estudiante;
 import Entities.Proyecto;
 import Entities.UsuarioUV;
-import Utilities.LoginSession;
 import Utilities.OutputMessages;
 import Utilities.ScreenChanger;
 import Utilities.SelectionContainer;
@@ -29,6 +28,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
+import Utilities.LoginSession;
 
 import java.io.File;
 import java.net.URL;
@@ -84,9 +84,6 @@ public class Principal_Docente implements Initializable {
         MostrarArchivosSubidos();
     }
 
-    /**
-     * Muestra los archivos subidos por el docente al sistema
-     */
     public void MostrarArchivosSubidos() {
         tbvArchivosSubidos.getItems().clear();
         for (ArchivoConsulta archivoConsulta : archivoConsultas) {
@@ -116,7 +113,7 @@ public class Principal_Docente implements Initializable {
         //tcProyectoAsignado.setCellValueFactory( new PropertyValueFactory<>("") );
 
         //Tabla de archivos subidos por el docente
-        tcNombreArchivo.setCellValueFactory(new PropertyValueFactory<>("titulo") );
+        tcNombreArchivo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
         //tcDescripcion.setCellValueFactory( new PropertyValueFactory<>("descripcion") );
     }
 
@@ -231,5 +228,16 @@ public class Principal_Docente implements Initializable {
         }
 
         return tipoArchivoValido;
+    }
+
+    public void ClicConsultarExpediente( MouseEvent mouseEvent){
+        Estudiante estudianteElegido = (Estudiante) tbvGrupo.getSelectionModel().getSelectedItem();
+
+        if (estudianteElegido != null) {
+            SelectionContainer.GetInstance().setEstudianteElegido(estudianteElegido);
+            screenChanger.ShowScreenConsultarExpediente(mouseEvent, errorText);
+        } else {
+            errorText.setText(outputMessages.EstudianteNoSeleccionado());
+        }
     }
 }

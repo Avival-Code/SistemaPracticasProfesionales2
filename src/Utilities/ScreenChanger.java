@@ -41,6 +41,7 @@ public class ScreenChanger {
     private String mainScreenDocente = "../Resources/Principal_Docente.fxml";
     private String descargarArchivoScreen = "../Resources/DescargarArchivo_Docente.fxml";
     private String validarArchivoScreen = "../Resources/ValidarInscripcion.fxml";
+    private String consultarExpedienteDocenteScreen = "../Resources/ConsultarExpediente_Docente.fxml";
 
     /**
      * Hace el cambio de pantalla a la pantalla de IniciarSesión.
@@ -281,11 +282,20 @@ public class ScreenChanger {
         }
     }
 
-    public void ShowScreenValidarInscripcion(MouseEvent mouseEvent, Text errorText) {
+    public void ShowScreenValidarInscripcion( MouseEvent mouseEvent, Text errorText ) {
         try {
             SetScene( mouseEvent, validarArchivoScreen );
         }catch( IOException exception){
             errorText.setText( outputMessages.ValidarInscripcionScreenMissing() );
+            exception.printStackTrace();
+        }
+    }
+
+    public void ShowScreenConsultarExpediente( MouseEvent mouseEvent, Text errorText ) {
+        try {
+            SetScene( mouseEvent, consultarExpedienteDocenteScreen );
+        }catch( IOException exception){
+            errorText.setText( outputMessages.ConsultarExpedienteScreenMissing() );
             exception.printStackTrace();
         }
     }

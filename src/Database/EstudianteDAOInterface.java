@@ -48,7 +48,7 @@ public interface EstudianteDAOInterface {
 
     /**
      * Reresa una lista de estudiantes con un mismo estado especificado
-     * @param estado estado del estudiante
+     * @param estado estado del estudiante con el que se desea buscar en la base de datos
      * @return una lista ocn los estudiantes de un mismo estado;
      */
     List< Estudiante > ReadByState( int estado );
